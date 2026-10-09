@@ -15,12 +15,10 @@
   setHref('licenseGuideLink',valid(cfg.licenseGuideUrl) || fullGuide);
   setHref('purchaseLink',valid(cfg.storeUrl));
   setHref('manualTutorialLink',valid(cfg.manualUrl));
-  const contactUrl = valid(cfg.qqContactUrl) || valid(cfg.storeUrl);
-  setHref('qqCommunityLink',valid(cfg.communityUrl) || contactUrl);
+  // QQ / 内部 TG 只展示入群条件；公开 TG 群可直达。
   setHref('tgCommunityLink',valid(cfg.telegramUrl));
-  setHref('internalCommunityLink',contactUrl);
   setHref('communityStoreLink',valid(cfg.storeUrl));
-  setHref('faqMore',fullGuide);
+  setHref('faqMore',valid(cfg.faqUrl) || fullGuide);
   ['android', 'ios', 'harmony'].forEach(key => setHref(key + 'TutorialLink', valid(cfg.tutorialUrls?.[key]) || fullGuide));
   const appDownloadLink = byId('appDownloadLink');
   const copyDownloadLink = byId('copyDownloadLink');
@@ -47,37 +45,31 @@
     }
     refreshLang();
   });
-  // 购买入口与说明入口独立。销售暂停时保留购买位置，但阻止下单跳转。
+  // 购买暂停不影响浏览店铺：店铺链接始终可访问（仅限真实有效的 URL）。
   const salesPaused = cfg.salesPaused !== false;
   const putText = (id, value) => { const el=byId(id); if(el) el.textContent=value; };
   putText('heroSalesStatus', typeof cfg.homepageNotice === 'string' ? cfg.homepageNotice : '使用教程与相关说明持续更新');
-  putText('communitySalesNote', salesPaused ? '当前暂停新授权购买及预订' : '店铺获取方式与活动请以最新公告为准');
+  putText('communitySalesNote', salesPaused ? '目前暂停新授权购买及预订' : '店铺获取方式与活动请以最新公告为准');
   const purchaseLink = byId('purchaseLink');
   const purchaseBadge = byId('purchaseBadge');
+  const hasStore = Boolean(valid(cfg.storeUrl));
   if (purchaseLink) {
-    if (salesPaused) {
-      purchaseLink.classList.add('is-paused');
-      purchaseLink.removeAttribute('href');
-      purchaseLink.setAttribute('aria-disabled','true');
-      purchaseLink.dataset.empty = 'true';
-      purchaseLink.removeAttribute('target');
-      purchaseLink.setAttribute('tabindex','-1');
-      putText('purchaseTitle','授权码购买');
-      putText('purchaseSubtitle','暂不开放新授权购买与预订');
-      putText('licenseStateNotice','目前暂停新授权购买及预订，已有用户仍可查看授权说明。');
-    } else if (valid(cfg.storeUrl)) {
-      if(purchaseBadge) purchaseBadge.hidden = true;
-      putText('purchaseSubtitle','前往店铺，查看当前获取方式');
-      putText('licenseStateNotice','购买前请确认使用规则和系统适配情况。');
+    putText('purchaseTitle', '闲鱼店铺');
+    if (!hasStore) {
+      putText('purchaseSubtitle', '店铺链接待设置');
+      putText('licenseStateNotice', '店铺暂时无法跳转，可先查看授权说明。');
+      if (purchaseBadge) { purchaseBadge.textContent = '待设置'; purchaseBadge.hidden = false; }
+    } else if (salesPaused) {
+      putText('purchaseSubtitle', '可查看店铺、关注动态，暂不接受新订单');
+      putText('licenseStateNotice', '店铺可正常浏览和关注；目前暂停新授权购买及预订。');
+      if (purchaseBadge) { purchaseBadge.textContent = '暂停购买'; purchaseBadge.hidden = false; }
     } else {
-      if(purchaseBadge) purchaseBadge.textContent = '待设置';
-      purchaseLink.removeAttribute('href');
-      purchaseLink.setAttribute('aria-disabled','true');
-      purchaseLink.dataset.empty = 'true';
-      putText('purchaseSubtitle','店铺地址尚未设置');
+      putText('purchaseSubtitle', '前往店铺，查看当前获取方式');
+      putText('licenseStateNotice', '购买前请确认授权规则和系统适配情况。');
+      if (purchaseBadge) purchaseBadge.hidden = true;
     }
   }
-  const modalNames = ['noticeModal','featureModal','licenseModal','exportModal','downloadModal'];
+  const modalNames = ['noticeModal','featureModal','licenseModal','exportModal','qqCommunityModal','internalCommunityModal','downloadModal'];
   const openModal = id => { refreshLang(); const dialog=byId(id);if(dialog&&typeof dialog.showModal==='function')dialog.showModal(); };
   document.querySelectorAll('[data-modal]').forEach(el => el.addEventListener('click',() => openModal(el.dataset.modal)));
   document.querySelectorAll('dialog').forEach(dialog => {

@@ -1,43 +1,17 @@
-观星导航 · 最新导航入口整合版（2026-10-09）
+观星导航｜常见问题入口优化版
 
-【七个链接与页面的对应关系】
-01 使用前须知  → config.js / introUrl
-02 功能介绍与试用 → config.js / trialUrl
-03 授权码说明与获取 → config.js / licenseGuideUrl
-04 安卓导出教程 → config.js / tutorialUrls.android
-05 苹果导出教程 → config.js / tutorialUrls.ios
-06 鸿蒙导出教程 → config.js / tutorialUrls.harmony
-07 人工代导专用入口 → config.js / manualUrl
-以上七个链接已按照你提供的顺序填写。若顺序有所不同，只需到 config.js 调整对应链接。
+本次仅调整第 05 张卡片：
+1. 保留「常见问题」标题，说明该栏目主要处理使用过程中遇到的问题。
+2. 在简介下增加「01｜使用前须知」可点击入口，购买前先确认适配和注意事项。
+3. 折叠问题替换为下载/安装、导出失败、存档导入、洗脉 VIP 四类使用问题。
+4. 「查看完整常见问题」改为醒目的大按钮，仍然使用 config.js 中的 faqUrl。
 
-【03 授权码说明与获取】
-弹窗左侧“授权码说明”正常打开 03 飞书文档。
-弹窗右侧“授权码购买”保留入口，但当前 salesPaused: true，页面明确提示暂停且不会跳转购买。
-以后明确允许恢复购买时，可在 config.js 设置 salesPaused: false，按钮便指向 storeUrl。
-请勿在实际未恢复时提前切换。
+其他四张卡片、授权购买暂停状态、游戏交流、所有飞书链接和简繁切换逻辑均未修改。
 
-【04 导出存档教程】
-安卓、苹果、鸿蒙三个入口保持原有风格，下面单列“人工代导”入口。
-点击每个入口直接打开对应的飞书文档，不额外弹出第二层窗口。
+更新 GitHub Pages：
+1. 下载并解压 ZIP，打开 index.html 本地检查。
+2. 在 GitHub 网站仓库 yygx-guide / yygx-guide.github.io 上传解压文件夹内的全部文件（不是 ZIP 本身）。
+3. 点击 Commit changes，等 Actions 中的 GitHub Pages 部署成功。
+4. 打开 https://yygx-guide.github.io/，按 Ctrl+F5 刷新。
 
-【游戏交流】
-本页直接显示 QQ、Telegram 及授权用户内部群信息，无需维护单独的飞书游戏交流文档。
-QQ 暂时不能直接入群：当前通过闲鱼店铺联系申请，后来可更改 qqContactUrl。
-公开 TG 群链接取自你提供的截图：config.js / telegramUrl。
-授权用户内部群无公开入群链接，当前沿用店铺咨询入口。闲鱼店铺目前仅作为关注与联系入口，不接受新授权购买和预订。
-
-【保留的功能】
-首页水墨背景、原有图标、APP 下载弹窗、简繁切换、护眼模式、FAQ 均保留。
-繁体切换只会改变导航页文字，不会自动改变飞书文档。
-
-【本地预览】
-解压后直接双击 index.html。index.html、style.css、script.js、lang-map.js、config.js 和 assets 文件夹必须在同一目录层级。
-
-【更新 GitHub Pages】
-你现在使用的是 GitHub Pages（此前已确认国内无梯子可以打开），不是 Cloudflare。
-登录 GitHub → 打开 yygx-guide 对应的个人 Pages 仓库（当前仓库为 yygx-guide.github.io）。
-进入 Code → Add file → Upload files → 上传更新后的 index.html、config.js、script.js、style.css 和原有 assets 等完整文件（不能只上传 ZIP）。
-提交 Commit changes 后稍等，然后打开 https://yygx-guide.github.io/，用 Ctrl+F5 刷新；不要新建仓库。
-
-【安全】
-GitHub Pages 的公开仓库可被他人查看，请不要把密码、私人账号资料、库存授权码、API Key 放入网页文件。
+如果只希望更新必要文件，直接把本 ZIP 的 index.html 和 style.css 覆盖仓库同名文件也可以，其余资源和脚本不用改。

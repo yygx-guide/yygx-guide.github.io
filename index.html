@@ -33,20 +33,42 @@
 <button class="nav-card feature-card" data-modal="featureModal" type="button"><span class="card-head"><span class="num">02 <i>/ 先了解</i></span><span class="card-arrow">↗</span></span><span class="card-title">功能介绍与试用</span><span class="card-desc">观星能做什么？先看看功能，再了解体验方式</span><span class="card-foot">了解功能与试用 →</span></button>
 <button class="nav-card" data-modal="licenseModal" type="button"><span class="card-head"><span class="num">03 / 授权说明</span><span class="card-arrow">↗</span></span><span class="card-title">授权码说明与获取 <span class="tiny-tag" hidden="" id="salesBadge"></span></span><span class="card-desc">了解授权规则 · 查看获取状态</span><span class="card-foot">查看说明与获取 →</span></button>
 <button class="nav-card" data-modal="exportModal" id="exportCard" type="button"><span class="card-head"><span class="num">04 <i>/ 存档导出</i></span><span class="card-arrow">↗</span></span><span class="card-title">导出存档教程</span><span class="card-desc">选择设备系统，查看对应的导出教程 · 安卓 / iOS / 鸿蒙</span><span class="card-foot">选择设备系统 →</span></button>
-<div aria-expanded="false" class="nav-card wide-card" id="faqCard"><button aria-controls="faqPanel" aria-expanded="false" class="wide-trigger" data-expand="" type="button"><span class="card-head"><span class="num">05 <i>/ 常见疑问</i></span><span class="card-arrow">⌄</span></span><span class="card-title">常见问题</span><span class="card-desc">授权码、设备渠道、存档保存等问题集中查看</span></button><div class="expand-panel" hidden="" id="faqPanel"><div class="faq-list"><details><summary>授权码绑定设备还是游戏账号？</summary><p>绑定游戏账号，不绑定设备、系统或区服。同一游戏账号在不同设备上使用，仍需对应渠道已适配。</p></details><details><summary>30天使用期限从什么时候开始？</summary><p>普通授权的30天期限从首次成功导出开始计算，最多30次导出，限一个游戏账号。以当前授权说明为准。</p></details><details><summary>授权到期后，已经导出的存档还在吗？</summary><p>只要没有自行删除，已经导出的存档通常会继续保留；重大游戏版本更新可能影响旧存档的可用性。</p></details><details><summary>苹果、安卓、鸿蒙现在都能用吗？</summary><p>具体支持情况取决于系统、游戏渠道和当前适配状态，请查看实时更新的渠道说明。</p></details></div><a class="more-link" href="#" id="faqMore" rel="noopener noreferrer" target="_blank">查看完整常见问题 ↗</a></div></div>
+<div aria-expanded="false" class="nav-card wide-card" id="faqCard">
+<button aria-controls="faqPanel" aria-expanded="false" class="wide-trigger" data-expand="" type="button">
+  <span class="card-head"><span class="num">05 <i>/ 使用答疑</i></span><span class="card-arrow">⌄</span></span>
+  <span class="card-title">常见问题</span>
+  <span class="card-desc">下载安装、导出失败及导出后的使用问题</span>
+</button>
+<div class="faq-guidance">
+  <span>这里主要解答使用中遇到的问题。购买前问题请先查看</span>
+  <button class="faq-first-link" type="button" data-modal="noticeModal">「01｜使用前须知」↗</button>
+</div>
+<div class="expand-panel" hidden="" id="faqPanel">
+  <div class="faq-list">
+    <details><summary>观星 APP 无法下载、安装或更新</summary><p>可尝试使用其他浏览器打开下载页；如仍无法下载，可通过交流群获取最新安装包。</p></details>
+    <details><summary>存档导出失败，观星没有反应</summary><p>先检查代理设置和网络连接，再尝试其他导出方式。具体排查步骤可查看下方完整常见问题。</p></details>
+    <details><summary>存档导出后，怎么查看结果？</summary><p>在观星 APP 中验证并添加授权码，进入「存档 → 导入存档」，选择已导出的 .gx 文件。</p></details>
+    <details><summary>洗脉中的 VIP 等级是什么？</summary><p>VIP 指游戏中的贵族等级。VIP 0 无法洗出神脉，其余情况一般使用 VIP 1 即可。</p></details>
+  </div>
+  <a class="faq-more-button" href="#" id="faqMore" rel="noopener noreferrer" target="_blank">
+    <span class="faq-more-copy"><strong>查看完整常见问题</strong><small>更多问题分类与详细解决方法</small></span>
+    <span class="faq-more-arrow" aria-hidden="true">↗</span>
+  </a>
+</div>
+</div>
 </div>
 </section>
 <section aria-labelledby="communityTitle" class="community" id="community"><div class="section-head"><h2 id="communityTitle">游戏交流</h2><p>讨论玩法 · 获取更新 · 问题反馈</p></div>
 <div class="community-choices">
-<a class="community-choice" href="#" id="qqCommunityLink" rel="noopener noreferrer" target="_blank">
-<span class="community-icon">Q</span><span class="community-copy"><strong>QQ 交流群</strong><small>暂不直接开放 · 联系申请入群</small></span><span class="community-arr">↗</span>
-</a>
+<button type="button" class="community-choice" id="qqCommunityButton" data-modal="qqCommunityModal">
+<span class="community-icon">Q</span><span class="community-copy"><strong>QQ 交流群</strong><small>暂不公开群链接 · 点击查看申请方式</small></span><span class="community-arr">↗</span>
+</button>
 <a class="community-choice" href="#" id="tgCommunityLink" rel="noopener noreferrer" target="_blank">
 <span class="community-icon">TG</span><span class="community-copy"><strong>Telegram 交流群</strong><small>游戏讨论 · 群签到</small></span><span class="community-arr">↗</span>
 </a>
-<a class="community-choice" href="#" id="internalCommunityLink" rel="noopener noreferrer" target="_blank">
-<span class="community-icon">内</span><span class="community-copy"><strong>授权用户内部群</strong><small>已购授权用户可联系申请</small></span><span class="community-arr">↗</span>
-</a>
+<button type="button" class="community-choice" id="internalCommunityButton" data-modal="internalCommunityModal">
+<span class="community-icon">内</span><span class="community-copy"><strong>授权用户 TG 内部群</strong><small>需核实授权 · 点击查看入群说明</small></span><span class="community-arr">↗</span>
+</button>
 </div>
 <div class="community-bottom"><span id="communitySalesNote">目前暂停新授权购买及预订</span><a href="#" id="communityStoreLink" rel="noopener noreferrer" target="_blank">闲鱼店铺 · 关注动态 ↗</a></div></section>
 <p class="bottom-tip">— 渠道适配、功能与试用规则可能调整，请以最新说明为准 —</p>
@@ -104,13 +126,13 @@
 <span aria-hidden="true" class="license-choice-arrow">↗</span>
 </a>
 <a class="license-choice license-choice-purchase" href="#" id="purchaseLink" rel="noopener noreferrer" target="_blank">
-<span class="license-choice-index">02 / 获取 <span class="license-pause-tag" id="purchaseBadge">暂停中</span></span>
-<strong id="purchaseTitle">授权码购买</strong>
-<small id="purchaseSubtitle">暂不开放新授权购买与预订</small>
+<span class="license-choice-index">02 / 店铺 <span class="license-pause-tag" id="purchaseBadge">暂停购买</span></span>
+<strong id="purchaseTitle">闲鱼店铺</strong>
+<small id="purchaseSubtitle">可以先关注店铺哦~暂不接受新订单</small>
 <span aria-hidden="true" class="license-choice-arrow">↗</span>
 </a>
 </div>
-<p class="license-state-note" id="licenseStateNotice" role="status">目前暂停新授权购买及预订，已有用户可继续查看使用说明。</p>
+<p class="license-state-note" id="licenseStateNotice" role="status">目前暂停新授权购买及预订，已购买的用户正常处理售后哦~</p>
 <div class="modal-actions"><button class="ghost-btn" data-close="" type="button">返回导航</button></div></div></dialog>
 <dialog aria-labelledby="exportModalTitle" class="modal export-modal" id="exportModal">
 <div class="modal-top"><span class="modal-kicker">04 / 存档导出教程</span><button aria-label="关闭" class="close" data-close="" type="button">×</button></div>
@@ -124,7 +146,7 @@
 </div><div class="export-assistance">
 <span class="export-assistance-caption">不方便自己操作？</span>
 <a class="export-option export-option-manual" href="#" id="manualTutorialLink" rel="noopener noreferrer" target="_blank">
-<span class="export-symbol">代</span><span class="export-option-text"><strong>人工代导</strong><small>查看代导方式及注意事项</small></span><span aria-hidden="true" class="export-arrow">↗</span>
+<span class="export-symbol">代</span><span class="export-option-text"><strong>人工代导</strong><small>人工代导专用入口 · 您只需等待结果</small></span><span aria-hidden="true" class="export-arrow">↗</span>
 </a>
 </div>
 <p class="export-note">使用前请确认渠道支持情况，教程存在不代表当前已适配。</p>
@@ -132,6 +154,20 @@
 </div>
 </dialog>
 
+<dialog class="modal community-info-modal" id="qqCommunityModal" aria-labelledby="qqCommunityTitle">
+  <div class="modal-top"><span class="modal-kicker">游戏交流 / QQ</span><button type="button" class="close" data-close aria-label="关闭">×</button></div>
+  <div class="modal-body"><h2 id="qqCommunityTitle">QQ 交流群</h2>
+    <p>QQ 群暂不公开邀请链接。如需入群，请先在咸鱼上联系我，确认后再邀请加入。</p>
+    <div class="modal-actions"><button class="ghost-btn" type="button" data-close>返回导航</button></div>
+  </div>
+</dialog>
+<dialog class="modal community-info-modal" id="internalCommunityModal" aria-labelledby="internalCommunityTitle">
+  <div class="modal-top"><span class="modal-kicker">游戏交流 / Telegram</span><button type="button" class="close" data-close aria-label="关闭">×</button></div>
+  <div class="modal-body"><h2 id="internalCommunityTitle">授权用户 TG 内部群</h2>
+    <p>这是面向已有授权用户的 Telegram 内部交流群，不公开入群链接。需要加入请在tg交流群联系管理员，确认后邀请入群。</p>
+    <div class="modal-actions"><button class="ghost-btn" type="button" data-close>返回导航</button></div>
+  </div>
+</dialog>
 <dialog aria-labelledby="downloadTitle" class="modal" id="downloadModal">
 <div class="modal-top"><span class="modal-kicker">观星 · 下载说明</span><button aria-label="关闭" class="close" data-close="" type="button">×</button></div>
 <div class="modal-body">
