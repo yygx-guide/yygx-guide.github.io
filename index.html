@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="bright">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#ece5d6">
+  <meta name="description" content="观星使用导航：使用须知、功能介绍与试用、授权说明、安卓/iOS/鸿蒙存档导出教程、常见问题与游戏交流。">
+  <title>观星 · 使用导航</title>
+  <link rel="icon" type="image/png" href="assets/app-icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="观星使用导航首页"><img class="brand-logo" src="assets/app-icon.png" alt="观星软件图标"><span class="brand-titles"><span class="brand-title">观星模拟器</span><span class="brand-sub">使用导航 · 教程与交流</span></span></a>
+    <nav class="toplinks" aria-label="页面导航"><a href="#start">使用流程</a><a href="#community">游戏交流</a><div class="lang-switch" role="group" aria-label="语言切换"><button type="button" class="lang-option" data-lang="simplified" aria-pressed="true">简体</button><button type="button" class="lang-option" data-lang="traditional" aria-pressed="false">繁體</button></div><button class="theme-btn" id="themeButton" type="button" aria-pressed="false">☾ 护眼</button></nav>
+  </header>
+  <main id="top">
+    <section class="hero" aria-labelledby="heroTitle">
+      <div>
+        <div class="eyebrow">观 星 · 新 手 指 引</div>
+        <h1 id="heroTitle">观星 <em>使用导航</em></h1>
+        <p>第一次接触观星？从功能了解、授权说明到存档导出，<br class="desktop-only">按顺序找到你需要的内容。</p>
+        <div class="hero-actions"><a class="main-button" href="#start">开始了解 <span aria-hidden="true">→</span></a><button class="secondary-link download-trigger" type="button" data-modal="downloadModal">观星 APP 下载 ↗</button></div>
+        <p class="status-note"><span class="status-dot"></span><span id="heroSalesStatus">使用教程与相关说明持续更新</span></p>
+      </div>
+    </section>
+    <section class="flow-section" id="start" aria-labelledby="flowTitle">
+      <div class="section-head"><h2 id="flowTitle">从这里开始</h2><p>按使用顺序整理 · 点击查看详情</p></div>
+      <div class="card-grid">
+        <button type="button" class="nav-card" data-modal="noticeModal"><span class="card-head"><span class="num">01 <i>/ 使用前</i></span><span class="card-arrow">↗</span></span><span class="card-title">使用前须知</span><span class="card-desc">先了解基本说明、适配情况与注意事项</span><span class="card-foot">查看须知 →</span></button>
+        <button type="button" class="nav-card feature-card" data-modal="featureModal"><span class="card-head"><span class="num">02 <i>/ 先了解</i></span><span class="card-arrow">↗</span></span><span class="card-title">功能介绍与试用</span><span class="card-desc">观星能做什么？先看看功能，再了解体验方式</span><span class="card-foot">了解功能与试用 →</span></button>
+        <button type="button" class="nav-card" data-modal="licenseModal"><span class="card-head"><span class="num">03 <i>/ 授权说明</i></span><span class="card-arrow">↗</span></span><span class="card-title">授权码说明 <span class="tiny-tag" id="salesBadge" hidden></span></span><span class="card-desc">查看授权规则与相关说明</span><span class="card-foot">查看授权说明 →</span></button>
+        <button type="button" class="nav-card" id="exportCard" data-modal="exportModal"><span class="card-head"><span class="num">04 <i>/ 存档导出</i></span><span class="card-arrow">↗</span></span><span class="card-title">导出存档教程</span><span class="card-desc">选择设备系统，查看对应的导出教程 · 安卓 / iOS / 鸿蒙</span><span class="card-foot">选择设备系统 →</span></button>
+        <div class="nav-card wide-card" id="faqCard" aria-expanded="false"><button class="wide-trigger" type="button" data-expand aria-expanded="false" aria-controls="faqPanel"><span class="card-head"><span class="num">05 <i>/ 常见疑问</i></span><span class="card-arrow">⌄</span></span><span class="card-title">常见问题</span><span class="card-desc">授权码、设备渠道、存档保存等问题集中查看</span></button><div class="expand-panel" id="faqPanel" hidden><div class="faq-list"><details><summary>授权码绑定设备还是游戏账号？</summary><p>绑定游戏账号，不绑定设备、系统或区服。同一游戏账号在不同设备上使用，仍需对应渠道已适配。</p></details><details><summary>30天使用期限从什么时候开始？</summary><p>普通授权的30天期限从首次成功导出开始计算，最多30次导出，限一个游戏账号。以当前授权说明为准。</p></details><details><summary>授权到期后，已经导出的存档还在吗？</summary><p>只要没有自行删除，已经导出的存档通常会继续保留；重大游戏版本更新可能影响旧存档的可用性。</p></details><details><summary>苹果、安卓、鸿蒙现在都能用吗？</summary><p>具体支持情况取决于系统、游戏渠道和当前适配状态，请查看实时更新的渠道说明。</p></details></div><a class="more-link" id="faqMore" href="#" target="_blank" rel="noopener noreferrer">查看完整常见问题 ↗</a></div></div>
+      </div>
+    </section>
+    <section class="community" id="community" aria-labelledby="communityTitle"><div class="section-head"><h2 id="communityTitle">游戏交流</h2><p>教程之外 · 一起聊聊江湖</p></div><div class="community-panel"><div><h3>有问题，也欢迎来交流</h3><p>游戏玩法讨论、教程更新与问题反馈。<br></p></div><button class="main-button" id="communityButton" type="button">交流群入口 <span aria-hidden="true">↗</span></button></div></section>
+    <p class="bottom-tip">— 渠道适配、功能与试用规则可能调整，请以最新说明为准 —</p>
+  </main>
+  <footer class="footer"><span>观星 · 使用导航</span><span>独立整理的使用资料 · 非游戏官方页面</span></footer>
+</div>
+<dialog class="modal" id="noticeModal" aria-labelledby="noticeTitle"><div class="modal-top"><span class="modal-kicker">01 / 使用前须知</span><button type="button" class="close" data-close aria-label="关闭">×</button></div><div class="modal-body"><h2 id="noticeTitle">使用前须知</h2><p>第一次使用前，请先了解以下内容：</p>
+<div style="margin: 22px 0 28px;">
+
+  <div style="margin-bottom: 22px;">
+    <div style="font-size: 19px; font-weight: bold; color: #294b40; margin-bottom: 8px;">
+      ① 使用支持情况
+    </div>
+    <div style="font-size: 15px; line-height: 1.9; color: #62665f;">
+      不同系统及游戏渠道的适配情况可能发生变化，请查看下方「最新说明」中的《关于适配渠道》。
+      一般所有系统的所有渠道后续都可以使用。
+    </div>
+  </div>
+
+  <div>
+    <div style="font-size: 19px; font-weight: bold; color: #294b40; margin-bottom: 8px;">
+      ② 授权码使用
+    </div>
+    <div style="font-size: 15px; line-height: 1.9; color: #62665f;">
+      关于授权码的使用规则、绑定方式及注意事项，请观看下方「最新说明」中的《观星快速入门》视频。
+    </div>
+  </div>
+
+</div>
+<div class="modal-actions"><a class="main-button" id="noticeIntroLink" href="#" target="_blank" rel="noopener noreferrer">查看初次使用说明 ↗</a><button class="ghost-btn" data-close type="button">返回导航</button></div></div></dialog>
+<dialog class="modal" id="featureModal" aria-labelledby="featureTitle">
+  <div class="modal-top"><span class="modal-kicker">02 / 功能介绍与试用</span><button type="button" class="close" data-close aria-label="关闭">×</button></div>
+  <div class="modal-body feature-modal-body">
+    <h2 id="featureTitle">观星能帮你做什么？</h2>
+    <p class="feature-summary">读取游戏存档，提前查看部分序列，辅助计算操作方案。</p>
+    <div class="feature-points" aria-label="核心功能">
+      <div class="feature-point"><strong>提前看序列</strong></div>
+      <div class="feature-point"><strong>自动算方案</strong></div>
+      <div class="feature-point"><strong>减少试错</strong></div>
+    </div>
+    <div class="feature-beginner-tip">
+      <span>初次使用？请先查看</span>
+      <a id="featureIntroLink" href="#" target="_blank" rel="noopener noreferrer">《初次使用说明》↗</a>
+    </div>
+    <div class="modal-actions">
+      <a class="main-button" id="trialLink" href="#" target="_blank" rel="noopener noreferrer">查看功能介绍与试用 ↗</a>
+      <button class="ghost-btn" type="button" data-close>返回导航</button>
+    </div>
+  </div>
+</dialog>
+<dialog class="modal" id="licenseModal" aria-labelledby="licenseTitle"><div class="modal-top"><span class="modal-kicker">03 / 授权码说明</span><button type="button" class="close" data-close aria-label="关闭">×</button></div><div class="modal-body"><h2 id="licenseTitle">授权码说明</h2><div class="notice-box"><strong id="licenseStatusTitle">授权码相关说明</strong><p id="licenseStatusBody">目前暂不开放新授权购买或预订；已有用户可继续查看教程并反馈使用问题。</p></div><p>普通授权规则：30元 / 30天 / 30次导出 / 1个游戏账号；期限从首次成功导出开始计算。实际以最新说明为准。</p><div class="modal-actions"><a class="main-button" id="storeLink" href="#" target="_blank" rel="noopener noreferrer">查看店铺动态 ↗</a><button class="ghost-btn" data-close type="button">返回导航</button></div><p class="smallprint" id="licenseStoreHint">店铺入口仅供了解相关动态，目前不接受新授权购买或预订。</p></div></dialog>
+<dialog class="modal export-modal" id="exportModal" aria-labelledby="exportModalTitle">
+  <div class="modal-top"><span class="modal-kicker">04 / 存档导出教程</span><button type="button" class="close" data-close aria-label="关闭">×</button></div>
+  <div class="modal-body">
+    <h2 id="exportModalTitle">请选择设备系统</h2>
+    <p class="export-intro">选择对应系统，直接查看最新导出教程。</p>
+    <div class="export-options">
+      <a class="export-option" id="androidTutorialLink" href="#" target="_blank" rel="noopener noreferrer"><span class="export-symbol">安</span><span class="export-option-text"><strong>安卓</strong><small>Android · 查看导出教程</small></span><span class="export-arrow" aria-hidden="true">↗</span></a>
+      <a class="export-option" id="iosTutorialLink" href="#" target="_blank" rel="noopener noreferrer"><span class="export-symbol">苹</span><span class="export-option-text"><strong>苹果</strong><small>iOS · 查看导出教程</small></span><span class="export-arrow" aria-hidden="true">↗</span></a>
+      <a class="export-option" id="harmonyTutorialLink" href="#" target="_blank" rel="noopener noreferrer"><span class="export-symbol">鸿</span><span class="export-option-text"><strong>鸿蒙</strong><small>HarmonyOS · 查看相关说明</small></span><span class="export-arrow" aria-hidden="true">↗</span></a>
+    </div>
+    <p class="export-note">各渠道的支持情况可能变化，请以最新教程说明为准。</p>
+    <div class="modal-actions"><button class="ghost-btn" data-close type="button">返回导航</button></div>
+  </div>
+</dialog>
+<dialog class="modal" id="communityModal" aria-labelledby="communityModalTitle"><div class="modal-top"><span class="modal-kicker">游戏交流</span><button type="button" class="close" data-close aria-label="关闭">×</button></div><div class="modal-body"><h2 id="communityModalTitle">交流群入口待设置</h2><p>页面已经预留了入口。确定新交流群后，在配置文件中填写群链接，按钮就能直接打开。</p><div class="modal-actions"><button class="ghost-btn" data-close type="button">返回导航</button></div></div></dialog>
+<dialog class="modal" id="downloadModal" aria-labelledby="downloadTitle">
+  <div class="modal-top"><span class="modal-kicker">观星 · 下载说明</span><button type="button" class="close" data-close aria-label="关闭">×</button></div>
+  <div class="modal-body">
+    <h2 id="downloadTitle">观星 APP 下载</h2>
+    <p>点击下方按钮，将前往观星 APP 下载页面。下载前请确认安装包来源可信，以及设备系统是否适配。</p>
+    <div class="guide-box download-help">
+      <strong>下载链接打不开怎么办？</strong>
+      <ol>
+        <li><b>在微信、QQ、闲鱼 等应用内打不开：</b>尝试选择“在浏览器中打开”，或复制下载链接到手机自带浏览器、Chrome、Edge 等浏览器。</li>
+        <li><b>页面无法加载或下载失败：</b>检查网络连接、稍后重试或进群拿安装包。</li>
+        <li><b>安装时出现安全提示：</b>先核实安装包来源和设备兼容性，不要直接忽略系统的安全警告。</li>
+      </ol>
+    </div>
+    <div class="modal-actions">
+      <a class="main-button" id="appDownloadLink" href="#" target="_blank" rel="noopener noreferrer">前往下载 ↗</a>
+      <button class="ghost-btn" type="button" id="copyDownloadLink">复制下载链接</button>
+      <button class="ghost-btn" type="button" data-close>返回导航</button>
+    </div>
+    <p class="smallprint" id="downloadHint" role="status" aria-live="polite">如无法直接打开，可复制链接后在浏览器中粘贴访问。</p>
+    <p class="download-url-fallback" id="downloadUrlFallback" hidden></p>
+  </div>
+</dialog>
+<script src="config.js"></script><script src="lang-map.js"></script><script src="script.js"></script>
+</body></html>
