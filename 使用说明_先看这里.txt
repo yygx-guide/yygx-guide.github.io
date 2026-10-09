@@ -15,3 +15,11 @@
 4. 打开 https://yygx-guide.github.io/，按 Ctrl+F5 刷新。
 
 如果只希望更新必要文件，直接把本 ZIP 的 index.html 和 style.css 覆盖仓库同名文件也可以，其余资源和脚本不用改。
+
+
+【本次修复：03 授权码弹窗】
+- index.html：授权规则卡片改成标题一行、说明两行（使用 <br> 换行），删除重复内容。
+- script.js：当店铺链接有效且销售暂停时，不再覆盖 index.html 中的 purchaseSubtitle 和 licenseStateNotice 文本。
+- 以后修改这两处说明，直接在 index.html 搜索「可以先关注店铺哦」和「目前暂停新授权购买及预订」，编辑标签之间的文字即可。
+- 修改后同时上传 index.html 和 script.js；无需替换其他文件。
+- 若 storeUrl 留空，脚本会提示链接待设置；若 salesPaused 改为 false，则会显示恢复售卖状态的动态文案。

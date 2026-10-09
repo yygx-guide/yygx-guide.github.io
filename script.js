@@ -60,8 +60,8 @@
       putText('licenseStateNotice', '店铺暂时无法跳转，可先查看授权说明。');
       if (purchaseBadge) { purchaseBadge.textContent = '待设置'; purchaseBadge.hidden = false; }
     } else if (salesPaused) {
-      putText('purchaseSubtitle', '可查看店铺、关注动态，暂不接受新订单');
-      putText('licenseStateNotice', '店铺可正常浏览和关注；目前暂停新授权购买及预订。');
+      // 有有效店铺链接且暂停购买时，保留 index.html 中用户自行编辑的说明文字。
+      // 不再用脚本覆盖 purchaseSubtitle / licenseStateNotice。
       if (purchaseBadge) { purchaseBadge.textContent = '暂停购买'; purchaseBadge.hidden = false; }
     } else {
       putText('purchaseSubtitle', '前往店铺，查看当前获取方式');
