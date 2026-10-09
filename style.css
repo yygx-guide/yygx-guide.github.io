@@ -70,3 +70,44 @@ html[data-theme="care"] .export-option{background:rgba(255,255,255,.035)}
 html[data-theme="care"] .export-option:hover{background:rgba(255,255,255,.08)}
 @media(max-width:620px){.export-option{min-height:70px;padding:11px 13px}.export-symbol{flex-basis:38px;width:38px;height:38px}}
 @media(prefers-reduced-motion:reduce){.export-modal[open],.export-modal[open]::backdrop{animation:none!important}}
+
+
+/* 2026-10-09: 授权说明/获取双入口（暂停购买时仍清楚显示该入口） */
+.license-intro{margin:3px 0 18px!important}
+.license-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:19px 0 12px}
+.license-choice{min-width:0;position:relative;display:flex;flex-direction:column;gap:6px;min-height:160px;padding:19px 17px;border:1px solid rgba(49,89,77,.30);border-radius:6px;background:rgba(49,89,77,.045);color:var(--ink);text-decoration:none;transition:border-color .2s,background .2s,transform .2s}
+.license-choice-guide:hover{border-color:var(--pine);background:rgba(49,89,77,.1);transform:translateY(-2px)}
+.license-choice-index{display:flex;align-items:center;gap:8px;font-size:11px;font-weight:650;letter-spacing:.05em;color:var(--gold)}
+.license-choice strong{font:700 21px var(--serif);color:var(--pine-deep);margin-top:5px}
+.license-choice small{font-size:12px;line-height:1.65;color:var(--muted)}
+.license-choice-arrow{position:absolute;right:16px;top:15px;font-size:20px;color:var(--pine)}
+.license-choice-purchase{border-color:rgba(166,63,49,.24);background:rgba(166,63,49,.045)}
+.license-choice-purchase strong{color:var(--ink)}
+.license-pause-tag{padding:2px 7px;border:1px solid rgba(166,63,49,.27);border-radius:3px;color:var(--red-deep);background:rgba(166,63,49,.08);letter-spacing:0}
+.license-choice-purchase.is-paused{cursor:not-allowed;opacity:.73}
+.license-choice-purchase.is-paused .license-choice-arrow{color:var(--muted-light)}
+.license-choice-purchase:not(.is-paused):hover{border-color:var(--red);background:rgba(166,63,49,.09);transform:translateY(-2px)}
+.license-state-note{font-size:12px!important;line-height:1.65!important;color:var(--muted-light)!important;margin:11px 0 0!important}
+/* 04: 三个系统入口与人工代导分别成组，不额外叠弹窗 */
+.export-assistance{margin-top:17px;padding-top:14px;border-top:1px solid var(--line)}
+.export-assistance-caption{display:block;margin-bottom:9px;font-size:12px;color:var(--muted-light)}
+.export-option-manual{background:rgba(49,89,77,.06);border-color:rgba(49,89,77,.35)}
+.export-option-manual .export-symbol{background:rgba(49,89,77,.09)}
+html[data-theme="care"] .export-option-manual{background:rgba(255,255,255,.05)}
+/* 首页游戏交流：无需跳到额外的飞书文档 */
+.community-choices{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.community-choice{display:flex;align-items:center;gap:12px;min-width:0;padding:18px 14px;background:rgba(251,248,239,.94);border:1px solid rgba(49,89,77,.28);border-radius:6px;color:var(--ink);text-decoration:none;transition:border-color .2s,transform .2s,background .2s}
+.community-choice:hover{border-color:var(--pine);background:var(--paper-raised);transform:translateY(-2px)}
+.community-icon{display:grid;place-items:center;flex:0 0 40px;width:40px;height:40px;border-radius:5px;background:rgba(49,89,77,.08);color:var(--pine-deep);font:700 16px var(--serif)}
+.community-copy{display:flex;flex-direction:column;gap:4px;min-width:0}
+.community-copy strong{font-size:14px;color:var(--pine-deep)}
+.community-copy small{font-size:11px;color:var(--muted);line-height:1.5}
+.community-arr{margin-left:auto;font-size:19px;color:var(--pine)}
+.community-bottom{display:flex;justify-content:space-between;align-items:center;gap:16px;margin-top:12px;font-size:12px;color:var(--muted)}
+.community-bottom a{color:var(--pine-deep);text-decoration:none;border-bottom:1px solid rgba(49,89,77,.35);white-space:nowrap}
+.community-bottom a:hover{color:var(--red)}
+.community-choice[data-empty="true"],.community-bottom a[data-empty="true"]{opacity:.55;cursor:not-allowed}
+html[data-theme="care"] .community-choice{background:rgba(35,38,40,.88)}
+@media(max-width:800px){.community-choices{grid-template-columns:1fr}.community-choice{min-height:68px}.community-bottom{flex-wrap:wrap}}
+@media(max-width:460px){.license-choices{grid-template-columns:1fr}.license-choice{min-height:125px}.license-choice strong{font-size:19px}}
+@media(prefers-reduced-motion:no-preference){.license-choice,.community-choice{will-change:transform}}

@@ -18,12 +18,16 @@ const SITE_CONFIG = {
   fullGuideUrl: 'https://scnxd815i94m.feishu.cn/wiki/YSwLwVUM5icmxykY2ancqos2nXa', // 完整教程
   storeUrl: 'https://m.tb.cn/h.ja2pSb2?tk=kqMZTqOyXKs', // 闲鱼店铺
   trialUrl: 'https://scnxd815i94m.feishu.cn/wiki/Ifgkw3qDtiOIbwkBD5ScJzoCnaf', // 02 功能介绍与试用（与初次使用说明独立）
-  communityUrl: '',       // 交流群入口；留空时显示“待设置”
+  communityUrl: '',      // QQ群直达链接；当前未开放直接入群，留空时使用店铺联系入口
+  qqContactUrl: '',      // QQ群申请联系链接：可单独填写；留空则使用 storeUrl
+  telegramUrl: 'https://t.me/yanyu_utils', // TG公开交流群（根据提供的截图）
+  licenseGuideUrl: 'https://scnxd815i94m.feishu.cn/wiki/W6oXwuNaHiaY0VkIEa1ctIaVnMd', // 03 授权码说明与获取
+  manualUrl: 'https://scnxd815i94m.feishu.cn/wiki/W01qwXumRinvU4kfqppcOSHwnxe',       // 04 人工代导专用入口
 
-  // 【三个系统的导出教程】留空时统一打开完整教程
+  // 【三个系统的导出教程】每个系统各自配置，人工代导在 manualUrl
   tutorialUrls: {
-    android: '',
-    ios: '',
-    harmony: ''
+    android: 'https://scnxd815i94m.feishu.cn/wiki/A1tWw73zBiktGskxMp0csesun02',
+    ios: 'https://scnxd815i94m.feishu.cn/wiki/BtYLwNKjhiKExZkoaX8c0VOInjM',
+    harmony: 'https://scnxd815i94m.feishu.cn/wiki/AfctwWagMi4xdmkbqVRcm7t5nwe'
   }
 };
