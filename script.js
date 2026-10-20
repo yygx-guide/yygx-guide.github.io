@@ -14,8 +14,7 @@
   setHref('trialLink',valid(cfg.trialUrl)||intro);
   setHref('licenseGuideLink',valid(cfg.licenseGuideUrl) || fullGuide);
   setHref('manualTutorialLink',valid(cfg.manualUrl));
-  // QQ / 内部 TG 只展示入群条件；公开 TG 群可直达。
-  setHref('tgCommunityLink',valid(cfg.telegramUrl));
+  // TG 交流群不公开邀请链接，入口只展示说明弹窗。
   const faqFallback = valid(cfg.faqUrl) || fullGuide;
   setHref('faqMore',faqFallback);
   // 各问题目录可分别设置飞书章节直达链接；未设置时使用完整说明。
@@ -58,9 +57,13 @@
   putText('licenseStateNotice', '暂停购买，如需使用请签到获取');
   const purchaseBadge = byId('purchaseBadge');
   if (purchaseBadge) { purchaseBadge.textContent = '暂停购买'; purchaseBadge.hidden = false; }
-  const modalNames = ['noticeModal','featureModal','licenseModal','exportModal','faqModal','qqCommunityModal','internalCommunityModal','downloadModal'];
+  const modalNames = ['noticeModal','featureModal','licenseModal','exportModal','faqModal','qqCommunityModal','tgCommunityModal','internalCommunityModal','downloadModal'];
   const openModal = id => { refreshLang(); const dialog=byId(id);if(dialog&&typeof dialog.showModal==='function')dialog.showModal(); };
-  document.querySelectorAll('[data-modal]').forEach(el => el.addEventListener('click',() => openModal(el.dataset.modal)));
+  document.querySelectorAll('[data-modal]').forEach(el => el.addEventListener('click', () => {
+    // 从每日公告打开 TG 说明时，先关闭每日公告，避免两个弹窗叠在一起。
+    if (el.id === 'dailyAnnouncementTgLink') byId('dailyAnnouncementModal')?.close();
+    openModal(el.dataset.modal);
+  }));
   document.querySelectorAll('dialog').forEach(dialog => {
     dialog.querySelectorAll('[data-close]').forEach(el=>el.addEventListener('click',()=>dialog.close()));
     dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close();});
@@ -130,6 +133,21 @@
     refreshLang();
   }));
   refreshLang();
+
+  // 每日公告：基于访客本机日历日，每个浏览器每天最多自动展示一次；无需账号或服务器。
+  const dailyAnnouncement = byId('dailyAnnouncementModal');
+  if (cfg.dailyAnnouncementEnabled !== false && dailyAnnouncement && typeof dailyAnnouncement.showModal === 'function') {
+    const now = new Date();
+    const today = [now.getFullYear(), String(now.getMonth() + 1).padStart(2, '0'), String(now.getDate()).padStart(2, '0')].join('-');
+    const storageKey = 'guanxing-daily-announcement-last-shown';
+    let lastShown = '';
+    try { lastShown = localStorage.getItem(storageKey) || ''; } catch (_) { /* 存储被禁用时仍允许弹窗 */ }
+    if (lastShown !== today) {
+      dailyAnnouncement.showModal();
+      // 展示时就记录，以免尚未关闭就刷新网页，导致同一天再次弹出。
+      try { localStorage.setItem(storageKey, today); } catch (_) { /* 私密模式下可能无法保存 */ }
+    }
+  }
 
   // 未配置链接时不执行空白跳转。
   document.querySelectorAll('a[data-empty="true"]').forEach(a=>a.addEventListener('click',e=>e.preventDefault()));

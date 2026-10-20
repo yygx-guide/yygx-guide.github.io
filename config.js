@@ -6,6 +6,9 @@
   4. 首页小提示修改 homepageNotice；其他文字在 index.html 中修改。
 */
 const SITE_CONFIG = {
+  // 【每日公告】true = 开启（同一浏览器每天首次访问弹出）；false = 关闭。
+  dailyAnnouncementEnabled: true,
+
   // 【首页小提示】修改引号里的文字即可更新首页说明。
   homepageNotice: '使用教程与相关说明持续更新',
 
@@ -14,8 +17,7 @@ const SITE_CONFIG = {
   introUrl: 'https://scnxd815i94m.feishu.cn/wiki/IKapw2KCfirEb4kKBsbcrr9xnsc', // 初次使用说明
   fullGuideUrl: 'https://scnxd815i94m.feishu.cn/wiki/YSwLwVUM5icmxykY2ancqos2nXa', // 完整教程
   trialUrl: 'https://scnxd815i94m.feishu.cn/wiki/Ifgkw3qDtiOIbwkBD5ScJzoCnaf', // 02 功能介绍与试用（与初次使用说明独立）
-  // QQ 群和内部 TG 群不放直达邀请链接，点击后显示申请说明弹窗。
-  telegramUrl: 'https://t.me/yanyu_utils', // TG公开交流群（根据提供的截图）
+  // TG 交流群入口已改为提示弹窗，不再保留群组直达链接。
   licenseGuideUrl: 'https://scnxd815i94m.feishu.cn/wiki/W6oXwuNaHiaY0VkIEa1ctIaVnMd', // 03 授权码说明与获取
   manualUrl: 'https://scnxd815i94m.feishu.cn/wiki/DnCmwVpxFiHEz4kJSZ5cpDj4nHf', // 04 人工代导专用入口
   faqUrl: 'https://scnxd815i94m.feishu.cn/wiki/W01qwXumRinvU4kfqppcOSHwnxe', // 05 使用问题完整说明

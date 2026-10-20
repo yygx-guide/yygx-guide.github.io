@@ -149,3 +149,76 @@ html[data-theme="care"] .faq-directory-link:hover{background:rgba(255,255,255,.0
   .faq-directory-copy small{font-size:11px}
 }
 @media(prefers-reduced-motion:reduce){.faq-modal[open],.faq-modal[open]::backdrop{animation:none!important}}
+
+/* 每日公告：恢复左侧绿色竖线的简洁正文，保留底部整行确认按钮 */
+.daily-announcement-modal{
+  width:min(490px,calc(100% - 32px));
+  border-color:rgba(77,78,65,.24);
+  border-radius:9px;
+  box-shadow:0 22px 70px rgba(22,26,20,.25);
+}
+.daily-announcement-modal .modal-top{padding:28px 32px 0}
+.daily-announcement-modal .modal-kicker{letter-spacing:.17em;font-size:11px}
+.daily-announcement-modal .modal-body{padding:6px 32px 30px}
+.daily-announcement-modal h2{margin:4px 0 22px;font-size:28px;letter-spacing:.08em}
+.daily-announcement-modal h2::after{margin-top:12px;width:38px}
+.daily-announcement-modal h2:focus{outline:none}
+.daily-announcement-modal .daily-announcement-copy{
+  margin:0;
+  padding:3px 0 3px 18px;
+  background:transparent;
+  border:0;
+  border-left:3px solid var(--pine);
+  border-radius:0;
+}
+.daily-announcement-modal .daily-announcement-copy p{
+  margin:0;
+  padding:0;
+  font-size:15px;
+  color:var(--ink);
+  line-height:1.95;
+}
+.daily-announcement-modal .daily-announcement-copy p+p{
+  margin-top:16px;
+  border:0;
+}
+.daily-announcement-modal .daily-announcement-copy .daily-tg-open{
+  appearance:none;
+  border:0;
+  background:transparent;
+  padding:0;
+  display:inline;
+  font:inherit;
+  cursor:pointer;
+  color:var(--pine-deep);
+  font-weight:700;
+  text-decoration:underline;
+  text-underline-offset:4px;
+  text-decoration-thickness:1px;
+}
+.daily-announcement-modal .modal-actions{display:block;margin-top:22px}
+.daily-announcement-modal .modal-actions .main-button{
+  width:100%;
+  min-height:49px;
+  padding:11px 18px;
+  font-size:15px;
+  letter-spacing:.09em;
+  border-radius:5px;
+}
+.daily-announcement-modal .daily-announcement-hint{
+  margin:12px 0 0;
+  text-align:center;
+  color:var(--muted-light);
+  font-size:12px;
+}
+@media(max-width:520px){
+  .daily-announcement-modal .modal-top{padding:23px 22px 0}
+  .daily-announcement-modal .modal-body{padding:5px 22px 23px}
+  .daily-announcement-modal h2{font-size:25px;margin-bottom:19px}
+  .daily-announcement-modal .daily-announcement-copy{padding:3px 0 3px 14px}
+  .daily-announcement-modal .daily-announcement-copy p{font-size:14px;padding:0}
+  .daily-announcement-modal .modal-actions{margin-top:18px}
+}
+.daily-announcement-modal[open]{animation:gx-modal-enter .20s cubic-bezier(.2,.7,.2,1) both}
+.daily-announcement-modal[open]::backdrop{animation:gx-backdrop-enter .20s ease-out both}
+@media (prefers-reduced-motion:reduce){.daily-announcement-modal[open],.daily-announcement-modal[open]::backdrop{animation:none!important}}

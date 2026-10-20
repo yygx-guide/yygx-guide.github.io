@@ -49,13 +49,13 @@
 <section aria-labelledby="communityTitle" class="community" id="community"><div class="section-head"><h2 id="communityTitle">游戏交流</h2><p>讨论玩法 · 获取更新 · 问题反馈</p></div>
 <div class="community-choices">
 <button type="button" class="community-choice" id="qqCommunityButton" data-modal="qqCommunityModal">
-<span class="community-icon">Q</span><span class="community-copy"><strong>QQ 交流群</strong><small>暂不公开群链接 · 点击查看申请方式</small></span><span class="community-arr">↗</span>
+<span class="community-icon">Q</span><span class="community-copy"><strong>QQ 交流群</strong><small>无</small></span><span class="community-arr">↗</span>
 </button>
-<a class="community-choice" href="#" id="tgCommunityLink" rel="noopener noreferrer" target="_blank">
-<span class="community-icon">TG</span><span class="community-copy"><strong>Telegram 交流群</strong><small>游戏讨论 · 群签到</small></span><span class="community-arr">↗</span>
-</a>
+<button type="button" class="community-choice" id="tgCommunityButton" data-modal="tgCommunityModal">
+<span class="community-icon">TG</span><span class="community-copy"><strong>Telegram 交流群</strong><small>暂不公开</small></span><span class="community-arr">↗</span>
+</button>
 <button type="button" class="community-choice" id="internalCommunityButton" data-modal="internalCommunityModal">
-<span class="community-icon">内</span><span class="community-copy"><strong>授权用户 TG 内部群</strong><small>需核实授权 · 点击查看入群说明</small></span><span class="community-arr">↗</span>
+<span class="community-icon">内</span><span class="community-copy"><strong>授权用户 TG 内部群</strong><small>打开查看入群说明</small></span><span class="community-arr">↗</span>
 </button>
 </div>
 <div class="community-bottom"><span id="communitySalesNote">目前暂停新授权购买及预订</span></div></section>
@@ -171,14 +171,21 @@
 <dialog class="modal community-info-modal" id="qqCommunityModal" aria-labelledby="qqCommunityTitle">
   <div class="modal-top"><span class="modal-kicker">游戏交流 / QQ</span><button type="button" class="close" data-close aria-label="关闭">×</button></div>
   <div class="modal-body"><h2 id="qqCommunityTitle">QQ 交流群</h2>
-    <p>QQ 群暂不公开邀请链接。如需入群，请先在咸鱼上联系我，确认后再邀请加入。</p>
+    <p>目前暂无 QQ 交流群入群渠道。</p>
+    <div class="modal-actions"><button class="ghost-btn" type="button" data-close>返回导航</button></div>
+  </div>
+</dialog>
+<dialog class="modal community-info-modal" id="tgCommunityModal" aria-labelledby="tgCommunityTitle">
+  <div class="modal-top"><span class="modal-kicker">游戏交流 / Telegram</span><button type="button" class="close" data-close aria-label="关闭">×</button></div>
+  <div class="modal-body"><h2 id="tgCommunityTitle">Telegram 交流群</h2>
+    <p>暂不公开，有需要的小伙伴自己找人拉自己一下吧。</p>
     <div class="modal-actions"><button class="ghost-btn" type="button" data-close>返回导航</button></div>
   </div>
 </dialog>
 <dialog class="modal community-info-modal" id="internalCommunityModal" aria-labelledby="internalCommunityTitle">
   <div class="modal-top"><span class="modal-kicker">游戏交流 / Telegram</span><button type="button" class="close" data-close aria-label="关闭">×</button></div>
   <div class="modal-body"><h2 id="internalCommunityTitle">授权用户 TG 内部群</h2>
-    <p>这是面向已有授权用户的 Telegram 内部交流群，不公开入群链接。需要加入请在tg交流群联系管理员，确认后邀请入群。</p>
+    <p>已有授权用户的 Telegram 内部交流群，付费用户请在 TG 交流群联系管理员，确认后邀请入群。</p>
     <div class="modal-actions"><button class="ghost-btn" type="button" data-close>返回导航</button></div>
   </div>
 </dialog>
@@ -203,6 +210,23 @@
 <p aria-live="polite" class="smallprint" id="downloadHint" role="status">如无法直接打开，可复制链接后在浏览器中粘贴访问。</p>
 <p class="download-url-fallback" hidden="" id="downloadUrlFallback"></p>
 </div>
+</dialog>
+<!-- 每日公告：页面每天首次访问自动展示，公告文字可直接修改这里 -->
+<dialog aria-labelledby="dailyAnnouncementTitle" aria-describedby="dailyAnnouncementCopy" class="modal daily-announcement-modal" id="dailyAnnouncementModal">
+  <div class="modal-top">
+    <span class="modal-kicker">观星 · 最新消息</span>
+  </div>
+  <div class="modal-body">
+    <h2 id="dailyAnnouncementTitle" tabindex="-1" autofocus>最新公告</h2>
+    <div class="daily-announcement-copy" id="dailyAnnouncementCopy">
+      <p>现已停止售卖，此观星导航将正常保留。</p>
+      <p>如需了解后续消息，请关注 <button type="button" class="daily-tg-open" id="dailyAnnouncementTgLink" data-modal="tgCommunityModal">TG 交流群</button>。</p>
+    </div>
+    <div class="modal-actions">
+      <button class="main-button" data-close="" type="button">我知道了</button>
+    </div>
+    <p class="daily-announcement-hint">今天不再重复弹出</p>
+  </div>
 </dialog>
 <script src="config.js"></script><script src="lang-map.js"></script><script src="script.js"></script>
 </body></html>
