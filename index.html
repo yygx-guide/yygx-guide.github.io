@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="#ece5d6" name="theme-color"/>
-<meta content="观星使用导航：使用须知、功能介绍与试用、授权码说明与获取、安卓/iOS/鸿蒙存档导出教程、常见问题与游戏交流。" name="description"/>
+<meta content="观星使用导航：使用须知、功能介绍与试用、授权码说明与获取、安卓/iOS/鸿蒙存档导出教程、使用问题与游戏交流。" name="description"/>
 <title>观星 · 使用导航</title>
 <link href="assets/app-icon.png" rel="icon" type="image/png"/>
 <link href="style.css" rel="stylesheet"/>
@@ -38,29 +38,12 @@
 <button class="nav-card feature-card" data-modal="featureModal" type="button"><span class="card-head"><span class="num">02 <i>/ 先了解</i></span><span class="card-arrow">↗</span></span><span class="card-title">功能介绍与试用</span><span class="card-desc">观星能做什么？先看看功能，再了解体验方式</span><span class="card-foot">了解功能与试用 →</span></button>
 <button class="nav-card" data-modal="licenseModal" type="button"><span class="card-head"><span class="num">03 / 授权说明</span><span class="card-arrow">↗</span></span><span class="card-title">授权码说明与获取 <span class="tiny-tag" hidden="" id="salesBadge"></span></span><span class="card-desc">了解授权规则 · 查看获取状态</span><span class="card-foot">查看说明与获取 →</span></button>
 <button class="nav-card" data-modal="exportModal" id="exportCard" type="button"><span class="card-head"><span class="num">04 <i>/ 存档导出</i></span><span class="card-arrow">↗</span></span><span class="card-title">导出存档教程</span><span class="card-desc">选择设备系统，查看对应的导出教程 · 安卓 / iOS / 鸿蒙</span><span class="card-foot">选择设备系统 →</span></button>
-<div aria-expanded="false" class="nav-card wide-card" id="faqCard">
-<button aria-controls="faqPanel" aria-expanded="false" class="wide-trigger" data-expand="" type="button">
-  <span class="card-head"><span class="num">05 <i>/ 使用答疑</i></span><span class="card-arrow">⌄</span></span>
-  <span class="card-title">常见问题</span>
-  <span class="card-desc">下载安装、导出失败及导出后的使用问题</span>
+<button class="nav-card wide-card faq-entry" data-modal="faqModal" id="faqCard" type="button">
+  <span class="card-head"><span class="num">05 <i>/ 使用问题</i></span><span class="card-arrow">↗</span></span>
+  <span class="card-title">使用问题</span>
+  <span class="card-desc">下载安装更新、授权验证、存档导出及软件使用疑问</span>
+  <span class="card-foot">查看问题目录 →</span>
 </button>
-<div class="faq-guidance">
-  <span>这里主要解答使用中遇到的问题。购买前问题请先查看</span>
-  <button class="faq-first-link" type="button" data-modal="noticeModal">「01｜使用前须知」↗</button>
-</div>
-<div class="expand-panel" hidden="" id="faqPanel">
-  <div class="faq-list">
-    <details><summary>观星 APP 无法下载、安装或更新</summary><p>可尝试使用其他浏览器打开下载页；如仍无法下载，可通过交流群获取最新安装包。</p></details>
-    <details><summary>存档导出失败，观星没有反应</summary><p>先检查代理设置和网络连接，再尝试其他导出方式。具体排查步骤可查看下方完整常见问题。</p></details>
-    <details><summary>存档导出后，怎么查看结果？</summary><p>在观星 APP 中验证并添加授权码，进入「存档 → 导入存档」，选择已导出的 .gx 文件。</p></details>
-    <details><summary>洗脉中的 VIP 等级是什么？</summary><p>VIP 指游戏中的贵族等级。VIP 0 无法洗出神脉，其余情况一般使用 VIP 1 即可。</p></details>
-  </div>
-  <a class="faq-more-button" href="#" id="faqMore" rel="noopener noreferrer" target="_blank">
-    <span class="faq-more-copy"><strong>查看完整常见问题</strong><small>更多问题分类与详细解决方法</small></span>
-    <span class="faq-more-arrow" aria-hidden="true">↗</span>
-  </a>
-</div>
-</div>
 </div>
 </section>
 <section aria-labelledby="communityTitle" class="community" id="community"><div class="section-head"><h2 id="communityTitle">游戏交流</h2><p>讨论玩法 · 获取更新 · 问题反馈</p></div>
@@ -75,7 +58,7 @@
 <span class="community-icon">内</span><span class="community-copy"><strong>授权用户 TG 内部群</strong><small>需核实授权 · 点击查看入群说明</small></span><span class="community-arr">↗</span>
 </button>
 </div>
-<div class="community-bottom"><span id="communitySalesNote">目前暂停新授权购买及预订</span><a href="#" id="communityStoreLink" rel="noopener noreferrer" target="_blank">闲鱼店铺 · 关注动态 ↗</a></div></section>
+<div class="community-bottom"><span id="communitySalesNote">目前暂停新授权购买及预订</span></div></section>
 <p class="bottom-tip">— 渠道适配、功能与试用规则可能调整，请以最新说明为准 —</p>
 </main>
 <footer class="footer"><span>观星 · 使用导航</span><span>独立整理的使用资料 · 非游戏官方页面</span></footer>
@@ -130,14 +113,13 @@
 <small>期限、次数、账号绑定及获取规则<br>免费、付费授权码获取</small>
 <span aria-hidden="true" class="license-choice-arrow">↗</span>
 </a>
-<a class="license-choice license-choice-purchase" href="#" id="purchaseLink" rel="noopener noreferrer" target="_blank">
+<div class="license-choice license-choice-purchase is-disabled" id="purchaseLink" aria-disabled="true">
 <span class="license-choice-index">02 / 店铺 <span class="license-pause-tag" id="purchaseBadge">暂停购买</span></span>
 <strong id="purchaseTitle">闲鱼店铺</strong>
-<small id="purchaseSubtitle">可以先关注店铺哦~暂不接受新订单</small>
-<span aria-hidden="true" class="license-choice-arrow">↗</span>
-</a>
+<small id="purchaseSubtitle">暂停购买</small>
 </div>
-<p class="license-state-note" id="licenseStateNotice" role="status">目前暂停新授权购买及预订，已购买的用户正常处理售后哦~</p>
+</div>
+<p class="license-state-note" id="licenseStateNotice" role="status">暂停购买，如需使用请签到获取</p>
 <div class="modal-actions"><button class="ghost-btn" data-close="" type="button">返回导航</button></div></div></dialog>
 <dialog aria-labelledby="exportModalTitle" class="modal export-modal" id="exportModal">
 <div class="modal-top"><span class="modal-kicker">04 / 存档导出教程</span><button aria-label="关闭" class="close" data-close="" type="button">×</button></div>
@@ -157,6 +139,33 @@
 <p class="export-note">使用前请确认渠道支持情况，教程存在不代表当前已适配。</p>
 <div class="modal-actions"><button class="ghost-btn" data-close="" type="button">返回导航</button></div>
 </div>
+</dialog>
+
+<dialog aria-labelledby="faqModalTitle" class="modal faq-modal" id="faqModal">
+  <div class="modal-top"><span class="modal-kicker">05 / 使用问题</span><button aria-label="关闭" class="close" data-close="" type="button">×</button></div>
+  <div class="modal-body">
+    <h2 id="faqModalTitle">使用问题目录</h2>
+    <p class="faq-modal-intro">选择遇到的问题类型，查看对应说明。</p>
+    <nav class="faq-directory" aria-label="使用问题分类">
+      <a class="faq-directory-link" href="#" id="faqDownloadLink" target="_blank" rel="noopener noreferrer">
+        <span class="faq-directory-num">01</span><span class="faq-directory-copy"><strong>下载 / 安装 / 更新问题</strong><small>下载失败、安装异常、无法更新等</small></span><span class="faq-directory-arrow" aria-hidden="true">↗</span>
+      </a>
+      <a class="faq-directory-link" href="#" id="faqLicenseVerifyLink" target="_blank" rel="noopener noreferrer">
+        <span class="faq-directory-num">02</span><span class="faq-directory-copy"><strong>授权码验证失败问题</strong><small>验证卡住、验证报错、无法进入软件等</small></span><span class="faq-directory-arrow" aria-hidden="true">↗</span>
+      </a>
+      <a class="faq-directory-link" href="#" id="faqExportFailureLink" target="_blank" rel="noopener noreferrer">
+        <span class="faq-directory-num">03</span><span class="faq-directory-copy"><strong>导出存档失败问题</strong><small>捕获异常、导出报错、无法获取存档等</small></span><span class="faq-directory-arrow" aria-hidden="true">↗</span>
+      </a>
+      <a class="faq-directory-link" href="#" id="faqUsageLink" target="_blank" rel="noopener noreferrer">
+        <span class="faq-directory-num">04</span><span class="faq-directory-copy"><strong>软件使用问题</strong><small>功能不会用、操作疑问、结果看不懂等</small></span><span class="faq-directory-arrow" aria-hidden="true">↗</span>
+      </a>
+    </nav>
+    <p class="faq-modal-note">打开说明文档后，可通过文档目录查看对应章节。</p>
+    <div class="modal-actions">
+      <a class="main-button" href="#" id="faqMore" target="_blank" rel="noopener noreferrer">查看完整问题说明 ↗</a>
+      <button class="ghost-btn" data-close="" type="button">返回导航</button>
+    </div>
+  </div>
 </dialog>
 
 <dialog class="modal community-info-modal" id="qqCommunityModal" aria-labelledby="qqCommunityTitle">

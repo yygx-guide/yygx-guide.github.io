@@ -13,12 +13,16 @@
   setHref('featureIntroLink',intro);
   setHref('trialLink',valid(cfg.trialUrl)||intro);
   setHref('licenseGuideLink',valid(cfg.licenseGuideUrl) || fullGuide);
-  setHref('purchaseLink',valid(cfg.storeUrl));
   setHref('manualTutorialLink',valid(cfg.manualUrl));
   // QQ / 内部 TG 只展示入群条件；公开 TG 群可直达。
   setHref('tgCommunityLink',valid(cfg.telegramUrl));
-  setHref('communityStoreLink',valid(cfg.storeUrl));
-  setHref('faqMore',valid(cfg.faqUrl) || fullGuide);
+  const faqFallback = valid(cfg.faqUrl) || fullGuide;
+  setHref('faqMore',faqFallback);
+  // 各问题目录可分别设置飞书章节直达链接；未设置时使用完整说明。
+  const faqCategoryUrls = cfg.faqCategoryUrls || {};
+  [['faqDownloadLink','download'],['faqLicenseVerifyLink','verify'],
+   ['faqExportFailureLink','export'],['faqUsageLink','usage']]
+    .forEach(([id,key]) => setHref(id,valid(faqCategoryUrls[key]) || faqFallback));
   ['android', 'ios', 'harmony'].forEach(key => setHref(key + 'TutorialLink', valid(cfg.tutorialUrls?.[key]) || fullGuide));
   const appDownloadLink = byId('appDownloadLink');
   const copyDownloadLink = byId('copyDownloadLink');
@@ -45,43 +49,22 @@
     }
     refreshLang();
   });
-  // 购买暂停不影响浏览店铺：店铺链接始终可访问（仅限真实有效的 URL）。
-  const salesPaused = cfg.salesPaused !== false;
+  // 店铺入口已经彻底断开，不在前端保留购买跳转地址。
   const putText = (id, value) => { const el=byId(id); if(el) el.textContent=value; };
   putText('heroSalesStatus', typeof cfg.homepageNotice === 'string' ? cfg.homepageNotice : '使用教程与相关说明持续更新');
-  putText('communitySalesNote', salesPaused ? '目前暂停新授权购买及预订' : '店铺获取方式与活动请以最新公告为准');
-  const purchaseLink = byId('purchaseLink');
+  putText('communitySalesNote', '目前暂停新授权购买及预订');
+  putText('purchaseTitle', '闲鱼店铺');
+  putText('purchaseSubtitle', '暂停购买');
+  putText('licenseStateNotice', '暂停购买，如需使用请签到获取');
   const purchaseBadge = byId('purchaseBadge');
-  const hasStore = Boolean(valid(cfg.storeUrl));
-  if (purchaseLink) {
-    putText('purchaseTitle', '闲鱼店铺');
-    if (!hasStore) {
-      putText('purchaseSubtitle', '店铺链接待设置');
-      putText('licenseStateNotice', '店铺暂时无法跳转，可先查看授权说明。');
-      if (purchaseBadge) { purchaseBadge.textContent = '待设置'; purchaseBadge.hidden = false; }
-    } else if (salesPaused) {
-      // 有有效店铺链接且暂停购买时，保留 index.html 中用户自行编辑的说明文字。
-      // 不再用脚本覆盖 purchaseSubtitle / licenseStateNotice。
-      if (purchaseBadge) { purchaseBadge.textContent = '暂停购买'; purchaseBadge.hidden = false; }
-    } else {
-      putText('purchaseSubtitle', '前往店铺，查看当前获取方式');
-      putText('licenseStateNotice', '购买前请确认授权规则和系统适配情况。');
-      if (purchaseBadge) purchaseBadge.hidden = true;
-    }
-  }
-  const modalNames = ['noticeModal','featureModal','licenseModal','exportModal','qqCommunityModal','internalCommunityModal','downloadModal'];
+  if (purchaseBadge) { purchaseBadge.textContent = '暂停购买'; purchaseBadge.hidden = false; }
+  const modalNames = ['noticeModal','featureModal','licenseModal','exportModal','faqModal','qqCommunityModal','internalCommunityModal','downloadModal'];
   const openModal = id => { refreshLang(); const dialog=byId(id);if(dialog&&typeof dialog.showModal==='function')dialog.showModal(); };
   document.querySelectorAll('[data-modal]').forEach(el => el.addEventListener('click',() => openModal(el.dataset.modal)));
   document.querySelectorAll('dialog').forEach(dialog => {
     dialog.querySelectorAll('[data-close]').forEach(el=>el.addEventListener('click',()=>dialog.close()));
     dialog.addEventListener('click',event=>{if(event.target===dialog)dialog.close();});
   });
-  document.querySelectorAll('[data-expand]').forEach(trigger=>trigger.addEventListener('click',()=>{
-    const id=trigger.getAttribute('aria-controls');const panel=byId(id);if(!panel)return;
-    const opening=panel.hidden;panel.hidden=!opening;trigger.setAttribute('aria-expanded',String(opening));
-    trigger.closest('.wide-card').setAttribute('aria-expanded',String(opening));
-  }));
-
   const themeBtn=byId('themeButton');
   const applyTheme=theme=>{
     const care=theme==='care';document.documentElement.dataset.theme=care?'care':'bright';

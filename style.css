@@ -84,9 +84,9 @@ html[data-theme="care"] .export-option:hover{background:rgba(255,255,255,.08)}
 .license-choice-purchase{border-color:rgba(166,63,49,.24);background:rgba(166,63,49,.045)}
 .license-choice-purchase strong{color:var(--ink)}
 .license-pause-tag{padding:2px 7px;border:1px solid rgba(166,63,49,.27);border-radius:3px;color:var(--red-deep);background:rgba(166,63,49,.08);letter-spacing:0}
-.license-choice-purchase.is-paused{cursor:pointer;opacity:1}
-.license-choice-purchase.is-paused .license-choice-arrow{color:var(--muted-light)}
-.license-choice-purchase:hover{border-color:var(--red);background:rgba(166,63,49,.09);transform:translateY(-2px)}
+.license-choice-purchase.is-disabled{cursor:not-allowed;opacity:1;transform:none!important}
+.license-choice-purchase.is-disabled *{cursor:not-allowed}
+.license-choice-purchase.is-disabled:hover{border-color:rgba(166,63,49,.24);background:rgba(166,63,49,.045);transform:none}
 .license-state-note{font-size:12px!important;line-height:1.65!important;color:var(--muted-light)!important;margin:11px 0 0!important}
 /* 04: 三个系统入口与人工代导分别成组，不额外叠弹窗 */
 .export-assistance{margin-top:17px;padding-top:14px;border-top:1px solid var(--line)}
@@ -112,26 +112,40 @@ html[data-theme="care"] .community-choice{background:rgba(35,38,40,.88)}
 @media(max-width:460px){.license-choices{grid-template-columns:1fr}.license-choice{min-height:125px}.license-choice strong{font-size:19px}}
 @media(prefers-reduced-motion:no-preference){.license-choice,.community-choice{will-change:transform}}
 
-/* 2026-10-09: 店铺可浏览；QQ / 内部 TG 卡片改为弹窗而非店铺跳转。 */
+/* 店铺入口已停用；QQ / 内部 TG 卡片仍为说明弹窗。 */
 .community-choice[type="button"]{width:100%;font:inherit;text-align:left;cursor:pointer}
 .community-choice:focus-visible{outline:2px solid var(--pine);outline-offset:3px}
-.license-choice-purchase:hover{border-color:var(--red);background:rgba(166,63,49,.09)}
+.license-choice-purchase.is-disabled:hover{border-color:rgba(166,63,49,.24);background:rgba(166,63,49,.045)}
 .community-info-modal{width:min(520px,calc(100% - 32px))}
 .community-info-modal .modal-body p{margin-top:8px;line-height:1.85}
 
 
-/* 05 | 常见问题：区分售前/使用答疑；突出完整问题入口 */
-#faqCard .wide-trigger{padding-bottom:9px}
-.faq-guidance{padding:0 25px 21px;display:flex;align-items:baseline;flex-wrap:wrap;gap:3px 6px;color:var(--muted);font-size:12px;line-height:1.85}
-.faq-first-link{display:inline;padding:0;border:0;border-bottom:1px solid currentColor;background:transparent;color:var(--pine-deep);font-size:12px;font-weight:650;line-height:1.6;cursor:pointer}
-.faq-first-link:hover{color:var(--red)}
-.faq-more-button{display:flex;align-items:center;justify-content:space-between;gap:18px;width:min(100%,450px);min-height:65px;margin-top:22px;padding:13px 20px;border:1px solid var(--red-deep);border-radius:5px;background:var(--red);box-shadow:0 6px 17px rgba(132,49,38,.14);color:#fffaf0;text-decoration:none;transition:background .2s,transform .2s,box-shadow .2s}
-.faq-more-button:hover{background:var(--red-deep);transform:translateY(-1px);box-shadow:0 8px 19px rgba(132,49,38,.19)}
-.faq-more-copy{display:flex;flex-direction:column;gap:2px}
-.faq-more-copy strong{font-size:15px;line-height:1.45;letter-spacing:.025em}
-.faq-more-copy small{font-size:11px;color:rgba(255,250,240,.85);line-height:1.5}
-.faq-more-arrow{flex:none;font-size:22px;line-height:1}
-html[data-theme="care"] .faq-more-button{color:#fffaf0;border-color:#a95345;background:#a95345}
-html[data-theme="care"] .faq-more-button:hover{background:#8e4034}
-@media(max-width:620px){.faq-guidance{padding:0 18px 17px}.faq-more-button{width:100%;padding:13px 16px}}
-@media(prefers-reduced-motion:reduce){.faq-more-button{transition:none}.faq-more-button:hover{transform:none}}
+/* 05 | 使用问题：完整卡片触发弹窗，四项问题目录 */
+.nav-card.wide-card.faq-entry{width:100%;min-height:168px;padding:22px 25px 24px;cursor:pointer}
+.faq-entry .card-title{margin-top:14px}
+.faq-entry .card-desc{margin-top:7px}
+.faq-entry .card-foot{margin-top:auto}
+.faq-modal{width:min(555px,calc(100% - 32px))}
+.faq-modal-intro{margin:2px 0 18px!important;font-size:13px!important}
+.faq-directory{display:grid;grid-template-columns:1fr;gap:10px}
+.faq-directory-link{display:flex;align-items:center;gap:14px;min-width:0;min-height:77px;padding:13px 16px;border:1px solid var(--line);border-radius:5px;background:rgba(232,223,205,.22);color:var(--ink);text-decoration:none;transition:background .18s,border-color .18s,transform .18s,box-shadow .18s}
+.faq-directory-link:hover{background:rgba(232,223,205,.45);border-color:var(--pine);transform:translateY(-1px);box-shadow:0 5px 15px rgba(57,48,36,.06)}
+.faq-directory-num{display:grid;place-items:center;flex:none;width:42px;height:42px;border:1px solid rgba(49,89,77,.25);border-radius:5px;background:rgba(49,89,77,.07);color:var(--pine-deep);font:700 17px var(--serif)}
+.faq-directory-copy{display:flex;flex:1;flex-direction:column;gap:3px;min-width:0}
+.faq-directory-copy strong{font-size:15px;line-height:1.45;font-weight:650}
+.faq-directory-copy small{font-size:12px;line-height:1.55;color:var(--muted)}
+.faq-directory-arrow{margin-left:auto;font-size:20px;color:var(--pine)}
+.faq-modal .faq-modal-note{margin:14px 0 0;font-size:12px;color:var(--muted-light)}
+.faq-modal .modal-actions{margin-top:17px}
+.faq-modal[open]{animation:gx-modal-enter .20s cubic-bezier(.2,.7,.2,1) both}
+.faq-modal[open]::backdrop{animation:gx-backdrop-enter .20s ease-out both}
+html[data-theme="care"] .faq-directory-link{background:rgba(255,255,255,.035)}
+html[data-theme="care"] .faq-directory-link:hover{background:rgba(255,255,255,.08)}
+@media(max-width:620px){
+  .nav-card.wide-card.faq-entry{min-height:146px;padding:19px 20px}
+  .faq-directory-link{gap:11px;min-height:72px;padding:12px}
+  .faq-directory-num{width:37px;height:37px;font-size:15px}
+  .faq-directory-copy strong{font-size:14px}
+  .faq-directory-copy small{font-size:11px}
+}
+@media(prefers-reduced-motion:reduce){.faq-modal[open],.faq-modal[open]::backdrop{animation:none!important}}

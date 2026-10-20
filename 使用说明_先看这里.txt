@@ -1,25 +1,15 @@
-观星导航｜常见问题入口优化版
+观星导航｜05「使用问题」目录弹窗版
 
-本次仅调整第 05 张卡片：
-1. 保留「常见问题」标题，说明该栏目主要处理使用过程中遇到的问题。
-2. 在简介下增加「01｜使用前须知」可点击入口，购买前先确认适配和注意事项。
-3. 折叠问题替换为下载/安装、导出失败、存档导入、洗脉 VIP 四类使用问题。
-4. 「查看完整常见问题」改为醒目的大按钮，仍然使用 config.js 中的 faqUrl。
+本次修改：
+- 05 卡片改为「使用问题」，点击弹出目录窗口，不再在首页展开问答。
+- 弹窗内的四个目录：下载/安装/更新问题、授权码验证失败问题、导出存档失败问题、软件使用问题。
+- 各目录可以点击，默认打开你原来飞书的《05｜常见问题》文档。
+- 如果要点击后直接跳到对应章节，把该章节的完整链接填写进 config.js 的 faqCategoryUrls。未设置时会自动使用 faqUrl。
+- 保留首页其他四张卡片、销售暂停状态、其他原有链接、亮色/护眼主题及简繁切换。
 
-其他四张卡片、授权购买暂停状态、游戏交流、所有飞书链接和简繁切换逻辑均未修改。
+上传 GitHub Pages：
+1. 解压 ZIP。
+2. 在 GitHub 仓库 yygx-guide/yygx-guide.github.io 上传网站文件（不是 ZIP 文件）。
+3. 提交 Commit changes，部署成功后强制刷新网页（Ctrl+F5）。
 
-更新 GitHub Pages：
-1. 下载并解压 ZIP，打开 index.html 本地检查。
-2. 在 GitHub 网站仓库 yygx-guide / yygx-guide.github.io 上传解压文件夹内的全部文件（不是 ZIP 本身）。
-3. 点击 Commit changes，等 Actions 中的 GitHub Pages 部署成功。
-4. 打开 https://yygx-guide.github.io/，按 Ctrl+F5 刷新。
-
-如果只希望更新必要文件，直接把本 ZIP 的 index.html 和 style.css 覆盖仓库同名文件也可以，其余资源和脚本不用改。
-
-
-【本次修复：03 授权码弹窗】
-- index.html：授权规则卡片改成标题一行、说明两行（使用 <br> 换行），删除重复内容。
-- script.js：当店铺链接有效且销售暂停时，不再覆盖 index.html 中的 purchaseSubtitle 和 licenseStateNotice 文本。
-- 以后修改这两处说明，直接在 index.html 搜索「可以先关注店铺哦」和「目前暂停新授权购买及预订」，编辑标签之间的文字即可。
-- 修改后同时上传 index.html 和 script.js；无需替换其他文件。
-- 若 storeUrl 留空，脚本会提示链接待设置；若 salesPaused 改为 false，则会显示恢复售卖状态的动态文案。
+如果仓库中已有原网站和 assets 文件夹，也可以仅上传本次的 index.html、style.css、script.js、config.js 四个文件，其它文件不用换。
