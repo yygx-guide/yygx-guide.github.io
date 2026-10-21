@@ -1,0 +1,3 @@
+只需替换 GitHub 仓库根目录中的 index.html、style.css 两个文件。
+已有的 script.js、config.js、lang-map.js 及 assets 文件夹不需要修改。
+新区域位于游戏交流下方，链接指向用户指定的飞书旧安装包页面。

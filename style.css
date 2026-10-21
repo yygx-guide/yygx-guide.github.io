@@ -222,3 +222,18 @@ html[data-theme="care"] .faq-directory-link:hover{background:rgba(255,255,255,.0
 .daily-announcement-modal[open]{animation:gx-modal-enter .20s cubic-bezier(.2,.7,.2,1) both}
 .daily-announcement-modal[open]::backdrop{animation:gx-backdrop-enter .20s ease-out both}
 @media (prefers-reduced-motion:reduce){.daily-announcement-modal[open],.daily-announcement-modal[open]::backdrop{animation:none!important}}
+
+/* 游戏交流下方：其他文件（历史安装包） */
+.other-files{padding:30px 0 0;scroll-margin-top:24px}
+.other-files .section-head{margin-bottom:16px}
+.other-file-card{display:flex;align-items:center;gap:18px;min-height:105px;padding:19px 25px;border:1px solid rgba(49,89,77,.29);border-radius:6px;background:rgba(251,248,239,.94);box-shadow:0 8px 22px rgba(57,48,36,.06);color:var(--ink);text-decoration:none;transition:background .2s,border-color .2s,box-shadow .2s,transform .2s}
+.other-file-card:hover{border-color:var(--pine);background:var(--paper-raised);box-shadow:0 11px 24px rgba(57,48,36,.1);transform:translateY(-2px)}
+.other-file-card:focus-visible{outline:2px solid var(--pine);outline-offset:3px}
+.other-file-icon{display:grid;place-items:center;flex:0 0 55px;width:55px;height:55px;border:1px solid rgba(49,89,77,.17);border-radius:5px;background:rgba(49,89,77,.07);color:var(--pine-deep)}
+.other-file-copy{display:flex;flex:1;flex-direction:column;gap:4px;min-width:0}
+.other-file-copy strong{color:var(--pine-deep);font-size:16px;line-height:1.5;font-weight:700}
+.other-file-copy small{color:var(--muted);font-size:12px;line-height:1.5}
+.other-file-arrow{flex:none;margin-left:auto;color:var(--pine);font-size:22px;line-height:1}
+html[data-theme="care"] .other-file-card{background:rgba(35,38,40,.88)}
+html[data-theme="care"] .other-file-card:hover{background:var(--paper-raised)}
+@media(max-width:600px){.other-files{padding-top:24px}.other-file-card{min-height:90px;padding:15px 14px;gap:12px}.other-file-icon{flex-basis:44px;width:44px;height:44px}.other-file-copy strong{font-size:14px}.other-file-copy small{font-size:11px}.other-file-arrow{font-size:19px}}
