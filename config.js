@@ -6,7 +6,7 @@
   4. 首页小提示修改 homepageNotice；其他文字在 index.html 中修改。
 */
 const SITE_CONFIG = {
-  // 【每日公告】true = 开启（同一浏览器每天首次访问弹出）；false = 关闭。
+  // 【公告弹窗】true = 每次打开或刷新网页时弹出；false = 关闭。
   dailyAnnouncementEnabled: true,
 
   // 【首页小提示】修改引号里的文字即可更新首页说明。

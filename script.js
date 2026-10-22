@@ -134,19 +134,13 @@
   }));
   refreshLang();
 
-  // 每日公告：基于访客本机日历日，每个浏览器每天最多自动展示一次；无需账号或服务器。
+  // 最新公告：每次打开或刷新网页时显示，不依赖登录或本地存储。
   const dailyAnnouncement = byId('dailyAnnouncementModal');
-  if (cfg.dailyAnnouncementEnabled !== false && dailyAnnouncement && typeof dailyAnnouncement.showModal === 'function') {
-    const now = new Date();
-    const today = [now.getFullYear(), String(now.getMonth() + 1).padStart(2, '0'), String(now.getDate()).padStart(2, '0')].join('-');
-    const storageKey = 'guanxing-daily-announcement-last-shown';
-    let lastShown = '';
-    try { lastShown = localStorage.getItem(storageKey) || ''; } catch (_) { /* 存储被禁用时仍允许弹窗 */ }
-    if (lastShown !== today) {
-      dailyAnnouncement.showModal();
-      // 展示时就记录，以免尚未关闭就刷新网页，导致同一天再次弹出。
-      try { localStorage.setItem(storageKey, today); } catch (_) { /* 私密模式下可能无法保存 */ }
-    }
+  if (cfg.dailyAnnouncementEnabled !== false &&
+      dailyAnnouncement &&
+      typeof dailyAnnouncement.showModal === 'function' &&
+      !dailyAnnouncement.open) {
+    dailyAnnouncement.showModal();
   }
 
   // 未配置链接时不执行空白跳转。

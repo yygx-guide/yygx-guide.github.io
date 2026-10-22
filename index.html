@@ -8,7 +8,7 @@
 <meta content="观星使用导航：使用须知、功能介绍与试用、授权码说明与获取、安卓/iOS/鸿蒙存档导出教程、使用问题与游戏交流。" name="description"/>
 <title>观星 · 使用导航</title>
 <link href="assets/app-icon.png" rel="icon" type="image/png"/>
-<link href="style.css" rel="stylesheet"/>
+<link href="style.css?v=20261021-2" rel="stylesheet"/>
 </head>
 <body>
 <div class="wrap">
@@ -231,7 +231,7 @@
 <p class="download-url-fallback" hidden="" id="downloadUrlFallback"></p>
 </div>
 </dialog>
-<!-- 每日公告：页面每天首次访问自动展示，公告文字可直接修改这里 -->
+<!-- 最新公告：以后只需修改 dailyAnnouncementCopy 内的 p 段落文字 -->
 <dialog aria-labelledby="dailyAnnouncementTitle" aria-describedby="dailyAnnouncementCopy" class="modal daily-announcement-modal" id="dailyAnnouncementModal">
   <div class="modal-top">
     <span class="modal-kicker">观星 · 最新消息</span>
@@ -241,12 +241,13 @@
     <div class="daily-announcement-copy" id="dailyAnnouncementCopy">
       <p>现已停止售卖，此观星导航将正常保留。</p>
       <p>如需了解后续消息，请关注 <button type="button" class="daily-tg-open" id="dailyAnnouncementTgLink" data-modal="tgCommunityModal">TG 交流群</button>。</p>
+      <p>因游戏更新无法使用，请下滑使用旧安装包或者等待适配</p>
     </div>
     <div class="modal-actions">
       <button class="main-button" data-close="" type="button">我知道了</button>
     </div>
-    <p class="daily-announcement-hint">今天不再重复弹出</p>
+    <p class="daily-announcement-hint">每次打开网页时显示</p>
   </div>
 </dialog>
-<script src="config.js"></script><script src="lang-map.js"></script><script src="script.js"></script>
+<script src="config.js"></script><script src="lang-map.js"></script><script src="script.js?v=20261021-2"></script>
 </body></html>
