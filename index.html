@@ -8,7 +8,7 @@
 <meta content="观星使用导航：使用须知、功能介绍与试用、授权码说明与获取、安卓/iOS/鸿蒙存档导出教程、使用问题与游戏交流。" name="description"/>
 <title>观星 · 使用导航</title>
 <link href="assets/app-icon.png" rel="icon" type="image/png"/>
-<link href="style.css?v=20261021-2" rel="stylesheet"/>
+<link href="style.css?v=20261023-normalized" rel="stylesheet"/>
 </head>
 <body>
 <div class="wrap">
@@ -49,23 +49,23 @@
 <section aria-labelledby="communityTitle" class="community" id="community"><div class="section-head"><h2 id="communityTitle">游戏交流</h2><p>讨论玩法 · 获取更新 · 问题反馈</p></div>
 <div class="community-choices">
 <button type="button" class="community-choice" id="qqCommunityButton" data-modal="qqCommunityModal">
-<span class="community-icon">Q</span><span class="community-copy"><strong>QQ 交流群</strong><small>无</small></span><span class="community-arr">↗</span>
+<span class="community-icon">Q</span><span class="community-copy"><strong>QQ 交流群</strong><small data-config-text="community.qqCard">无</small></span><span class="community-arr">↗</span>
 </button>
 <button type="button" class="community-choice" id="tgCommunityButton" data-modal="tgCommunityModal">
-<span class="community-icon">TG</span><span class="community-copy"><strong>Telegram 交流群</strong><small>暂不公开</small></span><span class="community-arr">↗</span>
+<span class="community-icon">TG</span><span class="community-copy"><strong>Telegram 交流群</strong><small data-config-text="community.tgCard">暂不公开</small></span><span class="community-arr">↗</span>
 </button>
 <button type="button" class="community-choice" id="internalCommunityButton" data-modal="internalCommunityModal">
-<span class="community-icon">内</span><span class="community-copy"><strong>授权用户 TG 内部群</strong><small>打开查看入群说明</small></span><span class="community-arr">↗</span>
+<span class="community-icon">内</span><span class="community-copy"><strong>授权用户 TG 内部群</strong><small data-config-text="community.internalCard">打开查看入群说明</small></span><span class="community-arr">↗</span>
 </button>
 </div>
-<div class="community-bottom"><span id="communitySalesNote">目前暂停新授权购买及预订</span></div></section>
-<!-- 其他文件：历史安装包入口（请保留原有 assets 目录） -->
+<div class="community-bottom"><span id="communitySalesNote" data-config-text="sales.communityNote">目前暂停新授权购买及预订</span></div></section>
+<!-- 其他文件：文字和网址统一在 config.js 中修改；结构在此维护 -->
 <section class="other-files" id="otherFiles" aria-labelledby="otherFilesTitle">
   <div class="section-head">
-    <h2 id="otherFilesTitle">其他文件</h2>
-    <p>历史文件 · 按需查看</p>
+    <h2 id="otherFilesTitle" data-config-text="legacyFiles.heading">其他文件</h2>
+    <p data-config-text="legacyFiles.caption">历史文件 · 按需查看</p>
   </div>
-  <a class="other-file-card" href="https://hcnorqxeoi1e.feishu.cn/wiki/RuHmwmjY3iuQagkHdYGcFTRTn6f" rel="noopener noreferrer" target="_blank">
+  <a class="other-file-card" href="#" id="legacyPackageLink" rel="noopener noreferrer" target="_blank">
     <span class="other-file-icon" aria-hidden="true">
       <svg viewBox="0 0 24 24" width="25" height="25" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
         <path d="M6.5 2.75H14l4.5 4.5v13A1.75 1.75 0 0 1 16.75 22h-10A1.75 1.75 0 0 1 5 20.25V4.5a1.75 1.75 0 0 1 1.5-1.75Z" />
@@ -73,8 +73,8 @@
       </svg>
     </span>
     <span class="other-file-copy">
-      <strong>部分渠道旧安装包</strong>
-      <small>查看旧版安装包 · 请确认渠道与版本</small>
+      <strong data-config-text="legacyFiles.title">部分渠道旧安装包</strong>
+      <small data-config-text="legacyFiles.description">查看旧版安装包 · 请确认渠道与版本</small>
     </span>
     <span class="other-file-arrow" aria-hidden="true">↗</span>
   </a>
@@ -134,12 +134,12 @@
 <span aria-hidden="true" class="license-choice-arrow">↗</span>
 </a>
 <div class="license-choice license-choice-purchase is-disabled" id="purchaseLink" aria-disabled="true">
-<span class="license-choice-index">02 / 店铺 <span class="license-pause-tag" id="purchaseBadge">暂停购买</span></span>
-<strong id="purchaseTitle">闲鱼店铺</strong>
-<small id="purchaseSubtitle">暂停购买</small>
+<span class="license-choice-index">02 / 店铺 <span class="license-pause-tag" id="purchaseBadge" data-config-text="sales.badge">暂停购买</span></span>
+<strong id="purchaseTitle" data-config-text="sales.title">闲鱼店铺</strong>
+<small id="purchaseSubtitle" data-config-text="sales.subtitle">暂停购买</small>
 </div>
 </div>
-<p class="license-state-note" id="licenseStateNotice" role="status">暂停购买，如需使用请签到获取</p>
+<p class="license-state-note" id="licenseStateNotice" data-config-text="sales.notice" role="status">暂停购买，如需使用请签到获取</p>
 <div class="modal-actions"><button class="ghost-btn" data-close="" type="button">返回导航</button></div></div></dialog>
 <dialog aria-labelledby="exportModalTitle" class="modal export-modal" id="exportModal">
 <div class="modal-top"><span class="modal-kicker">04 / 存档导出教程</span><button aria-label="关闭" class="close" data-close="" type="button">×</button></div>
@@ -191,21 +191,21 @@
 <dialog class="modal community-info-modal" id="qqCommunityModal" aria-labelledby="qqCommunityTitle">
   <div class="modal-top"><span class="modal-kicker">游戏交流 / QQ</span><button type="button" class="close" data-close aria-label="关闭">×</button></div>
   <div class="modal-body"><h2 id="qqCommunityTitle">QQ 交流群</h2>
-    <p>目前暂无 QQ 交流群入群渠道。</p>
+    <p data-config-text="community.qqModal">目前暂无 QQ 交流群入群渠道。</p>
     <div class="modal-actions"><button class="ghost-btn" type="button" data-close>返回导航</button></div>
   </div>
 </dialog>
 <dialog class="modal community-info-modal" id="tgCommunityModal" aria-labelledby="tgCommunityTitle">
   <div class="modal-top"><span class="modal-kicker">游戏交流 / Telegram</span><button type="button" class="close" data-close aria-label="关闭">×</button></div>
   <div class="modal-body"><h2 id="tgCommunityTitle">Telegram 交流群</h2>
-    <p>暂不公开，有需要的小伙伴自己找人拉自己一下吧。</p>
+    <p data-config-text="community.tgModal">暂不公开，有需要的小伙伴自己找人拉自己一下吧。</p>
     <div class="modal-actions"><button class="ghost-btn" type="button" data-close>返回导航</button></div>
   </div>
 </dialog>
 <dialog class="modal community-info-modal" id="internalCommunityModal" aria-labelledby="internalCommunityTitle">
   <div class="modal-top"><span class="modal-kicker">游戏交流 / Telegram</span><button type="button" class="close" data-close aria-label="关闭">×</button></div>
   <div class="modal-body"><h2 id="internalCommunityTitle">授权用户 TG 内部群</h2>
-    <p>已有授权用户的 Telegram 内部交流群，付费用户请在 TG 交流群联系管理员，确认后邀请入群。</p>
+    <p data-config-text="community.internalModal">已有授权用户的 Telegram 内部交流群，付费用户请在 TG 交流群联系管理员，确认后邀请入群。</p>
     <div class="modal-actions"><button class="ghost-btn" type="button" data-close>返回导航</button></div>
   </div>
 </dialog>
@@ -231,23 +231,23 @@
 <p class="download-url-fallback" hidden="" id="downloadUrlFallback"></p>
 </div>
 </dialog>
-<!-- 最新公告：以后只需修改 dailyAnnouncementCopy 内的 p 段落文字 -->
+<!-- 最新公告：以后统一在 config.js 的 editableTexts.announcement 中修改文案 -->
 <dialog aria-labelledby="dailyAnnouncementTitle" aria-describedby="dailyAnnouncementCopy" class="modal daily-announcement-modal" id="dailyAnnouncementModal">
   <div class="modal-top">
-    <span class="modal-kicker">观星 · 最新消息</span>
+    <span class="modal-kicker" data-config-text="announcement.kicker">观星 · 最新消息</span>
   </div>
   <div class="modal-body">
-    <h2 id="dailyAnnouncementTitle" tabindex="-1" autofocus>最新公告</h2>
+    <h2 id="dailyAnnouncementTitle" data-config-text="announcement.title" tabindex="-1" autofocus>最新公告</h2>
     <div class="daily-announcement-copy" id="dailyAnnouncementCopy">
-      <p>现已停止售卖，此观星导航将正常保留。</p>
-      <p>如需了解后续消息，请关注 <button type="button" class="daily-tg-open" id="dailyAnnouncementTgLink" data-modal="tgCommunityModal">TG 交流群</button>。</p>
-      <p>因游戏更新无法使用，请下滑使用旧安装包或者等待适配</p>
+      <p data-config-text="announcement.line1">现已停止售卖，此观星导航将正常保留。</p>
+      <p><span data-config-text="announcement.line2Before">如需了解后续消息，请关注 </span><button type="button" class="daily-tg-open" id="dailyAnnouncementTgLink" data-modal="tgCommunityModal" data-config-text="announcement.tgButton">TG 交流群</button><span data-config-text="announcement.line2After">。</span></p>
+      <p data-config-text="announcement.line3">因游戏更新无法使用，请下滑使用旧安装包或者等待适配</p>
     </div>
     <div class="modal-actions">
-      <button class="main-button" data-close="" type="button">我知道了</button>
+      <button class="main-button" data-close="" data-config-text="announcement.confirm" type="button">我知道了</button>
     </div>
-    <p class="daily-announcement-hint">每次打开网页时显示</p>
+    <p class="daily-announcement-hint" data-config-text="announcement.hint">每次打开网页时显示</p>
   </div>
 </dialog>
-<script src="config.js"></script><script src="lang-map.js"></script><script src="script.js?v=20261021-2"></script>
+<script src="config.js?v=20261023-normalized"></script><script src="lang-map.js"></script><script src="script.js?v=20261023-normalized"></script>
 </body></html>

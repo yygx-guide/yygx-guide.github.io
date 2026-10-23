@@ -13,6 +13,7 @@
   setHref('featureIntroLink',intro);
   setHref('trialLink',valid(cfg.trialUrl)||intro);
   setHref('licenseGuideLink',valid(cfg.licenseGuideUrl) || fullGuide);
+  setHref('legacyPackageLink',valid(cfg.legacyPackageUrl));
   setHref('manualTutorialLink',valid(cfg.manualUrl));
   // TG 交流群不公开邀请链接，入口只展示说明弹窗。
   const faqFallback = valid(cfg.faqUrl) || fullGuide;
@@ -51,12 +52,16 @@
   // 店铺入口已经彻底断开，不在前端保留购买跳转地址。
   const putText = (id, value) => { const el=byId(id); if(el) el.textContent=value; };
   putText('heroSalesStatus', typeof cfg.homepageNotice === 'string' ? cfg.homepageNotice : '使用教程与相关说明持续更新');
-  putText('communitySalesNote', '目前暂停新授权购买及预订');
-  putText('purchaseTitle', '闲鱼店铺');
-  putText('purchaseSubtitle', '暂停购买');
-  putText('licenseStateNotice', '暂停购买，如需使用请签到获取');
+  // 所有常用文案统一从 config.js 的 editableTexts 读取。
+  // HTML 中的原文字作为脚本未加载时的备用显示，不需要日常修改。
+  const editableTexts = cfg.editableTexts || {};
+  document.querySelectorAll('[data-config-text]').forEach(el => {
+    const segments = (el.getAttribute('data-config-text') || '').split('.');
+    const value = segments.reduce((obj, key) => obj && obj[key], editableTexts);
+    if (typeof value === 'string') el.textContent = value;
+  });
   const purchaseBadge = byId('purchaseBadge');
-  if (purchaseBadge) { purchaseBadge.textContent = '暂停购买'; purchaseBadge.hidden = false; }
+  if (purchaseBadge) purchaseBadge.hidden = false;
   const modalNames = ['noticeModal','featureModal','licenseModal','exportModal','faqModal','qqCommunityModal','tgCommunityModal','internalCommunityModal','downloadModal'];
   const openModal = id => { refreshLang(); const dialog=byId(id);if(dialog&&typeof dialog.showModal==='function')dialog.showModal(); };
   document.querySelectorAll('[data-modal]').forEach(el => el.addEventListener('click', () => {
