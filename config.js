@@ -56,7 +56,7 @@ const SITE_CONFIG = {
       line2Before: '如需了解后续消息，请关注 ',
       tgButton: 'TG 交流群', // 这几个字仍是可点开的群说明弹窗
       line2After: '。',
-      line3: '因游戏更新无法使用，请下滑使用旧安装包或者等待适配',
+      line3: '因游戏版本更新暂无法使用，请下滑使用旧安装包或者等待适配',
       confirm: '我知道了',
       hint: '每次打开网页时显示'
     },
@@ -66,8 +66,8 @@ const SITE_CONFIG = {
       qqCard: '无',
       tgCard: '暂不公开',
       internalCard: '打开查看入群说明',
-      qqModal: '目前暂无 QQ 交流群入群渠道。',
-      tgModal: '暂不公开，有需要的小伙伴自己找人拉一下吧。',
+      qqModal: '无 QQ 交流群。',
+      tgModal: '暂不公开，有需要的小伙伴自己找群友拉一下吧。',
       internalModal: '已有授权用户的 Telegram 内部交流群，付费用户请在 TG 交流群联系机器人“步惊云”入群。'
     },
 
