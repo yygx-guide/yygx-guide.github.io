@@ -5,10 +5,10 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="#ece5d6" name="theme-color"/>
-<meta content="观星使用导航：使用须知、功能介绍与试用、授权码说明与获取、安卓/iOS/鸿蒙存档导出教程、使用问题与游戏交流。" name="description"/>
+<meta content="观星使用导航：使用前须知、试用与授权码获取、安卓/iOS/鸿蒙存档导出教程、功能试用须知、使用问题与游戏交流。" name="description"/>
 <title>观星 · 使用导航</title>
 <link href="assets/app-icon.png" rel="icon" type="image/png"/>
-<link href="style.css?v=20261023-normalized" rel="stylesheet"/>
+<link href="style.css?v=20261024-nav" rel="stylesheet"/>
 </head>
 <body>
 <div class="wrap">
@@ -21,7 +21,7 @@
 <div>
 <div class="eyebrow">观 星 · 新 手 指 引</div>
 <h1 id="heroTitle">观星 <em>使用导航</em></h1>
-<p>第一次接触观星？从功能了解、授权说明到存档导出，<br class="desktop-only"/>按顺序找到你需要的内容。</p>
+<p>第一次接触观星？从使用须知、试用授权到存档导出，<br class="desktop-only"/>按顺序找到你需要的内容。</p>
 <div class="hero-actions"><a class="main-button" href="#start">开始了解 <span aria-hidden="true">→</span></a><button class="secondary-link download-trigger" data-modal="downloadModal" type="button">观星 APP 下载 ↗</button></div>
 <p class="status-note"><span class="status-dot"></span><span id="heroSalesStatus">使用教程与相关说明持续更新</span></p>
 </div>
@@ -30,14 +30,11 @@
 <div class="section-head"><h2 id="flowTitle">从这里开始</h2><p>按使用顺序整理 · 点击查看详情</p></div>
 <div class="card-grid">
 <button class="nav-card" data-modal="noticeModal" type="button"><span class="card-head"><span class="num">01 <i>/ 使用前</i></span><span class="card-arrow">↗</span></span><span class="card-title">使用前须知</span><span class="card-desc">
-  <strong style="color:var(--pine-deep);font-weight:700;">
-    安卓 / 苹果 / 鸿蒙能用吗？
-  </strong>
-  · 使用说明与注意事项
+  <strong style="color:var(--pine-deep);font-weight:700;">安卓 / 苹果 / 鸿蒙能用吗？</strong> · 使用说明与注意事项
 </span><span class="card-foot">查看须知 →</span></button>
-<button class="nav-card feature-card" data-modal="featureModal" type="button"><span class="card-head"><span class="num">02 <i>/ 先了解</i></span><span class="card-arrow">↗</span></span><span class="card-title">功能介绍与试用</span><span class="card-desc">观星能做什么？先看看功能，再了解体验方式</span><span class="card-foot">了解功能与试用 →</span></button>
-<button class="nav-card" data-modal="licenseModal" type="button"><span class="card-head"><span class="num">03 / 授权说明</span><span class="card-arrow">↗</span></span><span class="card-title">授权码说明与获取 <span class="tiny-tag" hidden="" id="salesBadge"></span></span><span class="card-desc">了解授权规则 · 查看获取状态</span><span class="card-foot">查看说明与获取 →</span></button>
-<button class="nav-card" data-modal="exportModal" id="exportCard" type="button"><span class="card-head"><span class="num">04 <i>/ 存档导出</i></span><span class="card-arrow">↗</span></span><span class="card-title">导出存档教程</span><span class="card-desc">选择设备系统，查看对应的导出教程 · 安卓 / iOS / 鸿蒙</span><span class="card-foot">选择设备系统 →</span></button>
+<button class="nav-card" data-modal="licenseModal" type="button"><span class="card-head"><span class="num">02 <i>/ 试用与授权</i></span><span class="card-arrow">↗</span></span><span class="card-title">试用与授权码获取</span><span class="card-desc">试用方式、授权规则及获取途径</span><span class="card-foot">查看试用与授权说明 →</span></button>
+<button class="nav-card" data-modal="exportModal" id="exportCard" type="button"><span class="card-head"><span class="num">03 <i>/ 存档导出</i></span><span class="card-arrow">↗</span></span><span class="card-title">导出存档教程</span><span class="card-desc">选择设备系统，查看对应的导出教程 · 安卓 / iOS / 鸿蒙</span><span class="card-foot">选择设备系统 →</span></button>
+<button class="nav-card feature-card" data-modal="featureModal" type="button"><span class="card-head"><span class="num">04 <i>/ 功能试用</i></span><span class="card-arrow">↗</span></span><span class="card-title">功能试用须知</span><span class="card-desc">了解功能试用过程中的注意事项</span><span class="card-foot">查看功能试用须知 →</span></button>
 <button class="nav-card wide-card faq-entry" data-modal="faqModal" id="faqCard" type="button">
   <span class="card-head"><span class="num">05 <i>/ 使用问题</i></span><span class="card-arrow">↗</span></span>
   <span class="card-title">使用问题</span>
@@ -105,44 +102,41 @@
 </div>
 <div class="modal-actions"><a class="main-button" href="#" id="noticeIntroLink" rel="noopener noreferrer" target="_blank">查看初次使用说明 ↗</a><button class="ghost-btn" data-close="" type="button">返回导航</button></div></div></dialog>
 <dialog aria-labelledby="featureTitle" class="modal" id="featureModal">
-<div class="modal-top"><span class="modal-kicker">02 / 功能介绍与试用</span><button aria-label="关闭" class="close" data-close="" type="button">×</button></div>
-<div class="modal-body feature-modal-body">
-<h2 id="featureTitle">观星能帮你做什么？</h2>
-<p class="feature-summary">读取游戏存档，提前查看部分序列，辅助计算操作方案。</p>
-<div aria-label="核心功能" class="feature-points">
-<div class="feature-point"><strong>提前看序列</strong></div>
-<div class="feature-point"><strong>自动算方案</strong></div>
-<div class="feature-point"><strong>减少试错</strong></div>
-</div>
-<div class="feature-beginner-tip">
-<span>初次使用？请先查看</span>
-<a href="#" id="featureIntroLink" rel="noopener noreferrer" target="_blank">《初次使用说明》↗</a>
-</div>
-<div class="modal-actions">
-<a class="main-button" href="#" id="trialLink" rel="noopener noreferrer" target="_blank">查看功能介绍与试用 ↗</a>
-<button class="ghost-btn" data-close="" type="button">返回导航</button>
-</div>
-</div>
+  <div class="modal-top"><span class="modal-kicker">04 / 功能试用须知</span><button aria-label="关闭" class="close" data-close="" type="button">×</button></div>
+  <div class="modal-body feature-modal-body">
+    <h2 id="featureTitle">功能试用须知</h2>
+    <p class="feature-summary">查看观星功能试用的相关说明和注意事项，使用前建议先了解。</p>
+    <div class="modal-actions">
+      <a class="main-button" href="#" id="trialLink" rel="noopener noreferrer" target="_blank">查看功能试用须知 ↗</a>
+      <button class="ghost-btn" data-close="" type="button">返回导航</button>
+    </div>
+  </div>
 </dialog>
-<dialog aria-labelledby="licenseTitle" class="modal" id="licenseModal"><div class="modal-top"><span class="modal-kicker">03 / 授权码说明与获取</span><button aria-label="关闭" class="close" data-close="" type="button">×</button></div><div class="modal-body"><h2 id="licenseTitle">授权码说明与获取</h2>
-<p class="license-intro">查看授权规则，或了解当前获取方式。</p>
-<div aria-label="授权码入口" class="license-choices">
-<a class="license-choice license-choice-guide" href="#" id="licenseGuideLink" rel="noopener noreferrer" target="_blank">
-<span class="license-choice-index">01 / 规则</span>
-<strong>授权码说明与获取</strong>
-<small>期限、次数、账号绑定及获取规则<br>免费、付费授权码获取</small>
-<span aria-hidden="true" class="license-choice-arrow">↗</span>
-</a>
-<div class="license-choice license-choice-purchase is-disabled" id="purchaseLink" aria-disabled="true">
-<span class="license-choice-index">02 / 店铺 <span class="license-pause-tag" id="purchaseBadge" data-config-text="sales.badge">暂停购买</span></span>
-<strong id="purchaseTitle" data-config-text="sales.title">闲鱼店铺</strong>
-<small id="purchaseSubtitle" data-config-text="sales.subtitle">暂停购买</small>
-</div>
-</div>
-<p class="license-state-note" id="licenseStateNotice" data-config-text="sales.notice" role="status">暂停购买，如需使用请签到获取</p>
-<div class="modal-actions"><button class="ghost-btn" data-close="" type="button">返回导航</button></div></div></dialog>
+<dialog aria-labelledby="licenseTitle" class="modal" id="licenseModal">
+  <div class="modal-top"><span class="modal-kicker">02 / 试用与授权</span><button aria-label="关闭" class="close" data-close="" type="button">×</button></div>
+  <div class="modal-body">
+    <h2 id="licenseTitle">试用与授权码获取</h2>
+    <p class="license-intro">选择需要了解的内容，查看对应规则和获取方式。</p>
+    <div aria-label="试用与授权码入口" class="license-choices">
+      <a class="license-choice license-choice-guide" href="#" id="trialGuideLink" rel="noopener noreferrer" target="_blank">
+        <span class="license-choice-index">2.1 / 试用</span>
+        <strong>试用说明</strong>
+        <small>了解试用方式与体验规则</small>
+        <span aria-hidden="true" class="license-choice-arrow">↗</span>
+      </a>
+      <a class="license-choice license-choice-guide" href="#" id="licenseGuideLink" rel="noopener noreferrer" target="_blank">
+        <span class="license-choice-index">2.2 / 授权</span>
+        <strong>授权码获取</strong>
+        <small>期限、次数、绑定规则及获取方式</small>
+        <span aria-hidden="true" class="license-choice-arrow">↗</span>
+      </a>
+    </div>
+    <p class="license-state-note" id="licenseStateNotice" data-config-text="sales.notice" role="status">暂停购买，如需使用请签到获取</p>
+    <div class="modal-actions"><button class="ghost-btn" data-close="" type="button">返回导航</button></div>
+  </div>
+</dialog>
 <dialog aria-labelledby="exportModalTitle" class="modal export-modal" id="exportModal">
-<div class="modal-top"><span class="modal-kicker">04 / 存档导出教程</span><button aria-label="关闭" class="close" data-close="" type="button">×</button></div>
+<div class="modal-top"><span class="modal-kicker">03 / 存档导出教程</span><button aria-label="关闭" class="close" data-close="" type="button">×</button></div>
 <div class="modal-body">
 <h2 id="exportModalTitle">请选择设备系统</h2>
 <p class="export-intro">选择自己的设备系统，查看对应教程。</p>
@@ -191,21 +185,21 @@
 <dialog class="modal community-info-modal" id="qqCommunityModal" aria-labelledby="qqCommunityTitle">
   <div class="modal-top"><span class="modal-kicker">游戏交流 / QQ</span><button type="button" class="close" data-close aria-label="关闭">×</button></div>
   <div class="modal-body"><h2 id="qqCommunityTitle">QQ 交流群</h2>
-    <p data-config-text="community.qqModal">目前暂无 QQ 交流群入群渠道。</p>
+    <p data-config-text="community.qqModal">无 QQ 交流群。</p>
     <div class="modal-actions"><button class="ghost-btn" type="button" data-close>返回导航</button></div>
   </div>
 </dialog>
 <dialog class="modal community-info-modal" id="tgCommunityModal" aria-labelledby="tgCommunityTitle">
   <div class="modal-top"><span class="modal-kicker">游戏交流 / Telegram</span><button type="button" class="close" data-close aria-label="关闭">×</button></div>
   <div class="modal-body"><h2 id="tgCommunityTitle">Telegram 交流群</h2>
-    <p data-config-text="community.tgModal">暂不公开，有需要的小伙伴自己找人拉自己一下吧。</p>
+    <p data-config-text="community.tgModal">暂不公开，有需要的小伙伴自己找群友拉一下吧。</p>
     <div class="modal-actions"><button class="ghost-btn" type="button" data-close>返回导航</button></div>
   </div>
 </dialog>
 <dialog class="modal community-info-modal" id="internalCommunityModal" aria-labelledby="internalCommunityTitle">
   <div class="modal-top"><span class="modal-kicker">游戏交流 / Telegram</span><button type="button" class="close" data-close aria-label="关闭">×</button></div>
   <div class="modal-body"><h2 id="internalCommunityTitle">授权用户 TG 内部群</h2>
-    <p data-config-text="community.internalModal">已有授权用户的 Telegram 内部交流群，付费用户请在 TG 交流群联系管理员，确认后邀请入群。</p>
+    <p data-config-text="community.internalModal">已有授权用户的 Telegram 内部交流群，付费用户请在 TG 交流群联系机器人“步惊云”入群。</p>
     <div class="modal-actions"><button class="ghost-btn" type="button" data-close>返回导航</button></div>
   </div>
 </dialog>
@@ -241,7 +235,7 @@
     <div class="daily-announcement-copy" id="dailyAnnouncementCopy">
       <p data-config-text="announcement.line1">现已停止售卖，此观星导航将正常保留。</p>
       <p><span data-config-text="announcement.line2Before">如需了解后续消息，请关注 </span><button type="button" class="daily-tg-open" id="dailyAnnouncementTgLink" data-modal="tgCommunityModal" data-config-text="announcement.tgButton">TG 交流群</button><span data-config-text="announcement.line2After">。</span></p>
-      <p data-config-text="announcement.line3">因游戏更新无法使用，请下滑使用旧安装包或者等待适配</p>
+      <p data-config-text="announcement.line3">因游戏版本更新暂无法使用，请下滑使用旧安装包或者等待适配</p>
     </div>
     <div class="modal-actions">
       <button class="main-button" data-close="" data-config-text="announcement.confirm" type="button">我知道了</button>
@@ -249,5 +243,5 @@
     <p class="daily-announcement-hint" data-config-text="announcement.hint">每次打开网页时显示</p>
   </div>
 </dialog>
-<script src="config.js?v=20261023-normalized"></script><script src="lang-map.js"></script><script src="script.js?v=20261023-normalized"></script>
+<script src="config.js?v=20261024-nav"></script><script src="lang-map.js"></script><script src="script.js?v=20261024-nav"></script>
 </body></html>

@@ -10,8 +10,8 @@
   const appDownloadUrl = valid(cfg.appDownloadUrl);
   setHref('appDownloadLink',appDownloadUrl);
   setHref('noticeIntroLink',intro);
-  setHref('featureIntroLink',intro);
-  setHref('trialLink',valid(cfg.trialUrl)||intro);
+  setHref('trialGuideLink',valid(cfg.trialUrl) || intro); // 2.1 试用说明
+  setHref('trialLink',valid(cfg.featureNoticeUrl) || fullGuide); // 04 功能试用须知
   setHref('licenseGuideLink',valid(cfg.licenseGuideUrl) || fullGuide);
   setHref('legacyPackageLink',valid(cfg.legacyPackageUrl));
   setHref('manualTutorialLink',valid(cfg.manualUrl));

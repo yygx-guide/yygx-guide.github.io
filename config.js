@@ -23,7 +23,8 @@ const SITE_CONFIG = {
   appDownloadUrl: 'https://yygx.download/', // 首页观星 APP 下载
   introUrl: 'https://scnxd815i94m.feishu.cn/wiki/IKapw2KCfirEb4kKBsbcrr9xnsc', // 初次使用说明
   fullGuideUrl: 'https://scnxd815i94m.feishu.cn/wiki/YSwLwVUM5icmxykY2ancqos2nXa', // 完整教程（备用地址）
-  trialUrl: 'https://scnxd815i94m.feishu.cn/wiki/Ifgkw3qDtiOIbwkBD5ScJzoCnaf', // 功能介绍与试用
+  trialUrl: 'https://scnxd815i94m.feishu.cn/wiki/C2hhwrFpIipSTBk0zlEcY5Hknhf', // 2.1 试用说明
+  featureNoticeUrl: 'https://scnxd815i94m.feishu.cn/wiki/Ifgkw3qDtiOIbwkBD5ScJzoCnaf', // 04 功能试用须知
   licenseGuideUrl: 'https://scnxd815i94m.feishu.cn/wiki/W6oXwuNaHiaY0VkIEa1ctIaVnMd', // 授权规则
   manualUrl: 'https://scnxd815i94m.feishu.cn/wiki/DnCmwVpxFiHEz4kJSZ5cpDj4nHf', // 人工代导说明
   faqUrl: 'https://scnxd815i94m.feishu.cn/wiki/W01qwXumRinvU4kfqppcOSHwnxe', // 使用问题完整说明
