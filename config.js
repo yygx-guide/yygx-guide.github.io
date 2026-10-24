@@ -28,6 +28,7 @@ const SITE_CONFIG = {
   licenseGuideUrl: 'https://scnxd815i94m.feishu.cn/wiki/W6oXwuNaHiaY0VkIEa1ctIaVnMd', // 授权规则
   manualUrl: 'https://scnxd815i94m.feishu.cn/wiki/DnCmwVpxFiHEz4kJSZ5cpDj4nHf', // 人工代导说明
   faqUrl: 'https://scnxd815i94m.feishu.cn/wiki/W01qwXumRinvU4kfqppcOSHwnxe', // 使用问题完整说明
+  storeUrl: 'https://m.tb.cn/h.ja2pSb2?tk=kqMZTqOyXKs', // 闲鱼店铺入口：恢复历史地址；如店铺地址变化请在这里修改。当前仍暂停购买
   legacyPackageUrl: 'https://hcnorqxeoi1e.feishu.cn/wiki/RuHmwmjY3iuQagkHdYGcFTRTn6f', // 页面最底部的「部分渠道旧安装包」
   // QQ、TG 没有直达入口，只使用提示弹窗；这里不保存邀请链接。
 
@@ -72,8 +73,10 @@ const SITE_CONFIG = {
       internalModal: '已有授权用户的 Telegram 内部交流群，付费用户请在 TG 交流群联系机器人“步惊云”入群。'
     },
 
-    // 当前销售暂停：只可改展示文字；店铺按钮保持禁用，不会重新连接购买链接。
+    // 当前暂停售卖，但允许用户查看店铺。实际跳转链接通过上方 storeUrl 修改；不代表恢复接单。
     sales: {
+      entryPrefix: '购买入口', // 试用与授权弹窗底部的细小入口标签
+      entryName: '闲鱼店铺', // 可点击链接的显示名称
       communityNote: '目前暂停新授权购买及预订',
       badge: '暂停购买',
       title: '闲鱼店铺',

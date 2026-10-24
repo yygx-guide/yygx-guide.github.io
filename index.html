@@ -8,7 +8,7 @@
 <meta content="观星使用导航：使用前须知、试用与授权码获取、安卓/iOS/鸿蒙存档导出教程、功能试用须知、使用问题与游戏交流。" name="description"/>
 <title>观星 · 使用导航</title>
 <link href="assets/app-icon.png" rel="icon" type="image/png"/>
-<link href="style.css?v=20261024-nav" rel="stylesheet"/>
+<link href="style.css?v=20261024-storefaq" rel="stylesheet"/>
 </head>
 <body>
 <div class="wrap">
@@ -131,6 +131,15 @@
         <span aria-hidden="true" class="license-choice-arrow">↗</span>
       </a>
     </div>
+    <!-- 保留低调的店铺入口；购买仍为暂停状态，网址在 config.js 的 storeUrl 管理 -->
+    <div class="store-entry-row" aria-label="店铺入口">
+      <span class="store-entry-caption" data-config-text="sales.entryPrefix">购买入口</span>
+      <a class="store-entry-link" id="storeLink" href="#" target="_blank" rel="noopener noreferrer" aria-label="闲鱼店铺，当前暂停购买">
+        <span data-config-text="sales.entryName">闲鱼店铺</span>
+        <span class="store-entry-status" data-config-text="sales.badge">暂停购买</span>
+        <span class="store-entry-arrow" aria-hidden="true">↗</span>
+      </a>
+    </div>
     <p class="license-state-note" id="licenseStateNotice" data-config-text="sales.notice" role="status">暂停购买，如需使用请签到获取</p>
     <div class="modal-actions"><button class="ghost-btn" data-close="" type="button">返回导航</button></div>
   </div>
@@ -243,5 +252,5 @@
     <p class="daily-announcement-hint" data-config-text="announcement.hint">每次打开网页时显示</p>
   </div>
 </dialog>
-<script src="config.js?v=20261024-nav"></script><script src="lang-map.js"></script><script src="script.js?v=20261024-nav"></script>
+<script src="config.js?v=20261024-storefaq"></script><script src="lang-map.js"></script><script src="script.js?v=20261024-storefaq"></script>
 </body></html>

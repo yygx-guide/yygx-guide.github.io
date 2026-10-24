@@ -1,0 +1,137 @@
+# 观星导航｜统一维护说明
+
+> 适用版本：2026-10-24 流程调整版。以后把常用的链接与弹窗文案集中到 `config.js`。
+>
+> 网站：<https://yygx-guide.github.io/> ｜GitHub 仓库：<https://github.com/yygx-guide/yygx-guide.github.io>
+
+## 1. 先记住一句话
+
+**改链接、公告、群提示、购买说明和旧安装包卡片文字 → 只改 `config.js`。**
+
+网站结构在 `index.html`，外观在 `style.css`，点击操作与功能在 `script.js`，简繁切换字表在 `lang-map.js`，图片在 `assets/`。正常维护不需要碰后三项。网页上不经常调整的其它介绍文字仍在 `index.html`，可以通过搜索原文找到；这类文字没有搬走，以减少对原有页面结构的改动。
+
+## 2. 修改项目索引
+
+| 要修改的内容 | 文件 | 找到的配置项 |
+|---|---|---|
+| 最新公告第一段 | `config.js` | `editableTexts.announcement.line1` |
+| 最新公告第二段，TG群前面的文字 | `config.js` | `editableTexts.announcement.line2Before` |
+| TG群按钮的名字 | `config.js` | `editableTexts.announcement.tgButton` |
+| 最新公告第二段，TG群后面的标点 | `config.js` | `editableTexts.announcement.line2After` |
+| 最新公告第三段（游戏更新提示） | `config.js` | `editableTexts.announcement.line3` |
+| 公告标题、确认按钮、底下的提示 | `config.js` | `editableTexts.announcement.title / confirm / hint` |
+| 是否每次打开都弹公告 | `config.js` | `dailyAnnouncementEnabled` |
+| 首页绿色圆点旁的小提示 | `config.js` | `homepageNotice` |
+| 观星 APP 下载网址 | `config.js` | `appDownloadUrl` |
+| 旧安装包入口网址 | `config.js` | `legacyPackageUrl` |
+| 初次使用说明 | `config.js` | `introUrl` |
+| 02 → 2.1 试用说明 | `config.js` | `trialUrl` |
+| 02 → 2.2 授权码获取 | `config.js` | `licenseGuideUrl` |
+| 04 功能试用须知 | `config.js` | `featureNoticeUrl` |
+| 人工代导说明 | `config.js` | `manualUrl` |
+| 使用问题完整说明 | `config.js` | `faqUrl` |
+| 四类问题各自的文档网址 | `config.js` | `faqCategoryUrls` 下 4 个条目 |
+| 安卓 / 苹果 / 鸿蒙的导出教程 | `config.js` | `tutorialUrls` 下 3 个条目 |
+| QQ / TG / 内部 TG 的卡片短说明 | `config.js` | `editableTexts.community.qqCard / tgCard / internalCard` |
+| 三个交流群点开后的说明 | `config.js` | `editableTexts.community.qqModal / tgModal / internalModal` |
+| 购买暂停文案 | `config.js` | `editableTexts.sales` |
+| “其他文件”标题、介绍、旧安装包卡片名称 | `config.js` | `editableTexts.legacyFiles` |
+| 网站主页标题、其它静态介绍和卡片结构 | `index.html` | 搜索你在网页上看到的原文 |
+| 字体、间距、色彩、卡片尺寸、弹窗样式 | `style.css` | 按对应 CSS 类名修改 |
+| logo、背景图片 | `assets/` | 更换素材，注意维持原文件名或同步更新引用 |
+
+### 特别说明：旧安装包
+
+此前新增的“部分渠道旧安装包”地址写死在 `index.html` 中，**现在已经迁移到 `config.js` 的 `legacyPackageUrl`**。保留目前正式网址：
+
+`https://hcnorqxeoi1e.feishu.cn/wiki/RuHmwmjY3iuQagkHdYGcFTRTn6f`
+
+以后只改这一处，`index.html` 中的 `href="#"` 是等待脚本填入网址的占位符，**不用动它**。
+
+### 五个使用步骤
+
+1. 使用前须知：`introUrl`
+2. 试用与授权码获取：2.1 `trialUrl`，2.2 `licenseGuideUrl`
+3. 导出存档教程：`tutorialUrls.android / ios / harmony`
+4. 功能试用须知：`featureNoticeUrl`
+5. 使用问题：`faqUrl`（可进一步设置 `faqCategoryUrls`）
+
+五张卡片的标题及顺序在 `index.html`，只是替换链接和公告时不需要修改 HTML。
+
+## 3. 每次只改 `config.js` 的操作步骤
+
+1. 打开 GitHub 仓库首页，找到 `config.js`，点击铅笔图标编辑。
+2. 按 `Ctrl+F` 搜索上表对应的配置项名称，例如 `legacyPackageUrl`。
+3. 只修改英文单引号中间的文字或网址，保留外面的单引号、逗号、冒号和大括号。
+4. 点击 `Commit changes` 保存，GitHub Pages 自动部署。
+5. 访问网页核对；若还是旧文案，先使用 `Ctrl+Shift+R` 强制刷新，或者无痕窗口验证。
+
+**示例：更换旧安装包链接**
+
+```js
+legacyPackageUrl: 'https://新的网址',
+```
+
+**示例：只改公告第三段**
+
+```js
+line3: '这里输入下一次公告的新内容',
+```
+
+**示例：暂停自动弹窗**
+
+```js
+dailyAnnouncementEnabled: false,
+```
+
+改回 `true` 就会恢复**每次打开或刷新网页弹出**的现有机制。这一版不是每天一次。
+
+## 4. 修改时要避免的错误
+
+- **不要只改 `index.html` 里你看到的公告文字。** 正常访问时，程序会优先使用 `config.js` 中的内容覆盖相应显示文字。公告应改 `config.js`。
+- **不要把网址直接写回旧安装包的 HTML `href`。** 外链统一在 `config.js`。
+- 别把 `true`、`false` 写成带引号的 `'true'`、`'false'`。
+- 不要删除代码中的英文标点或一整行的括号；如果写入英文单引号（如 `don't`），应改用 `don\'t` 或使用双引号包裹整段字符串。
+- 不要仅通过修改“暂停购买”几个字就以为重新开启了购买功能：现有店铺卡片是**结构上禁用**的，本版没有店铺外链。
+- 不要把个人账号密码、授权码、API 密钥放在 GitHub 网站代码里；公开仓库中的内容任何人都能查看。
+
+## 5. 文件更新说明
+
+本 ZIP 的网页功能**只需要替换三个文件**：
+
+- `config.js`：将外链、常改的文字、公告开关分组管理。
+- `script.js`：在页面加载时自动把配置里的地址和文字填到原有位置。
+- `index.html`：给对应文字加标识，并把旧安装包链接改为从配置读取；视觉结构不变。
+
+另附本份 `修改指南.md`，建议一并覆盖仓库中旧版本的同名文件，不要新增第二份指南。
+
+`style.css`、`lang-map.js`、整个 `assets/` 文件夹**不要删除，也不需要重新上传**。
+
+## 6. 发布前自查
+
+- 首页“使用流程”5个入口正常。
+- 旧安装包卡片仍有原来的卡片样式，点击前往相同的飞书新地址。
+- QQ、TG、内部 TG 的入口保持说明弹窗，不展示群邀请链接。
+- 没有恢复任何店铺跳转；暂停购买说明保留。
+- 进入网站自动出现公告；点击“我知道了”关闭；刷新再进入仍会弹出。
+- 简体 / 繁體 / 护眼模式可以正常切换。
+
+如果只改了 `config.js`，原样上传它一个文件即可，无须重复上传其它文件。
+
+## 7. 本次更新（2026-10-24）
+
+- 02：改为“试用与授权码获取”，点开后包含 2.1 试用说明及 2.2 授权码获取两张卡片。
+- 03：导出存档教程，原有系统链接保持。
+- 04：功能试用须知，指向原先的功能试用注意事项文档。
+- 05：使用问题不变。
+- 首页公告、QQ / Telegram / TG内部群弹窗文案已对照最新截图统一；保持每次打开或刷新网页出现公告。
+- 旧安装包地址及其他教程链接不变。
+
+
+## 2026-10-24：店铺入口及使用问题目录优化
+
+- **购买入口（暂停购买）**：在第 02 步「试用与授权码获取」的两张卡片下方增加小型店铺入口。当前仍为暂停购买，仅供用户查看店铺，不表示接受新订单。
+- **修改店铺地址**：打开 `config.js`，找到 `storeUrl`，修改引号中的地址。目前使用的是曾在旧版网站配置中出现的店铺短链，建议核对该链接仍可访问且指向你的店铺。
+- **修改入口名称**：打开 `config.js`，在 `editableTexts.sales` 修改 `entryPrefix`（购买入口）、`entryName`（闲鱼店铺）、`badge`（暂停购买）；`notice` 控制下方说明。
+- **使用问题目录**：仅在 `style.css` 文件末尾调整 `.faq-*` 样式，四张分类卡片压缩高度，原文案与跳转地址不变。
+- 如线上显示旧样式，强制刷新或检查 `index.html` 中的 `style.css?v=20261024-storefaq` 版本参数。

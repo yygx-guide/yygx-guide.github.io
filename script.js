@@ -13,6 +13,7 @@
   setHref('trialGuideLink',valid(cfg.trialUrl) || intro); // 2.1 试用说明
   setHref('trialLink',valid(cfg.featureNoticeUrl) || fullGuide); // 04 功能试用须知
   setHref('licenseGuideLink',valid(cfg.licenseGuideUrl) || fullGuide);
+  setHref('storeLink',valid(cfg.storeUrl)); // 店铺只提供访问入口，当前仍暂停购买
   setHref('legacyPackageLink',valid(cfg.legacyPackageUrl));
   setHref('manualTutorialLink',valid(cfg.manualUrl));
   // TG 交流群不公开邀请链接，入口只展示说明弹窗。
@@ -49,7 +50,7 @@
     }
     refreshLang();
   });
-  // 店铺入口已经彻底断开，不在前端保留购买跳转地址。
+  // 购买继续暂停，仅恢复一个低调的店铺查看入口。
   const putText = (id, value) => { const el=byId(id); if(el) el.textContent=value; };
   putText('heroSalesStatus', typeof cfg.homepageNotice === 'string' ? cfg.homepageNotice : '使用教程与相关说明持续更新');
   // 所有常用文案统一从 config.js 的 editableTexts 读取。

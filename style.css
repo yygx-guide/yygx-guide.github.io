@@ -237,3 +237,38 @@ html[data-theme="care"] .faq-directory-link:hover{background:rgba(255,255,255,.0
 html[data-theme="care"] .other-file-card{background:rgba(35,38,40,.88)}
 html[data-theme="care"] .other-file-card:hover{background:var(--paper-raised)}
 @media(max-width:600px){.other-files{padding-top:24px}.other-file-card{min-height:90px;padding:15px 14px;gap:12px}.other-file-icon{flex-basis:44px;width:44px;height:44px}.other-file-copy strong{font-size:14px}.other-file-copy small{font-size:11px}.other-file-arrow{font-size:19px}}
+
+/* 2026-10-24：第二步弹窗中保留低调的店铺购买入口 */
+.store-entry-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:15px;padding-top:14px;border-top:1px solid var(--line)}
+.store-entry-caption{font-size:12px;color:var(--muted-light)}
+.store-entry-link{display:inline-flex;align-items:center;gap:9px;min-height:33px;padding:5px 11px;border:1px solid rgba(49,89,77,.24);border-radius:4px;background:rgba(49,89,77,.035);color:var(--pine-deep);text-decoration:none;font-size:13px;transition:background .2s,border-color .2s}
+.store-entry-link:hover{background:rgba(49,89,77,.10);border-color:var(--pine)}
+.store-entry-link:focus-visible{outline:2px solid var(--pine);outline-offset:2px}
+.store-entry-status{padding:1px 6px;border-radius:3px;background:rgba(166,63,49,.07);color:var(--red-deep);font-size:11px;white-space:nowrap}
+.store-entry-arrow{font-size:15px;color:var(--pine)}
+.store-entry-link[data-empty="true"]{cursor:not-allowed;opacity:.65}
+html[data-theme="care"] .store-entry-link{background:rgba(255,255,255,.03)}
+html[data-theme="care"] .store-entry-link:hover{background:rgba(255,255,255,.07)}
+
+/* 2026-10-24：仅压缩「05 使用问题目录」的四张分类卡片，不改文案和链接 */
+.faq-modal .modal-top{padding-top:15px}
+.faq-modal .modal-body{padding-top:2px;padding-bottom:21px}
+.faq-modal h2{margin-top:3px;margin-bottom:10px}
+.faq-modal .faq-modal-intro{margin:0 0 12px!important;line-height:1.65!important}
+.faq-directory{gap:7px}
+.faq-directory-link{min-height:59px;gap:11px;padding:8px 12px}
+.faq-directory-num{width:34px;height:34px;font-size:15px}
+.faq-directory-copy{gap:1px}
+.faq-directory-copy strong{font-size:14px;line-height:1.4}
+.faq-directory-copy small{font-size:11px;line-height:1.45}
+.faq-directory-arrow{font-size:18px}
+.faq-modal .faq-modal-note{margin:10px 0 0!important}
+.faq-modal .modal-actions{margin-top:12px}
+@media(max-width:620px){
+  .faq-modal .modal-body{padding-bottom:17px}
+  .faq-directory-link{min-height:56px;padding:8px 10px;gap:9px}
+  .faq-directory-num{width:32px;height:32px;font-size:14px}
+  .faq-directory-copy strong{font-size:13px}
+  .faq-directory-copy small{font-size:11px}
+  .store-entry-row{gap:8px}
+}
