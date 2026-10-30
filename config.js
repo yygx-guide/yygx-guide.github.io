@@ -1,6 +1,6 @@
 /*
   ================================================================
-  观星导航 · 唯一日常编辑入口（config.js）
+  烟雨助手使用指南 · 唯一日常编辑入口（config.js）
   ================================================================
   修改规则：
   1. 所有网址、公告、交流群说明、销售状态文案、旧安装包名称，都在这里改。
@@ -20,11 +20,11 @@ const SITE_CONFIG = {
 
   // ======================== B. 所有外部跳转网址 ========================
   // 只在这里改网址，HTML 里不再直接保存第三方外链地址。
-  appDownloadUrl: 'https://yygx.download/', // 首页观星 APP 下载
+  appDownloadUrl: 'https://download.yyhelper.app/', // 首页烟雨助手 APP 下载
   introUrl: 'https://scnxd815i94m.feishu.cn/wiki/IKapw2KCfirEb4kKBsbcrr9xnsc', // 初次使用说明
   fullGuideUrl: 'https://scnxd815i94m.feishu.cn/wiki/YSwLwVUM5icmxykY2ancqos2nXa', // 完整教程（备用地址）
   trialUrl: 'https://scnxd815i94m.feishu.cn/wiki/C2hhwrFpIipSTBk0zlEcY5Hknhf', // 2.1 试用说明
-  featureNoticeUrl: 'https://scnxd815i94m.feishu.cn/wiki/Ifgkw3qDtiOIbwkBD5ScJzoCnaf', // 04 功能试用须知
+  featureNoticeUrl: 'https://scnxd815i94m.feishu.cn/wiki/Ifgkw3qDtiOIbwkBD5ScJzoCnaf', // 04 使用须知
   licenseGuideUrl: 'https://scnxd815i94m.feishu.cn/wiki/W6oXwuNaHiaY0VkIEa1ctIaVnMd', // 授权规则
   manualUrl: 'https://scnxd815i94m.feishu.cn/wiki/DnCmwVpxFiHEz4kJSZ5cpDj4nHf', // 人工代导说明
   faqUrl: 'https://scnxd815i94m.feishu.cn/wiki/W01qwXumRinvU4kfqppcOSHwnxe', // 使用问题完整说明
@@ -52,9 +52,9 @@ const SITE_CONFIG = {
   editableTexts: {
     // 首页弹出的「最新公告」：每次打开网页都会显示（由 A 区开关控制）。
     announcement: {
-      kicker: '观星 · 最新消息',
+      kicker: '烟雨助手 · 最新消息',
       title: '最新公告',
-      line1: '现已停止售卖，此观星导航将正常保留。',
+      line1: '现已停止售卖，此烟雨助手使用指南将正常保留。',
       line2Before: '如需了解后续消息，请关注 ',
       tgButton: 'TG 交流群', // 这几个字仍是可点开的群说明弹窗
       line2After: '。',
