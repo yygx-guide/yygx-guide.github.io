@@ -13,7 +13,8 @@
   setHref('trialGuideLink',valid(cfg.trialUrl) || intro); // 2.1 试用说明
   setHref('trialLink',valid(cfg.featureNoticeUrl) || fullGuide); // 04 功能试用须知
   setHref('licenseGuideLink',valid(cfg.licenseGuideUrl) || fullGuide);
-  setHref('storeLink',valid(cfg.storeUrl)); // 店铺只提供访问入口，当前仍暂停购买
+  setHref('storeLink',valid(cfg.storeUrl)); // 授权说明弹窗中的店铺入口
+  setHref('storeHeroLink',valid(cfg.storeUrl)); // 首页购买授权码入口
   setHref('legacyPackageLink',valid(cfg.legacyPackageUrl));
   setHref('manualTutorialLink',valid(cfg.manualUrl));
   // TG 交流群不公开邀请链接，入口只展示说明弹窗。

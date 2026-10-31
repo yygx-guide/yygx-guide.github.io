@@ -14,9 +14,9 @@
 const SITE_CONFIG = {
   // ======================== A. 功能开关与首页 ========================
   // true = 每次打开/刷新网页弹窗；false = 不自动弹窗。
-  dailyAnnouncementEnabled: true,
+  dailyAnnouncementEnabled: false,
   // 首页标题下方绿色圆点后的说明
-  homepageNotice: '使用教程与相关说明持续更新',
+  homepageNotice: '授权码购买已开放 · 请通过店铺查看',
 
   // ======================== B. 所有外部跳转网址 ========================
   // 只在这里改网址，HTML 里不再直接保存第三方外链地址。
@@ -28,7 +28,7 @@ const SITE_CONFIG = {
   licenseGuideUrl: 'https://scnxd815i94m.feishu.cn/wiki/W6oXwuNaHiaY0VkIEa1ctIaVnMd', // 授权规则
   manualUrl: 'https://scnxd815i94m.feishu.cn/wiki/DnCmwVpxFiHEz4kJSZ5cpDj4nHf', // 人工代导说明
   faqUrl: 'https://scnxd815i94m.feishu.cn/wiki/W01qwXumRinvU4kfqppcOSHwnxe', // 使用问题完整说明
-  storeUrl: 'https://m.tb.cn/h.ja2pSb2?tk=kqMZTqOyXKs', // 闲鱼店铺入口：恢复历史地址；如店铺地址变化请在这里修改。当前仍暂停购买
+  storeUrl: 'https://m.tb.cn/h.ja2pSb2?tk=kqMZTqOyXKs', // 闲鱼店铺：主页和授权弹窗共用此地址；如有变化只需修改这里
   legacyPackageUrl: 'https://hcnorqxeoi1e.feishu.cn/wiki/RuHmwmjY3iuQagkHdYGcFTRTn6f', // 页面最底部的「部分渠道旧安装包」
   // QQ、TG 没有直达入口，只使用提示弹窗；这里不保存邀请链接。
 
@@ -54,11 +54,11 @@ const SITE_CONFIG = {
     announcement: {
       kicker: '烟雨助手 · 最新消息',
       title: '最新公告',
-      line1: '现已停止售卖，此烟雨助手使用指南将正常保留。',
+      line1: '烟雨助手已开放授权码购买，可前往闲鱼店铺查看。',
       line2Before: '如需了解后续消息，请关注 ',
       tgButton: 'TG 交流群', // 这几个字仍是可点开的群说明弹窗
       line2After: '。',
-      line3: '因游戏版本更新暂无法使用，请下滑使用旧安装包或者等待适配',
+      line3: '如需了解安装与使用方法，请查看本网站中的对应教程。',
       confirm: '我知道了',
       hint: '每次打开网页时显示'
     },
@@ -73,15 +73,15 @@ const SITE_CONFIG = {
       internalModal: '已有授权用户的 Telegram 内部交流群，付费用户请在 TG 交流群联系机器人“步惊云”入群。'
     },
 
-    // 当前暂停售卖，但允许用户查看店铺。实际跳转链接通过上方 storeUrl 修改；不代表恢复接单。
+    // 已恢复购买：入口和状态文字可在这里修改；跳转地址在 B 区 storeUrl 修改。
     sales: {
       entryPrefix: '购买入口', // 试用与授权弹窗底部的细小入口标签
       entryName: '闲鱼店铺', // 可点击链接的显示名称
-      communityNote: '目前暂停新授权购买及预订',
-      badge: '暂停购买',
+      communityNote: '授权码购买已开放 · 请通过店铺查看',
+      badge: '开放购买',
       title: '闲鱼店铺',
-      subtitle: '暂停购买',
-      notice: '暂停购买，如需使用请签到获取'
+      subtitle: '开放购买',
+      notice: '已恢复授权码购买，点击店铺入口查看详情'
     },
 
     // 页面最下方「其他文件」卡片。真正的跳转地址在 B 区 legacyPackageUrl。
