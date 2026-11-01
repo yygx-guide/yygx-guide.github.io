@@ -21,7 +21,7 @@ const SITE_CONFIG = {
   // ======================== B. 所有外部跳转网址 ========================
   // 只在这里改网址，HTML 里不再直接保存第三方外链地址。
   appDownloadUrl: 'https://download.yyhelper.app/', // 首页烟雨助手 APP 下载
-  introUrl: 'https://scnxd815i94m.feishu.cn/wiki/IKapw2KCfirEb4kKBsbcrr9xnsc', // 初次使用说明
+  introUrl: 'https://scnxd815i94m.feishu.cn/wiki/RrA3wUG8ai2EZmkApTVce15mnjc', // 初次使用说明
   fullGuideUrl: 'https://scnxd815i94m.feishu.cn/wiki/YSwLwVUM5icmxykY2ancqos2nXa', // 完整教程（备用地址）
   trialUrl: 'https://scnxd815i94m.feishu.cn/wiki/C2hhwrFpIipSTBk0zlEcY5Hknhf', // 2.1 试用说明
   featureNoticeUrl: 'https://scnxd815i94m.feishu.cn/wiki/Ifgkw3qDtiOIbwkBD5ScJzoCnaf', // 04 使用须知
