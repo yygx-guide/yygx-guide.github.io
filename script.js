@@ -14,7 +14,7 @@
   setHref('trialLink',valid(cfg.featureNoticeUrl) || fullGuide); // 04 功能试用须知
   setHref('licenseGuideLink',valid(cfg.licenseGuideUrl) || fullGuide);
   setHref('storeLink',valid(cfg.storeUrl)); // 授权说明弹窗中的店铺入口
-  setHref('storeHeroLink',valid(cfg.storeUrl)); // 首页购买授权码入口
+  setHref('announcementStoreLink',valid(cfg.storeUrl)); // 首页最新公告中的购买链接
   setHref('legacyPackageLink',valid(cfg.legacyPackageUrl));
   setHref('manualTutorialLink',valid(cfg.manualUrl));
   // TG 交流群不公开邀请链接，入口只展示说明弹窗。
@@ -51,9 +51,9 @@
     }
     refreshLang();
   });
-  // 购买继续暂停，仅恢复一个低调的店铺查看入口。
+  // 店铺已恢复购买，入口仅保留在公告与 02 授权弹窗。
   const putText = (id, value) => { const el=byId(id); if(el) el.textContent=value; };
-  putText('heroSalesStatus', typeof cfg.homepageNotice === 'string' ? cfg.homepageNotice : '使用教程与相关说明持续更新');
+  putText('heroSalesStatus', typeof cfg.homepageNotice === 'string' ? cfg.homepageNotice : '授权码已恢复购买 · 详情请见最新公告');
   // 所有常用文案统一从 config.js 的 editableTexts 读取。
   // HTML 中的原文字作为脚本未加载时的备用显示，不需要日常修改。
   const editableTexts = cfg.editableTexts || {};
@@ -62,6 +62,7 @@
     const value = segments.reduce((obj, key) => obj && obj[key], editableTexts);
     if (typeof value === 'string') el.textContent = value;
   });
+  putText('heroUpdateNote', typeof cfg.homepageUpdate === 'string' ? cfg.homepageUpdate : '教程持续更新中 · 当前使用的软件为「烟雨助手」');
   const purchaseBadge = byId('purchaseBadge');
   if (purchaseBadge) purchaseBadge.hidden = false;
   const modalNames = ['noticeModal','featureModal','licenseModal','exportModal','faqModal','qqCommunityModal','tgCommunityModal','internalCommunityModal','downloadModal'];

@@ -14,9 +14,11 @@
 const SITE_CONFIG = {
   // ======================== A. 功能开关与首页 ========================
   // true = 每次打开/刷新网页弹窗；false = 不自动弹窗。
-  dailyAnnouncementEnabled: false,
+  dailyAnnouncementEnabled: true,
   // 首页标题下方绿色圆点后的说明
-  homepageNotice: '授权码购买已开放 · 请通过店铺查看',
+  homepageNotice: '授权码已恢复购买 · 详情请见最新公告',
+  // 首页绿色圆点下面第二行：小字号显示，适合放更名、教程更新说明。
+  homepageUpdate: '教程持续更新中 · 当前使用的软件为「烟雨助手」',
 
   // ======================== B. 所有外部跳转网址 ========================
   // 只在这里改网址，HTML 里不再直接保存第三方外链地址。
@@ -28,7 +30,7 @@ const SITE_CONFIG = {
   licenseGuideUrl: 'https://scnxd815i94m.feishu.cn/wiki/W6oXwuNaHiaY0VkIEa1ctIaVnMd', // 授权规则
   manualUrl: 'https://scnxd815i94m.feishu.cn/wiki/DnCmwVpxFiHEz4kJSZ5cpDj4nHf', // 人工代导说明
   faqUrl: 'https://scnxd815i94m.feishu.cn/wiki/W01qwXumRinvU4kfqppcOSHwnxe', // 使用问题完整说明
-  storeUrl: 'https://m.tb.cn/h.ja2pSb2?tk=kqMZTqOyXKs', // 闲鱼店铺：主页和授权弹窗共用此地址；如有变化只需修改这里
+  storeUrl: 'https://m.tb.cn/h.ja2pSb2?tk=kqMZTqOyXKs', // 闲鱼店铺：最新公告和 02 授权弹窗共用；不在首页按钮区显示
   legacyPackageUrl: 'https://hcnorqxeoi1e.feishu.cn/wiki/RuHmwmjY3iuQagkHdYGcFTRTn6f', // 页面最底部的「部分渠道旧安装包」
   // QQ、TG 没有直达入口，只使用提示弹窗；这里不保存邀请链接。
 
@@ -54,11 +56,10 @@ const SITE_CONFIG = {
     announcement: {
       kicker: '烟雨助手 · 最新消息',
       title: '最新公告',
-      line1: '烟雨助手已开放授权码购买，可前往闲鱼店铺查看。',
-      line2Before: '如需了解后续消息，请关注 ',
-      tgButton: 'TG 交流群', // 这几个字仍是可点开的群说明弹窗
-      line2After: '。',
-      line3: '如需了解安装与使用方法，请查看本网站中的对应教程。',
+      line1: '授权码已恢复购买。',
+      storeLinkText: '前往闲鱼店铺购买授权码', // 点击后跳转 B 区 storeUrl
+      line2: '新版 APP 已更名为「烟雨助手」，请下载最新版本使用。',
+      line3: '本站教程持续更新中，具体操作请以最新说明为准。',
       confirm: '我知道了',
       hint: '每次打开网页时显示'
     },

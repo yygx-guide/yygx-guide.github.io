@@ -272,3 +272,23 @@ html[data-theme="care"] .store-entry-link:hover{background:rgba(255,255,255,.07)
   .faq-directory-copy small{font-size:11px}
   .store-entry-row{gap:8px}
 }
+
+
+/* 2026-11-02 · 公告与购买入口：轻微强调，不改变原有水墨布局 */
+.hero-micro-news{margin-top:18px}
+.hero-micro-news .status-note{margin-top:0!important;color:var(--pine-deep)!important;font-size:13px!important;font-weight:600;line-height:1.7!important;letter-spacing:.012em}
+.hero-micro-news .status-dot{width:8px;height:8px;background:var(--pine);box-shadow:0 0 0 3px rgba(49,89,77,.075)}
+.hero .hero-micro-news .hero-update-note{margin-top:3px;margin-left:17px;color:var(--muted-light);font-size:11px;line-height:1.75}
+/* 店铺卡片中的状态改成低饱和松绿色，不再使用红底 */
+.store-entry-status{background:rgba(49,113,78,.12);color:var(--pine-deep);border:1px solid rgba(49,113,78,.12);font-weight:650}
+/* 公告：绿色为强调色；保持左侧竖线、纸张底色和原来的确认按钮 */
+.daily-announcement-modal .daily-announcement-copy .announcement-lead{font-weight:700;color:var(--pine-deep);font-size:17px;letter-spacing:.025em;line-height:1.7}
+.daily-announcement-modal .announcement-store-link{display:inline-flex;align-items:center;justify-content:space-between;gap:18px;margin-top:13px;margin-bottom:1px;padding:9px 13px;border:1px solid rgba(49,89,77,.26);border-radius:5px;background:rgba(49,89,77,.075);color:var(--pine-deep);font-size:13px;line-height:1.5;text-decoration:none;font-weight:650;transition:background .2s,border-color .2s,transform .2s}
+.daily-announcement-modal .announcement-store-link:hover{background:rgba(49,89,77,.13);border-color:var(--pine);transform:translateY(-1px)}
+.daily-announcement-modal .announcement-store-link:focus-visible{outline:2px solid var(--pine);outline-offset:3px}
+.daily-announcement-modal .daily-announcement-copy .announcement-secondary{margin-top:19px;font-size:13px;color:var(--muted);line-height:1.85}
+.daily-announcement-modal .daily-announcement-copy .announcement-tertiary{margin-top:8px;font-size:12px;color:var(--muted-light);line-height:1.8}
+html[data-theme="care"] .daily-announcement-modal .announcement-store-link{background:rgba(55,120,85,.12);color:#a1cfb4}
+html[data-theme="care"] .daily-announcement-modal .announcement-lead{color:#a1cfb4}
+html[data-theme="care"] .store-entry-status{color:#a1cfb4;background:rgba(55,120,85,.18)}
+@media(max-width:520px){.hero .hero-micro-news .hero-update-note{font-size:10.5px}.daily-announcement-modal .daily-announcement-copy .announcement-lead{font-size:15px}.daily-announcement-modal .daily-announcement-copy .announcement-secondary{font-size:12.5px}.daily-announcement-modal .announcement-store-link{width:100%;font-size:12.5px}}
