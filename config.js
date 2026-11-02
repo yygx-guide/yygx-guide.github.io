@@ -16,9 +16,9 @@ const SITE_CONFIG = {
   // true = 每次打开/刷新网页弹窗；false = 不自动弹窗。
   dailyAnnouncementEnabled: true,
   // 首页标题下方绿色圆点后的说明
-  homepageNotice: '授权码已恢复购买 · 详情请见最新公告',
+  homepageNotice: '使用教程持续更新 · 操作说明同步完善',
   // 首页绿色圆点下面第二行：小字号显示，适合放更名、教程更新说明。
-  homepageUpdate: '教程持续更新中 · 当前使用的软件为「烟雨助手」',
+  homepageUpdate: '当前软件名称为「烟雨助手」 · 请下载最新版本 APP 使用',
 
   // ======================== B. 所有外部跳转网址 ========================
   // 只在这里改网址，HTML 里不再直接保存第三方外链地址。
@@ -30,7 +30,7 @@ const SITE_CONFIG = {
   licenseGuideUrl: 'https://scnxd815i94m.feishu.cn/wiki/W6oXwuNaHiaY0VkIEa1ctIaVnMd', // 授权规则
   manualUrl: 'https://scnxd815i94m.feishu.cn/wiki/DnCmwVpxFiHEz4kJSZ5cpDj4nHf', // 人工代导说明
   faqUrl: 'https://scnxd815i94m.feishu.cn/wiki/W01qwXumRinvU4kfqppcOSHwnxe', // 使用问题完整说明
-  storeUrl: 'https://m.tb.cn/h.ja2pSb2?tk=kqMZTqOyXKs', // 闲鱼店铺：最新公告和 02 授权弹窗共用；不在首页按钮区显示
+  storeUrl: 'https://m.tb.cn/h.ja2pSb2?tk=kqMZTqOyXKs', // 闲鱼店铺：仅在 02 试用与授权弹窗开放查看（当前暂停购买，可关注）
   legacyPackageUrl: 'https://hcnorqxeoi1e.feishu.cn/wiki/RuHmwmjY3iuQagkHdYGcFTRTn6f', // 页面最底部的「部分渠道旧安装包」
   // QQ、TG 没有直达入口，只使用提示弹窗；这里不保存邀请链接。
 
@@ -52,14 +52,13 @@ const SITE_CONFIG = {
 
   // ======================== E. 页面上经常调整的文字 ========================
   editableTexts: {
-    // 首页弹出的「最新公告」：每次打开网页都会显示（由 A 区开关控制）。
+    // 首页弹出的「教程更新说明」：每次打开网页显示（由 A 区开关控制），不涉及购买状态。
     announcement: {
       kicker: '烟雨助手 · 最新消息',
-      title: '最新公告',
-      line1: '授权码已恢复购买。',
-      storeLinkText: '前往闲鱼店铺购买授权码', // 点击后跳转 B 区 storeUrl
-      line2: '新版 APP 已更名为「烟雨助手」，请下载最新版本使用。',
-      line3: '本站教程持续更新中，具体操作请以最新说明为准。',
+      title: '教程更新说明',
+      line1: '本站使用教程将持续更新',
+      line2: '我们将根据软件版本变化，持续完善下载安装、存档导出和常见问题等操作说明。',
+      line3: '当前使用的软件为「烟雨助手」，请下载最新版本 APP 使用。',
       confirm: '我知道了',
       hint: '每次打开网页时显示'
     },
@@ -74,15 +73,15 @@ const SITE_CONFIG = {
       internalModal: '已有授权用户的 Telegram 内部交流群，付费用户请在 TG 交流群联系机器人“步惊云”入群。'
     },
 
-    // 已恢复购买：入口和状态文字可在这里修改；跳转地址在 B 区 storeUrl 修改。
+    // 暂停购买：02 弹窗保留可点击店铺，用户仍可访问和关注；跳转地址在 B 区 storeUrl 修改。
     sales: {
-      entryPrefix: '购买入口', // 试用与授权弹窗底部的细小入口标签
+      entryPrefix: '店铺入口', // 试用与授权弹窗底部的细小入口标签
       entryName: '闲鱼店铺', // 可点击链接的显示名称
-      communityNote: '授权码购买已开放 · 请通过店铺查看',
-      badge: '开放购买',
+      communityNote: '教程与问题说明将持续更新',
+      badge: '暂停购买',
       title: '闲鱼店铺',
-      subtitle: '开放购买',
-      notice: '已恢复授权码购买，点击店铺入口查看详情'
+      subtitle: '暂停购买',
+      notice: '当前暂停授权码购买，店铺仍可访问，欢迎先关注。'
     },
 
     // 页面最下方「其他文件」卡片。真正的跳转地址在 B 区 legacyPackageUrl。

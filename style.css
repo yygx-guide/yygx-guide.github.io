@@ -292,3 +292,13 @@ html[data-theme="care"] .daily-announcement-modal .announcement-store-link{backg
 html[data-theme="care"] .daily-announcement-modal .announcement-lead{color:#a1cfb4}
 html[data-theme="care"] .store-entry-status{color:#a1cfb4;background:rgba(55,120,85,.18)}
 @media(max-width:520px){.hero .hero-micro-news .hero-update-note{font-size:10.5px}.daily-announcement-modal .daily-announcement-copy .announcement-lead{font-size:15px}.daily-announcement-modal .daily-announcement-copy .announcement-secondary{font-size:12.5px}.daily-announcement-modal .announcement-store-link{width:100%;font-size:12.5px}}
+
+/* 2026-11-03 · 教程更新公告 / 暂停购买：维持纸张、水墨与绿色强调的整体风格 */
+/* 取消上一版公告的购买按钮后，稍紧凑的文字层次更适合移动端 */
+.daily-announcement-modal .daily-announcement-copy .announcement-lead{font-size:17px;font-weight:700;letter-spacing:.025em;color:var(--pine-deep);line-height:1.7}
+.daily-announcement-modal .daily-announcement-copy .announcement-secondary{font-size:13.5px;margin-top:17px;line-height:1.9;color:var(--ink)}
+.daily-announcement-modal .daily-announcement-copy .announcement-tertiary{font-size:12px;margin-top:13px;line-height:1.8;color:var(--muted-light)}
+/* 状态仅在 02 弹窗展示，使用低饱和灰绿色，避免将暂停状态误读为开放购买 */
+.store-entry-status{background:rgba(80,87,73,.075);color:var(--muted);border:1px solid rgba(80,87,73,.13);font-weight:600}
+html[data-theme="care"] .store-entry-status{color:var(--muted);background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.14)}
+@media(max-width:520px){.daily-announcement-modal .daily-announcement-copy .announcement-lead{font-size:15.5px}.daily-announcement-modal .daily-announcement-copy .announcement-secondary{font-size:12.5px}}
