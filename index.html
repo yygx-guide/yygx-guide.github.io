@@ -8,7 +8,7 @@
 <meta content="烟雨助手使用指南：使用前须知、试用与授权码获取、安卓/iOS/鸿蒙存档导出教程、使用须知、使用问题与游戏交流。" name="description"/>
 <title>烟雨助手 · 使用指南</title>
 <link href="assets/app-icon.png" rel="icon" type="image/png"/>
-<link href="style.css?v=20261103-guide-update" rel="stylesheet"/>
+<link href="style.css?v=20261105-board-v2" rel="stylesheet"/>
 </head>
 <body>
 <div class="wrap">
@@ -28,6 +28,29 @@
   <p class="hero-update-note" id="heroUpdateNote">当前软件名称为「烟雨助手」 · 请下载最新版本 APP 使用</p>
 </div>
 </div>
+</section>
+<!-- 最新通知栏：默认展开，仅显示最新两条；历史公告可继续展开。正文在 config.js 的 bulletin.items 修改。 -->
+<section class="bulletin-section" aria-label="最新通知">
+  <details class="notice-board" id="latestBulletin" open>
+    <summary class="notice-board-header">
+      <span class="notice-board-heading"><span class="notice-board-accent" aria-hidden="true"></span><strong data-config-text="bulletin.title">最新通知</strong></span>
+      <span class="notice-board-hint">最近更新 · 持续维护</span>
+      <span class="notice-board-action"><span class="notice-board-action-text">收起</span><span class="notice-board-chevron" aria-hidden="true"></span></span>
+    </summary>
+    <div class="notice-board-content">
+      <div class="notice-board-latest" id="latestNoticeList" aria-label="最近两条通知">
+        <!-- 备用内容：正常访问时，script.js 根据 config.js 自动生成通知 -->
+        <article class="notice-item">
+          <div class="notice-item-meta"><time datetime="2026-11-05">2026.11.05</time></div>
+          <div class="notice-item-main"><strong class="notice-item-title">后续功能展望</strong><p class="notice-item-text">整理了一些后续可能推出或优化的功能方向，供大家参考。具体功能和上线安排尚未确定，请以实际更新为准。</p></div>
+        </article>
+      </div>
+      <details class="notice-history" id="historyBulletin">
+        <summary class="notice-history-summary"><span>历史公告</span><span class="notice-history-count" id="historyBulletinCount"></span><span class="notice-history-chevron" aria-hidden="true"></span></summary>
+        <div class="notice-history-list" id="historyNoticeList" aria-label="历史通知列表"><p class="notice-history-empty">暂无历史公告</p></div>
+      </details>
+    </div>
+  </details>
 </section>
 <section aria-labelledby="flowTitle" class="flow-section" id="start">
 <div class="section-head"><h2 id="flowTitle">从这里开始</h2><p>按使用顺序整理 · 点击查看详情</p></div>
@@ -255,5 +278,5 @@
     <p class="daily-announcement-hint" data-config-text="announcement.hint">每次打开网页时显示</p>
   </div>
 </dialog>
-<script src="config.js?v=20261103-guide-update"></script><script src="lang-map.js"></script><script src="script.js?v=20261103-guide-update"></script>
+<script src="config.js?v=20261105-two-real-notices"></script><script src="lang-map.js"></script><script src="script.js?v=20261105-board-v2"></script>
 </body></html>

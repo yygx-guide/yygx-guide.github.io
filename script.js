@@ -62,6 +62,86 @@
     if (typeof value === 'string') el.textContent = value;
   });
   putText('heroUpdateNote', typeof cfg.homepageUpdate === 'string' ? cfg.homepageUpdate : '当前软件名称为「烟雨助手」 · 请下载最新版本 APP 使用');
+  // 最新通知列表：前两条展示，其余自动纳入历史；全部来自 config.js 的 bulletin.items。
+  const bulletinCfg = editableTexts.bulletin || {};
+  const bulletinEntries = Array.isArray(bulletinCfg.items) ? bulletinCfg.items.filter(item => item && typeof item.body === 'string' && item.body.trim()) : [];
+  const latestNoticeList = byId('latestNoticeList');
+  const historyNoticeList = byId('historyNoticeList');
+  const historyBulletin = byId('historyBulletin');
+  const historyBulletinCount = byId('historyBulletinCount');
+  const textButton = (label, className) => {
+    const el = document.createElement('button');
+    el.type = 'button';
+    el.className = className;
+    el.textContent = label;
+    return el;
+  };
+  const createBulletinItem = (entry, position) => {
+    const article = document.createElement('article');
+    article.className = 'notice-item';
+    const meta = document.createElement('div');
+    meta.className = 'notice-item-meta';
+    const time = document.createElement('time');
+    const date = typeof entry.date === 'string' ? entry.date : '';
+    time.textContent = date;
+    if (/^\d{4}[.\/-]\d{2}[.\/-]\d{2}$/.test(date)) time.dateTime = date.replace(/[.\/]/g, '-');
+    meta.appendChild(time);
+    const main = document.createElement('div');
+    main.className = 'notice-item-main';
+    const head = document.createElement('div');
+    head.className = 'notice-item-head';
+    const title = document.createElement('strong');
+    title.className = 'notice-item-title';
+    title.textContent = typeof entry.title === 'string' ? entry.title : '通知';
+    head.appendChild(title);
+    const button = textButton('展开', 'notice-item-toggle');
+    button.hidden = true;
+    const paragraph = document.createElement('p');
+    paragraph.className = 'notice-item-text';
+    paragraph.id = `notice-item-text-${position}`;
+    paragraph.textContent = entry.body;
+    button.setAttribute('aria-controls', paragraph.id);
+    button.setAttribute('aria-expanded', 'false');
+    button.addEventListener('click', () => {
+      const expanded = article.classList.toggle('is-expanded');
+      button.textContent = expanded ? '收起' : '展开';
+      button.setAttribute('aria-expanded', String(expanded));
+      refreshLang();
+    });
+    head.appendChild(button);
+    main.append(head, paragraph);
+    article.append(meta, main);
+    return article;
+  };
+  if (latestNoticeList && historyNoticeList && historyBulletin) {
+    latestNoticeList.replaceChildren(...bulletinEntries.slice(0, 2).map((item,i) => createBulletinItem(item, i)));
+    if (bulletinEntries.length === 0) {
+      const empty = document.createElement('p'); empty.className = 'notice-history-empty'; empty.textContent = '暂无最新通知';
+      latestNoticeList.appendChild(empty);
+    }
+    const older = bulletinEntries.slice(2);
+    historyNoticeList.replaceChildren(...older.map((item,i) => createBulletinItem(item, i+2)));
+    if (older.length === 0) {
+      const empty = document.createElement('p'); empty.className = 'notice-history-empty'; empty.textContent = '暂无历史公告';
+      historyNoticeList.appendChild(empty);
+    }
+    if (historyBulletinCount) historyBulletinCount.textContent = older.length ? `${older.length} 条` : '暂无';
+    const updateNoticeTruncation = () => {
+      document.querySelectorAll('.notice-item').forEach(item => {
+        if (item.classList.contains('is-expanded')) return;
+        const p = item.querySelector('.notice-item-text');
+        const btn = item.querySelector('.notice-item-toggle');
+        if (!p || !btn || !item.getClientRects().length) return;
+        btn.hidden = p.scrollHeight <= p.clientHeight + 2;
+      });
+    };
+    // 延迟一帧测量真实行数，不根据字数猜测长短；屏幕变化和历史公告展开时重新测量。
+    requestAnimationFrame(updateNoticeTruncation);
+    window.addEventListener('resize', updateNoticeTruncation, { passive: true });
+    historyBulletin.addEventListener('toggle', () => { if (historyBulletin.open) requestAnimationFrame(updateNoticeTruncation); });
+    document.fonts?.ready?.then(() => requestAnimationFrame(updateNoticeTruncation));
+  }
+
   const purchaseBadge = byId('purchaseBadge');
   if (purchaseBadge) purchaseBadge.hidden = false;
   const modalNames = ['noticeModal','featureModal','licenseModal','exportModal','faqModal','qqCommunityModal','tgCommunityModal','internalCommunityModal','downloadModal'];
