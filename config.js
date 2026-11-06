@@ -31,7 +31,7 @@ const SITE_CONFIG = {
   licenseGuideUrl: 'https://scnxd815i94m.feishu.cn/wiki/W6oXwuNaHiaY0VkIEa1ctIaVnMd', // 授权规则
   manualUrl: 'https://scnxd815i94m.feishu.cn/wiki/DnCmwVpxFiHEz4kJSZ5cpDj4nHf', // 人工代导说明
   faqUrl: 'https://scnxd815i94m.feishu.cn/wiki/W01qwXumRinvU4kfqppcOSHwnxe', // 使用问题完整说明
-  storeUrl: 'https://m.tb.cn/h.ja2pSb2?tk=kqMZTqOyXKs', // 闲鱼店铺：仅在 02 试用与授权弹窗开放查看（当前暂停购买，可关注）
+  storeUrl: 'https://m.tb.cn/h.ja2pSb2?tk=kqMZTqOyXKs', // 闲鱼店铺：仅在 02 试用与授权弹窗开放购买（首页不单独放购买按钮）
   legacyPackageUrl: 'https://hcnorqxeoi1e.feishu.cn/wiki/RuHmwmjY3iuQagkHdYGcFTRTn6f', // 页面最底部的「部分渠道旧安装包」
   // QQ、TG 没有直达入口，只使用提示弹窗；这里不保存邀请链接。
 
@@ -106,15 +106,15 @@ const SITE_CONFIG = {
       internalModal: '已有授权用户的 Telegram 内部交流群，付费用户请在 TG 交流群联系机器人“步惊云”入群。'
     },
 
-    // 暂停购买：02 弹窗保留可点击店铺，用户仍可访问和关注；跳转地址在 B 区 storeUrl 修改。
+    // 已恢复购买：02 弹窗店铺可点击购买；跳转地址在 B 区 storeUrl 修改。
     sales: {
       entryPrefix: '店铺入口', // 试用与授权弹窗底部的细小入口标签
       entryName: '闲鱼店铺', // 可点击链接的显示名称
       communityNote: '教程与问题说明将持续更新',
-      badge: '暂停购买',
+      badge: '开放购买',
       title: '闲鱼店铺',
-      subtitle: '暂停购买',
-      notice: '当前暂停授权码购买，店铺仍可访问，欢迎先关注。'
+      subtitle: '开放购买',
+      notice: '授权码已恢复购买，可点击闲鱼店铺查看详情。'
     },
 
     // 页面最下方「其他文件」卡片。真正的跳转地址在 B 区 legacyPackageUrl。

@@ -50,7 +50,7 @@
     }
     refreshLang();
   });
-  // 店铺暂停购买；仅在 02 授权弹窗展示链接，仍可点击访问及关注。
+  // 店铺恢复购买；仅在 02 授权弹窗展示链接，首页不放购买按钮。
   const putText = (id, value) => { const el=byId(id); if(el) el.textContent=value; };
   putText('heroSalesStatus', typeof cfg.homepageNotice === 'string' ? cfg.homepageNotice : '使用教程持续更新 · 操作说明同步完善');
   // 所有常用文案统一从 config.js 的 editableTexts 读取。
