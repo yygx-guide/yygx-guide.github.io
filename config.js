@@ -31,7 +31,7 @@ const SITE_CONFIG = {
   licenseGuideUrl: 'https://scnxd815i94m.feishu.cn/wiki/W6oXwuNaHiaY0VkIEa1ctIaVnMd', // 授权规则
   manualUrl: 'https://scnxd815i94m.feishu.cn/wiki/DnCmwVpxFiHEz4kJSZ5cpDj4nHf', // 人工代导说明
   faqUrl: 'https://scnxd815i94m.feishu.cn/wiki/W01qwXumRinvU4kfqppcOSHwnxe', // 使用问题完整说明
-  storeUrl: 'https://m.tb.cn/h.ja2pSb2?tk=kqMZTqOyXKs', // 闲鱼店铺：仅在 02 试用与授权弹窗开放购买（首页不单独放购买按钮）
+  storeUrl: 'https://m.tb.cn/h.j7iFwsn?tk=JPls6capO7m', // 闲鱼店铺：仅在 02 试用与授权弹窗开放购买（首页不单独放购买按钮）
   legacyPackageUrl: 'https://hcnorqxeoi1e.feishu.cn/wiki/RuHmwmjY3iuQagkHdYGcFTRTn6f', // 页面最底部的「部分渠道旧安装包」
   // QQ、TG 没有直达入口，只使用提示弹窗；这里不保存邀请链接。
 
