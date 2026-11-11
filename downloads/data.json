@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "status": "ok",
-  "checkedAt": "2026-11-11T03:48:38+00:00",
+  "checkedAt": "2026-11-11T03:50:47+00:00",
   "platforms": {
     "android": {
       "current": {
@@ -10,7 +10,7 @@
         "name": "yyhelper-0.3.10-23-android.apk",
         "bytes": 12375080,
         "sha256": "949f7c8b1417b16707fb69d973900adf73a4a735dd5380b728ef719642a049cb",
-        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/untagged-e07e6dc5d7410f84c096/yyhelper-0.3.10-23-android.apk",
+        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-android-b23-949f7c8b1417b167/yyhelper-0.3.10-23-android.apk",
         "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-android-b23-949f7c8b1417b167",
         "sourceUrl": "https://download.yyhelper.app/releases/android/23/download.html",
         "date": "2026/11/01",
@@ -28,7 +28,7 @@
         "name": "yyhelper-0.3.10-23-windows.exe",
         "bytes": 15559998,
         "sha256": "50422b30aa273d1ac46c1ecf4a15a42064602b7194851ad85e50c294b81c7d7e",
-        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/untagged-e66fd54944308afab322/yyhelper-0.3.10-23-windows.exe",
+        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-windows-b23-50422b30aa273d1a/yyhelper-0.3.10-23-windows.exe",
         "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-windows-b23-50422b30aa273d1a",
         "sourceUrl": "https://download.yyhelper.app/releases/windows/23/download.html",
         "date": "2026/11/01",
