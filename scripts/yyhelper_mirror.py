@@ -37,7 +37,7 @@ def now():
 def open_source(url):
     parsed = urlsplit(url)
     if parsed.scheme != "https" or parsed.netloc != "download.yyhelper.app" or parsed.query or parsed.fragment:
-        raise ValueError("ԭվ��ַ���Ϸ�")
+        raise ValueError("原站地址不合法")
     return OPENER.open(Request(url, headers={"User-Agent": "YanyuGitHubMirror/1.0", "Cache-Control": "no-cache"}), timeout=60)
 
 
@@ -48,7 +48,7 @@ def source_json(url):
             with open_source(url) as response:
                 data = response.read(1024 * 1024 + 1)
                 if len(data) > 1024 * 1024:
-                    raise ValueError("ԭվ�嵥����")
+                    raise ValueError("原站清单过大")
                 return json.loads(data)
         except Exception as error:
             last = error
@@ -69,7 +69,7 @@ def validate_package(platform, row, pkg):
             or not safe(pkg.get("name")) or not pkg["name"].endswith("." + extension)
             or not isinstance(pkg.get("parts"), list) or not 1 <= len(pkg["parts"]) <= 128
             or not all(safe(part) for part in pkg["parts"]) or len(set(pkg["parts"])) != len(pkg["parts"])):
-        raise ValueError(f"{platform} �汾�嵥У��ʧ��")
+        raise ValueError(f"{platform} 版本清单校验失败")
     return pkg
 
 
@@ -87,14 +87,14 @@ def download_package(platform, pkg, destination):
                         while chunk := response.read(1024 * 1024):
                             received += len(chunk)
                             if received > pkg["bytes"]:
-                                raise ValueError("��װ������������С")
+                                raise ValueError("安装包超过声明大小")
                             magic = (magic + chunk[:2])[:2]
                             output.write(chunk)
                             digest.update(chunk)
             if received != pkg["bytes"]:
-                raise ValueError("��װ�����ز�����")
+                raise ValueError("安装包下载不完整")
             if magic != PLATFORMS[platform][2] or digest.hexdigest() != pkg["sha256"]:
-                raise ValueError("��װ���ļ�ͷ�� SHA-256 У��ʧ��")
+                raise ValueError("安装包文件头或 SHA-256 校验失败")
             temporary.replace(destination)
             return destination
         except Exception as error:
@@ -108,14 +108,14 @@ def download_package(platform, pkg, destination):
 class GitHub:
     def __init__(self, repository, token):
         if not re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", repository):
-            raise ValueError("�ֿ������Ϸ�")
+            raise ValueError("仓库名不合法")
         self.repository, self.token = repository, token
         self.base = f"https://api.github.com/repos/{repository}"
 
     def request(self, method, path, data=None, file=None):
         url = path if path.startswith("https://") else self.base + path
         if urlsplit(url).hostname not in {"api.github.com", "uploads.github.com"}:
-            raise ValueError("�ܾ���� GitHub ������������")
+            raise ValueError("拒绝向非 GitHub 主机发送令牌")
         headers = {"Authorization": "Bearer " + self.token, "Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28", "User-Agent": "YanyuGitHubMirror/1.0"}
         if file:
             headers.update({"Content-Type": "application/octet-stream", "Content-Length": str(Path(file).stat().st_size)})
@@ -146,17 +146,20 @@ class GitHub:
         asset = next((a for a in release.get("assets", []) if a["name"] == pkg["name"]), None) if release else None
         if asset:
             if asset.get("size") != pkg["bytes"] or asset.get("state") != "uploaded" or asset.get("digest") not in (None, "sha256:" + pkg["sha256"]):
-                raise ValueError("GitHub �ϵ�ͬ����װ����ԭվ�����������ɰ�")
+                raise ValueError("GitHub 上的同名安装包与原站不符，保留旧版")
         else:
             local = download_package(platform, pkg, Path(workdir) / pkg["name"])
             if not release:
-                release = self.request("POST", "/releases", {"tag_name": tag, "name": f"�������� {PLATFORMS[platform][0]} {pkg['version']} �� Build {pkg['build']}", "draft": True, "make_latest": "false", "body": f"�� {ORIGIN}/ �Զ�ͬ����δ�޸İ�װ����\n\nSHA-256: {pkg['sha256']}\n\n" + str(row.get("notes", ""))[:20000]})
+                release = self.request("POST", "/releases", {"tag_name": tag, "name": f"烟雨助手 {PLATFORMS[platform][0]} {pkg['version']} · Build {pkg['build']}", "draft": True, "make_latest": "false", "body": f"从 {ORIGIN}/ 自动同步，未修改安装包。\n\nSHA-256: {pkg['sha256']}\n\n" + str(row.get("notes", ""))[:20000]})
             upload_url = release["upload_url"].split("{")[0] + "?name=" + quote(pkg["name"], safe="")
             asset = self.request("POST", upload_url, file=local)
             if asset.get("size") != pkg["bytes"] or asset.get("digest") not in (None, "sha256:" + pkg["sha256"]):
-                raise ValueError("GitHub �ϴ�У��ʧ��")
+                raise ValueError("GitHub 上传校验失败")
         if release["draft"]:
             release = self.request("PATCH", f"/releases/{release['id']}", {"draft": False, "make_latest": "false"})
+            # Draft assets use a temporary untagged URL. Read the published
+            # asset again rather than putting that temporary URL on the page.
+            asset = next(a for a in release["assets"] if a["name"] == pkg["name"])
         return asset["browser_download_url"], release["html_url"]
 
     def publish_page(self, catalog, page):
@@ -185,17 +188,17 @@ def synchronize(previous, github, workdir):
     try:
         latest = source_json(ORIGIN + "/releases/latest.json")
         if latest.get("schema") != 1 or latest.get("product") != "yyhelper-pro" or not isinstance(latest.get("platforms"), dict):
-            raise ValueError("ԭվ�汾�嵥��ʽ�仯")
+            raise ValueError("原站版本清单格式变化")
         for platform in PLATFORMS:
             old = catalog["platforms"].get(platform, {"current": None, "history": []})
             try:
                 row = latest["platforms"].get(platform, {})
                 if type(row.get("build")) is not int or row["build"] < 1:
-                    raise ValueError("ԭվƽ̨�汾��Ϣ������")
+                    raise ValueError("原站平台版本信息不完整")
                 pkg = validate_package(platform, row, source_json(f"{ORIGIN}/releases/{platform}/{row['build']}/package.json"))
                 current = old.get("current")
                 if current and current["build"] > pkg["build"]:
-                    raise ValueError("ԭվ�汾���ˣ��������а�װ��")
+                    raise ValueError("原站版本回退，保留现有安装包")
                 download_url, release_url = github.publish_package(platform, row, pkg, workdir)
                 changed = not current or current["sha256"] != pkg["sha256"] or current["build"] != pkg["build"]
                 if changed:
@@ -204,6 +207,7 @@ def synchronize(previous, github, workdir):
                     current.update({"downloadUrl": download_url, "releaseUrl": release_url, "sourceUrl": row["url"], "date": str(row.get("date", ""))[:100], "notes": str(row.get("notes", ""))[:20000], "mirroredAt": now()})
                 else:
                     history = old.get("history", [])
+                    current = {**current, "downloadUrl": download_url, "releaseUrl": release_url}
                 catalog["platforms"][platform] = {"current": current, "history": history, "status": "ok", "error": None}
                 print(f"{platform}: {'updated' if changed else 'unchanged'} {pkg['version']} ({pkg['bytes']} bytes)")
             except Exception as error:
@@ -217,24 +221,24 @@ def synchronize(previous, github, workdir):
 
 def display_time(value):
     if not value:
-        return "�ȴ��״�ͬ��"
+        return "等待首次同步"
     return datetime.fromisoformat(value.replace("Z", "+00:00")).astimezone(timezone(timedelta(hours=8))).strftime("%Y-%m-%d %H:%M")
 
 
 def render(catalog, template):
-    replacements = {"STATUS": "��װ����ͬ��" if catalog.get("status") == "ok" else "ͬ����δ��ɣ������ѷ����Ŀ��ð汾", "CHECKED": display_time(catalog.get("checkedAt"))}
+    replacements = {"STATUS": "安装包已同步" if catalog.get("status") == "ok" else "同步尚未完成，保留已发布的可用版本", "CHECKED": display_time(catalog.get("checkedAt"))}
     notes = []
     for platform, (label, extension, _) in PLATFORMS.items():
         current = catalog.get("platforms", {}).get(platform, {}).get("current")
         prefix = platform.upper() + "_"
-        values = {"VERSION": "��ͬ��", "SIZE": "׼����", "DATE": "��", "SYNCED": "��", "SHA": "", "BUTTON": '<span class="button disabled">�ȴ��״�ͬ��</span>', "SOURCE": ORIGIN}
+        values = {"VERSION": "待同步", "SIZE": "准备中", "DATE": "—", "SYNCED": "—", "SHA": "", "BUTTON": '<span class="button disabled">等待首次同步</span>', "SOURCE": ORIGIN}
         if current:
             values.update({"VERSION": "v" + current["version"], "SIZE": f"{current['bytes'] / 1048576:.1f} MB", "DATE": current["date"], "SYNCED": display_time(current["mirroredAt"]), "SHA": current["sha256"], "SOURCE": current["sourceUrl"]})
-            values["BUTTON"] = '<a class="button" href="' + html.escape(current["downloadUrl"], quote=True) + '">���� ' + extension.upper() + ' <span>��</span></a>'
-            notes.append('<article class="notes"><h3>' + label + ' <span>v' + html.escape(current["version"]) + '</span></h3><p>' + html.escape(current["notes"] or "ԭվ���޸���˵����") + '</p></article>')
+            values["BUTTON"] = '<a class="button" href="' + html.escape(current["downloadUrl"], quote=True) + '">下载 ' + extension.upper() + ' <span>↓</span></a>'
+            notes.append('<article class="notes"><h3>' + label + ' <span>v' + html.escape(current["version"]) + '</span></h3><p>' + html.escape(current["notes"] or "原站暂无更新说明。") + '</p></article>')
         for key, value in values.items():
             replacements[prefix + key] = value if key == "BUTTON" else html.escape(str(value), quote=True)
-    replacements["NOTES"] = "".join(notes) or "<p>�״�ͬ����ɺ���ʾ����˵����</p>"
+    replacements["NOTES"] = "".join(notes) or "<p>首次同步完成后显示更新说明。</p>"
     return re.sub(r"\{\{([A-Z_]+)\}\}", lambda match: replacements[match[1]], template)
 
 
@@ -255,10 +259,10 @@ def main():
             return 0
         token = os.environ.get("GITHUB_TOKEN")
         if not token:
-            raise ValueError("ȱ�� GitHub Actions �Զ��ṩ�� GITHUB_TOKEN")
+            raise ValueError("缺少 GitHub Actions 自动提供的 GITHUB_TOKEN")
         github = GitHub(args.repository, token)
         if github.request("GET", "").get("private") is not False:
-            raise ValueError("����ѷ���ֻ�ڹ����ֿ�����")
+            raise ValueError("此免费方案只在公开仓库运行")
         state = args.root / "downloads/data.json"
         previous = json.loads(state.read_text(encoding="utf-8")) if state.exists() else {"platforms": {}}
         catalog = synchronize(previous, github, workdir)

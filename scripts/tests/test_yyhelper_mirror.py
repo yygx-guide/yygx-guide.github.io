@@ -66,7 +66,15 @@ class MirrorTests(unittest.TestCase):
         self.assertIn('&lt;script&gt;', rendered)
         self.assertNotIn('<script>alert(1)</script>', rendered)
         self.assertNotIn('{{', rendered)
-        self.assertIn('���� APK', rendered)
+        self.assertIn('下载 APK', rendered)
+
+    def test_publishing_draft_uses_final_asset_url(self):
+        draft_asset = {'name': 'app.apk', 'size': self.pkg['bytes'], 'state': 'uploaded', 'browser_download_url': 'https://github.com/download/untagged/app.apk'}
+        final_asset = {**draft_asset, 'browser_download_url': 'https://github.com/download/v1/app.apk'}
+        github = mirror.GitHub('owner/repo', 'test-token')
+        with patch.object(github, 'find_release', return_value={'draft': True, 'id': 1, 'assets': [draft_asset]}), patch.object(github, 'request', return_value={'html_url': 'https://github.com/release/v1', 'assets': [final_asset]}):
+            url, _ = github.publish_package('android', self.row, self.pkg, '.')
+        self.assertEqual(url, final_asset['browser_download_url'])
 
 
 if __name__ == '__main__':
