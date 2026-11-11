@@ -1,23 +1,36 @@
 {
   "schema": 1,
   "status": "ok",
-  "checkedAt": "2026-11-11T05:47:50+00:00",
+  "checkedAt": "2026-11-11T11:53:37+00:00",
   "platforms": {
     "android": {
       "current": {
-        "version": "0.3.22",
-        "build": 37,
-        "name": "yyhelper-0.3.22-37-android.apk",
-        "bytes": 12774173,
-        "sha256": "5c803eedd89994f97629bc9e331429e7b0cc473ddf407577daab2a9f9087b8ff",
-        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-android-b37-5c803eedd89994f9/yyhelper-0.3.22-37-android.apk",
-        "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-android-b37-5c803eedd89994f9",
-        "sourceUrl": "https://download.yanyuhelper.com/releases/android/37/download.html",
-        "date": "2026/11/09",
-        "notes": "修复 iOS 局域网导出解析失败的问题\n",
-        "mirroredAt": "2026-11-11T03:58:27+00:00"
+        "version": "0.3.25",
+        "build": 40,
+        "name": "yyhelper-0.3.25-40-android.apk",
+        "bytes": 12775913,
+        "sha256": "a914de6511d57a11d90a3a142bf15626f1868674bc65ca274a303bf4ec749594",
+        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-android-b40-a914de6511d57a11/yyhelper-0.3.25-40-android.apk",
+        "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-android-b40-a914de6511d57a11",
+        "sourceUrl": "https://download.yanyuhelper.com/releases/android/40/download.html",
+        "date": "2026/11/11",
+        "notes": "日志完善\n",
+        "mirroredAt": "2026-11-11T11:53:42+00:00"
       },
       "history": [
+        {
+          "version": "0.3.22",
+          "build": 37,
+          "name": "yyhelper-0.3.22-37-android.apk",
+          "bytes": 12774173,
+          "sha256": "5c803eedd89994f97629bc9e331429e7b0cc473ddf407577daab2a9f9087b8ff",
+          "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-android-b37-5c803eedd89994f9/yyhelper-0.3.22-37-android.apk",
+          "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-android-b37-5c803eedd89994f9",
+          "sourceUrl": "https://download.yanyuhelper.com/releases/android/37/download.html",
+          "date": "2026/11/09",
+          "notes": "修复 iOS 局域网导出解析失败的问题\n",
+          "mirroredAt": "2026-11-11T03:58:27+00:00"
+        },
         {
           "version": "0.3.10",
           "build": 23,
@@ -37,19 +50,32 @@
     },
     "windows": {
       "current": {
-        "version": "0.3.22",
-        "build": 37,
-        "name": "yyhelper-0.3.22-37-windows.exe",
-        "bytes": 15870530,
-        "sha256": "50756d682bb4e9f101f181d2097596ae2a97a94442b747aa13cbcaba54528566",
-        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-windows-b37-50756d682bb4e9f1/yyhelper-0.3.22-37-windows.exe",
-        "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-windows-b37-50756d682bb4e9f1",
-        "sourceUrl": "https://download.yanyuhelper.com/releases/windows/37/download.html",
-        "date": "2026/11/09",
-        "notes": "修复 iOS 局域网导出解析失败的问题\n",
-        "mirroredAt": "2026-11-11T03:58:32+00:00"
+        "version": "0.3.25",
+        "build": 40,
+        "name": "yyhelper-0.3.25-40-windows.exe",
+        "bytes": 15874873,
+        "sha256": "09f3247ee01a7067d3a0117f3d7d3eafd2f09209a2ba8d981ee74db4d23193b8",
+        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-windows-b40-09f3247ee01a7067/yyhelper-0.3.25-40-windows.exe",
+        "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-windows-b40-09f3247ee01a7067",
+        "sourceUrl": "https://download.yanyuhelper.com/releases/windows/40/download.html",
+        "date": "2026/11/11",
+        "notes": "日志完善\n",
+        "mirroredAt": "2026-11-11T11:53:49+00:00"
       },
       "history": [
+        {
+          "version": "0.3.22",
+          "build": 37,
+          "name": "yyhelper-0.3.22-37-windows.exe",
+          "bytes": 15870530,
+          "sha256": "50756d682bb4e9f101f181d2097596ae2a97a94442b747aa13cbcaba54528566",
+          "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-windows-b37-50756d682bb4e9f1/yyhelper-0.3.22-37-windows.exe",
+          "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-windows-b37-50756d682bb4e9f1",
+          "sourceUrl": "https://download.yanyuhelper.com/releases/windows/37/download.html",
+          "date": "2026/11/09",
+          "notes": "修复 iOS 局域网导出解析失败的问题\n",
+          "mirroredAt": "2026-11-11T03:58:32+00:00"
+        },
         {
           "version": "0.3.10",
           "build": 23,
@@ -70,6 +96,15 @@
   },
   "error": null,
   "releases": [
+    {
+      "version": "0.3.25",
+      "build": 40,
+      "date": "2026/11/11",
+      "notesByPlatform": {
+        "android": "日志完善",
+        "windows": "日志完善"
+      }
+    },
     {
       "version": "0.3.22",
       "build": 37,
