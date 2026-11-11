@@ -1,41 +1,69 @@
 {
   "schema": 1,
   "status": "ok",
-  "checkedAt": "2026-11-11T03:52:22+00:00",
+  "checkedAt": "2026-11-11T03:58:21+00:00",
   "platforms": {
     "android": {
       "current": {
-        "version": "0.3.10",
-        "build": 23,
-        "name": "yyhelper-0.3.10-23-android.apk",
-        "bytes": 12375080,
-        "sha256": "949f7c8b1417b16707fb69d973900adf73a4a735dd5380b728ef719642a049cb",
-        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-android-b23-949f7c8b1417b167/yyhelper-0.3.10-23-android.apk",
-        "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-android-b23-949f7c8b1417b167",
-        "sourceUrl": "https://download.yyhelper.app/releases/android/23/download.html",
-        "date": "2026/11/01",
-        "notes": "- 修复局域网鸿蒙导出\n- 修复某些功能加载存档显示数据不完整\n- 优化已解锁三槽的恒山子弟模拟优化\n- 优化精炼锻造银两显示\n- 优化部分功能的使用",
-        "mirroredAt": "2026-11-11T03:48:45+00:00"
+        "version": "0.3.22",
+        "build": 37,
+        "name": "yyhelper-0.3.22-37-android.apk",
+        "bytes": 12774173,
+        "sha256": "5c803eedd89994f97629bc9e331429e7b0cc473ddf407577daab2a9f9087b8ff",
+        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-android-b37-5c803eedd89994f9/yyhelper-0.3.22-37-android.apk",
+        "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-android-b37-5c803eedd89994f9",
+        "sourceUrl": "https://download.yanyuhelper.com/releases/android/37/download.html",
+        "date": "2026/11/09",
+        "notes": "修复 iOS 局域网导出解析失败的问题\n",
+        "mirroredAt": "2026-11-11T03:58:27+00:00"
       },
-      "history": [],
+      "history": [
+        {
+          "version": "0.3.10",
+          "build": 23,
+          "name": "yyhelper-0.3.10-23-android.apk",
+          "bytes": 12375080,
+          "sha256": "949f7c8b1417b16707fb69d973900adf73a4a735dd5380b728ef719642a049cb",
+          "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-android-b23-949f7c8b1417b167/yyhelper-0.3.10-23-android.apk",
+          "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-android-b23-949f7c8b1417b167",
+          "sourceUrl": "https://download.yyhelper.app/releases/android/23/download.html",
+          "date": "2026/11/01",
+          "notes": "- 修复局域网鸿蒙导出\n- 修复某些功能加载存档显示数据不完整\n- 优化已解锁三槽的恒山子弟模拟优化\n- 优化精炼锻造银两显示\n- 优化部分功能的使用",
+          "mirroredAt": "2026-11-11T03:48:45+00:00"
+        }
+      ],
       "status": "ok",
       "error": null
     },
     "windows": {
       "current": {
-        "version": "0.3.10",
-        "build": 23,
-        "name": "yyhelper-0.3.10-23-windows.exe",
-        "bytes": 15559998,
-        "sha256": "50422b30aa273d1ac46c1ecf4a15a42064602b7194851ad85e50c294b81c7d7e",
-        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-windows-b23-50422b30aa273d1a/yyhelper-0.3.10-23-windows.exe",
-        "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-windows-b23-50422b30aa273d1a",
-        "sourceUrl": "https://download.yyhelper.app/releases/windows/23/download.html",
-        "date": "2026/11/01",
-        "notes": "- 修复局域网鸿蒙导出\n- 修复某些功能加载存档显示数据不完整\n- 优化已解锁三槽的恒山子弟模拟优化\n- 优化精炼锻造银两显示\n- 优化部分功能的使用",
-        "mirroredAt": "2026-11-11T03:48:51+00:00"
+        "version": "0.3.22",
+        "build": 37,
+        "name": "yyhelper-0.3.22-37-windows.exe",
+        "bytes": 15870530,
+        "sha256": "50756d682bb4e9f101f181d2097596ae2a97a94442b747aa13cbcaba54528566",
+        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-windows-b37-50756d682bb4e9f1/yyhelper-0.3.22-37-windows.exe",
+        "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-windows-b37-50756d682bb4e9f1",
+        "sourceUrl": "https://download.yanyuhelper.com/releases/windows/37/download.html",
+        "date": "2026/11/09",
+        "notes": "修复 iOS 局域网导出解析失败的问题\n",
+        "mirroredAt": "2026-11-11T03:58:32+00:00"
       },
-      "history": [],
+      "history": [
+        {
+          "version": "0.3.10",
+          "build": 23,
+          "name": "yyhelper-0.3.10-23-windows.exe",
+          "bytes": 15559998,
+          "sha256": "50422b30aa273d1ac46c1ecf4a15a42064602b7194851ad85e50c294b81c7d7e",
+          "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-windows-b23-50422b30aa273d1a/yyhelper-0.3.10-23-windows.exe",
+          "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-windows-b23-50422b30aa273d1a",
+          "sourceUrl": "https://download.yyhelper.app/releases/windows/23/download.html",
+          "date": "2026/11/01",
+          "notes": "- 修复局域网鸿蒙导出\n- 修复某些功能加载存档显示数据不完整\n- 优化已解锁三槽的恒山子弟模拟优化\n- 优化精炼锻造银两显示\n- 优化部分功能的使用",
+          "mirroredAt": "2026-11-11T03:48:51+00:00"
+        }
+      ],
       "status": "ok",
       "error": null
     }
