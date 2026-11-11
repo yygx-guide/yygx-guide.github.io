@@ -2,6 +2,7 @@ import copy
 import hashlib
 import importlib.util
 import io
+import re
 import tempfile
 import unittest
 from pathlib import Path
@@ -86,6 +87,40 @@ class MirrorTests(unittest.TestCase):
         self.assertEqual(row['_origin'], new)
         with patch.object(mirror, 'source_json', side_effect=[OSError('offline'), manifest(old, 23)]):
             self.assertEqual(mirror.latest_releases()['platforms']['android']['_origin'], old)
+
+    def test_release_history_groups_platforms_and_retains_all_versions(self):
+        records = [{'version': f'0.3.{n}', 'build': n, 'date': '2026/11/09', 'notes': f'Update {n}'} for n in range(1, 7)]
+        state = {'current': records[-1], 'history': records[:-1]}
+        catalog = {'status': 'ok', 'platforms': {'android': state, 'windows': copy.deepcopy(state)}}
+        releases = mirror.release_history(catalog)
+        self.assertEqual(len(releases), 6)
+        self.assertEqual(releases[0]['version'], '0.3.6')
+        self.assertEqual(set(releases[0]['notesByPlatform']), {'android', 'windows'})
+        # Use release-only data to exercise the public history presentation.
+        template = (Path(__file__).parents[2] / 'downloads/template.html').read_text(encoding='utf-8')
+        page = mirror.render({'status': 'ok', 'platforms': {}, 'releases': releases}, template)
+        recent = re.search(r'id="recent-releases">(.*?)</ol>', page, re.S).group(1)
+        older = re.search(r'id="older-releases">(.*?)</ol>', page, re.S).group(1)
+        self.assertEqual(recent.count('class="release-entry"'), 3)
+        self.assertEqual(older.count('class="release-entry"'), 3)
+        self.assertEqual(page.count('Update 6'), 2)  # text plus data-note; no duplicate platform block
+        self.assertNotRegex(page, r'id="history-disclosure"[^>]*hidden')
+        small = mirror.render({'status': 'ok', 'platforms': {}, 'releases': releases[:2]}, template)
+        self.assertRegex(small, r'id="history-disclosure"[^>]*hidden')
+
+    def test_sync_retains_history_beyond_three_versions(self):
+        prior = [{'version': f'1.0.{n}', 'build': n, 'sha256': self.pkg['sha256'], 'notes': f'Update {n}'} for n in range(1, 6)]
+        previous = {'platforms': {'android': {'current': prior[-1], 'history': prior[:-1]}}}
+        row = {**self.row, 'build': 6, 'version': '1.0.6', 'url': mirror.ORIGIN + '/releases/android/6/download.html'}
+        pkg = {**self.pkg, 'build': 6, 'version': '1.0.6'}
+        latest = {'schema': 1, 'product': 'yyhelper-pro', 'platforms': {'android': row}}
+        class API:
+            def publish_package(self, *args):
+                return 'https://github.com/download/app.apk', 'https://github.com/releases/6'
+        with patch.object(mirror, 'latest_releases', return_value=latest), patch.object(mirror, 'source_json', return_value=pkg):
+            catalog = mirror.synchronize(previous, API(), '.')
+        self.assertEqual(len(catalog['platforms']['android']['history']), 5)
+        self.assertEqual(len(catalog['releases']), 6)
 
 
 if __name__ == '__main__':

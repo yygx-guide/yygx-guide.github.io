@@ -230,12 +230,14 @@ def synchronize(previous, github, workdir):
                 download_url, release_url = github.publish_package(platform, row, pkg, workdir)
                 changed = not current or current["sha256"] != pkg["sha256"] or current["build"] != pkg["build"]
                 if changed:
-                    history = ([current] + old.get("history", []))[:2] if current else []
+                    history = [current] + old.get("history", []) if current else []
                     current = {k: pkg[k] for k in ("version", "build", "name", "bytes", "sha256")}
                     current.update({"downloadUrl": download_url, "releaseUrl": release_url, "sourceUrl": row["url"], "date": str(row.get("date", ""))[:100], "notes": str(row.get("notes", ""))[:20000], "mirroredAt": now()})
                 else:
                     history = old.get("history", [])
-                    current = {**current, "downloadUrl": download_url, "releaseUrl": release_url}
+                    current = {**current, "downloadUrl": download_url, "releaseUrl": release_url,
+                               "notes": str(row.get("notes", current.get("notes", "")))[:20000],
+                               "date": str(row.get("date", current.get("date", "")))[:100]}
                 catalog["platforms"][platform] = {"current": current, "history": history, "status": "ok", "error": None}
                 print(f"{platform}: {'updated' if changed else 'unchanged'} {pkg['version']} ({pkg['bytes']} bytes)")
             except Exception as error:
@@ -244,7 +246,25 @@ def synchronize(previous, github, workdir):
                 print(f"{platform}: sync failed: {error}", file=sys.stderr)
     except Exception as error:
         catalog.update({"status": "error", "error": str(error)})
+    catalog["releases"] = release_history(catalog)
     return catalog
+
+
+def release_history(catalog):
+    """Keep all observed release notes, grouping Android/Windows by version."""
+    versions = {item["version"]: json.loads(json.dumps(item)) for item in catalog.get("releases", []) if item.get("version")}
+    for platform in PLATFORMS:
+        state = catalog.get("platforms", {}).get(platform, {})
+        for file in [*state.get("history", []), state.get("current")]:
+            if not file or not file.get("version"):
+                continue
+            version = file["version"]
+            entry = versions.setdefault(version, {"version": version, "build": 0, "date": "", "notesByPlatform": {}})
+            entry["build"] = max(entry.get("build", 0), file.get("build", 0))
+            if file.get("date"):
+                entry["date"] = max(entry.get("date", ""), file["date"])
+            entry.setdefault("notesByPlatform", {})[platform] = str(file.get("notes", "")).strip()
+    return sorted(versions.values(), key=lambda item: (item.get("build", 0), tuple(int(n) for n in re.findall(r"\d+", item["version"]))), reverse=True)
 
 
 def display_time(value):
@@ -254,20 +274,37 @@ def display_time(value):
 
 
 def render(catalog, template):
-    replacements = {"STATUS": "安装包已同步" if catalog.get("status") == "ok" else "同步尚未完成，保留已发布的可用版本", "CHECKED": display_time(catalog.get("checkedAt"))}
-    notes = []
+    healthy = catalog.get("status") == "ok"
+    replacements = {"STATUS": "已同步" if healthy else "检查未完成，现有版本仍可下载", "CHECKED": display_time(catalog.get("checkedAt")), "STATUS_KEY": "statusOk" if healthy else "statusError"}
     for platform, (label, extension, _) in PLATFORMS.items():
         current = catalog.get("platforms", {}).get(platform, {}).get("current")
         prefix = platform.upper() + "_"
-        values = {"VERSION": "待同步", "SIZE": "准备中", "DATE": "—", "SYNCED": "—", "SHA": "", "BUTTON": '<span class="button disabled">等待首次同步</span>', "SOURCE": ORIGIN}
+        values = {"VERSION": "待同步", "SIZE": "—", "DATE": "—", "SYNCED": "—", "BUILD": "—", "SHA": "", "BUTTON": '<span class="download-button disabled" data-i18n="pending">等待首次同步</span>', "SOURCE": ORIGIN}
         if current:
-            values.update({"VERSION": "v" + current["version"], "SIZE": f"{current['bytes'] / 1048576:.1f} MB", "DATE": current["date"], "SYNCED": display_time(current["mirroredAt"]), "SHA": current["sha256"], "SOURCE": current["sourceUrl"]})
-            values["BUTTON"] = '<a class="button" href="' + html.escape(current["downloadUrl"], quote=True) + '">下载 ' + extension.upper() + ' <span>↓</span></a>'
-            notes.append('<article class="notes"><h3>' + label + ' <span>v' + html.escape(current["version"]) + '</span></h3><p>' + html.escape(current["notes"] or "原站暂无更新说明。") + '</p></article>')
+            values.update({"VERSION": "v" + current["version"], "SIZE": f"{current['bytes'] / 1048576:.1f} MB", "DATE": current["date"].replace("/", "-"), "BUILD": current["build"], "SYNCED": display_time(current["mirroredAt"]), "SHA": current["sha256"], "SOURCE": current["sourceUrl"]})
+            values["BUTTON"] = '<a class="download-button" data-download href="' + html.escape(current["downloadUrl"], quote=True) + '"><span data-i18n="download' + extension.upper() + '">下载 ' + extension.upper() + '</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4"/></svg></a>'
         for key, value in values.items():
             replacements[prefix + key] = value if key == "BUTTON" else html.escape(str(value), quote=True)
-    replacements["NOTES"] = "".join(notes) or "<p>首次同步完成后显示更新说明。</p>"
+    releases = release_history(catalog)
+    replacements["RECENT_RELEASES"] = "".join(render_release(item, i == 0) for i, item in enumerate(releases[:3])) or '<li class="empty-notes" data-i18n="noNotes">暂无版本更新记录。</li>'
+    replacements["OLDER_RELEASES"] = "".join(render_release(item) for item in releases[3:])
+    replacements["HISTORY_HIDDEN"] = "hidden" if len(releases) <= 3 else ""
+    replacements["OLDER_COUNT"] = str(max(0, len(releases) - 3))
     return re.sub(r"\{\{([A-Z_]+)\}\}", lambda match: replacements[match[1]], template)
+
+
+def render_release(release, latest=False):
+    escape = lambda value: html.escape(str(value), quote=True)
+    def notes_list(notes):
+        lines = [re.sub(r"^\s*[-•]\s*", "", line.strip()) for line in notes.splitlines() if line.strip()]
+        return "<ul>" + "".join('<li data-note="' + escape(line) + '">' + escape(line) + '</li>' for line in lines) + "</ul>" if lines else '<p data-i18n="noReleaseNotes">原站暂无更新说明。</p>'
+    variants = {key: value.strip() for key, value in release.get("notesByPlatform", {}).items() if value.strip()}
+    if len(set(variants.values())) <= 1:
+        body = notes_list(next(iter(variants.values()), ""))
+    else:
+        body = "".join('<h4>' + PLATFORMS[platform][0] + '</h4>' + notes_list(notes) for platform, notes in variants.items() if platform in PLATFORMS)
+    badge = '<span class="latest-label" data-i18n="latest">最新</span>' if latest else ""
+    return '<li class="release-entry"><div class="release-head"><div><h3>v' + escape(release["version"]) + '</h3>' + badge + '</div><time>' + escape(release.get("date", "").replace("/", "-")) + '</time></div><div class="release-copy">' + body + '</div></li>'
 
 
 def main():

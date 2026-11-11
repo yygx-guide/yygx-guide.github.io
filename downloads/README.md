@@ -13,4 +13,6 @@
 
 本地验证：`python scripts/yyhelper_mirror.py --verify-only`。
 
-修改页面模板请编辑 downloads/template.html；downloads/index.html 与 data.json 由程序生成。
+修改结构请编辑 downloads/template.html，下载页样式位于 download.css，简繁文案与状态刷新位于 download.js；downloads/index.html 与 data.json 由程序生成。
+
+更新记录按版本合并，默认显示最近三个，更早记录折叠保留。长期的地区适配和视觉要求见 DESIGN.md。

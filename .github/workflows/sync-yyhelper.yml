@@ -10,6 +10,8 @@ on:
       - '.github/workflows/sync-yyhelper.yml'
       - 'scripts/yyhelper_mirror.py'
       - 'downloads/template.html'
+      - 'downloads/download.css'
+      - 'downloads/download.js'
 
 permissions:
   contents: write
@@ -27,6 +29,8 @@ jobs:
     steps:
       - name: Read public source
         run: git clone --depth 1 --branch "$GITHUB_REF_NAME" "https://github.com/$GITHUB_REPOSITORY.git" source
+      - name: Test synchronization and release history
+        run: python3 -m unittest discover -s source/scripts/tests -v
       - name: Verify and mirror app packages
         env:
           GITHUB_TOKEN: ${{ github.token }}
