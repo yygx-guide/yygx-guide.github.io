@@ -1,0 +1,33 @@
+name: Sync verified app downloads
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 * * * *'
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/sync-yyhelper.yml'
+      - 'scripts/yyhelper_mirror.py'
+      - 'downloads/template.html'
+
+permissions:
+  contents: write
+  pages: write
+
+concurrency:
+  group: sync-yyhelper-downloads
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    if: github.event.repository.private == false
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Read public source
+        run: git clone --depth 1 --branch "$GITHUB_REF_NAME" "https://github.com/$GITHUB_REPOSITORY.git" source
+      - name: Verify and mirror app packages
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 source/scripts/yyhelper_mirror.py --root source
