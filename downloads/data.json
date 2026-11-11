@@ -1,7 +1,7 @@
 {
   "schema": 1,
   "status": "ok",
-  "checkedAt": "2026-11-11T03:58:21+00:00",
+  "checkedAt": "2026-11-11T05:47:50+00:00",
   "platforms": {
     "android": {
       "current": {
@@ -68,5 +68,25 @@
       "error": null
     }
   },
-  "error": null
+  "error": null,
+  "releases": [
+    {
+      "version": "0.3.22",
+      "build": 37,
+      "date": "2026/11/09",
+      "notesByPlatform": {
+        "android": "修复 iOS 局域网导出解析失败的问题",
+        "windows": "修复 iOS 局域网导出解析失败的问题"
+      }
+    },
+    {
+      "version": "0.3.10",
+      "build": 23,
+      "date": "2026/11/01",
+      "notesByPlatform": {
+        "android": "- 修复局域网鸿蒙导出\n- 修复某些功能加载存档显示数据不完整\n- 优化已解锁三槽的恒山子弟模拟优化\n- 优化精炼锻造银两显示\n- 优化部分功能的使用",
+        "windows": "- 修复局域网鸿蒙导出\n- 修复某些功能加载存档显示数据不完整\n- 优化已解锁三槽的恒山子弟模拟优化\n- 优化精炼锻造银两显示\n- 优化部分功能的使用"
+      }
+    }
+  ]
 }
