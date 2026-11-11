@@ -52,7 +52,7 @@ class MirrorTests(unittest.TestCase):
         class API:
             def publish_package(self, *args):
                 return 'https://github.com/download/app.apk', 'https://github.com/releases/1'
-        with patch.object(mirror, 'source_json', side_effect=[latest, self.pkg, {}]):
+        with patch.object(mirror, 'latest_releases', return_value=latest), patch.object(mirror, 'source_json', side_effect=[self.pkg, {}]):
             catalog = mirror.synchronize(previous, API(), '.')
         self.assertEqual(catalog['platforms']['android']['status'], 'ok')
         self.assertEqual(catalog['platforms']['windows']['current']['build'], 1)
@@ -75,6 +75,17 @@ class MirrorTests(unittest.TestCase):
         with patch.object(github, 'find_release', return_value={'draft': True, 'id': 1, 'assets': [draft_asset]}), patch.object(github, 'request', return_value={'html_url': 'https://github.com/release/v1', 'assets': [final_asset]}):
             url, _ = github.publish_package('android', self.row, self.pkg, '.')
         self.assertEqual(url, final_asset['browser_download_url'])
+
+    def test_selects_newest_build_from_two_official_origins(self):
+        def manifest(origin, build):
+            return {'schema': 1, 'product': 'yyhelper-pro', 'platforms': {'android': {'version': str(build), 'build': build, 'url': f'{origin}/releases/android/{build}/download.html'}}}
+        new, old = mirror.SOURCE_ORIGINS
+        with patch.object(mirror, 'source_json', side_effect=[manifest(new, 37), manifest(old, 23)]):
+            row = mirror.latest_releases()['platforms']['android']
+        self.assertEqual(row['build'], 37)
+        self.assertEqual(row['_origin'], new)
+        with patch.object(mirror, 'source_json', side_effect=[OSError('offline'), manifest(old, 23)]):
+            self.assertEqual(mirror.latest_releases()['platforms']['android']['_origin'], old)
 
 
 if __name__ == '__main__':

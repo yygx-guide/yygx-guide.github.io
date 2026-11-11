@@ -18,7 +18,8 @@ from urllib.error import HTTPError
 from urllib.parse import quote, urlsplit
 from urllib.request import Request, HTTPRedirectHandler, build_opener
 
-ORIGIN = "https://download.yyhelper.app"
+ORIGIN = "https://download.yanyuhelper.com"
+SOURCE_ORIGINS = (ORIGIN, "https://download.yyhelper.app")
 PLATFORMS = {"android": ("Android", "apk", b"PK"), "windows": ("Windows", "exe", b"MZ")}
 
 
@@ -36,7 +37,7 @@ def now():
 
 def open_source(url):
     parsed = urlsplit(url)
-    if parsed.scheme != "https" or parsed.netloc != "download.yyhelper.app" or parsed.query or parsed.fragment:
+    if parsed.scheme != "https" or "https://" + parsed.netloc not in SOURCE_ORIGINS or parsed.query or parsed.fragment:
         raise ValueError("原站地址不合法")
     return OPENER.open(Request(url, headers={"User-Agent": "YanyuGitHubMirror/1.0", "Cache-Control": "no-cache"}), timeout=60)
 
@@ -57,9 +58,36 @@ def source_json(url):
     raise last
 
 
+def latest_releases():
+    manifests, errors = [], []
+    for origin in SOURCE_ORIGINS:
+        try:
+            data = source_json(origin + "/releases/latest.json")
+            if data.get("schema") != 1 or data.get("product") != "yyhelper-pro" or not isinstance(data.get("platforms"), dict):
+                raise ValueError("原站版本清单格式变化")
+            manifests.append((origin, data))
+        except Exception as error:
+            errors.append(str(error))
+    if not manifests:
+        raise ValueError("两个原站入口均无法读取：" + "; ".join(errors))
+    platforms = {}
+    for platform in PLATFORMS:
+        candidates = []
+        for origin, data in manifests:
+            row = data["platforms"].get(platform, {})
+            if type(row.get("build")) is int and row["build"] > 0 and row.get("url") == f"{origin}/releases/{platform}/{row['build']}/download.html":
+                candidates.append({**row, "_origin": origin})
+        if candidates:
+            platforms[platform] = max(candidates, key=lambda row: row["build"])
+    return {"schema": 1, "product": "yyhelper-pro", "platforms": platforms}
+
+
 def validate_package(platform, row, pkg):
     _, extension, _ = PLATFORMS[platform]
-    expected_url = f"{ORIGIN}/releases/{platform}/{row.get('build')}/download.html"
+    origin = row.get("_origin", ORIGIN)
+    if origin not in SOURCE_ORIGINS:
+        raise ValueError("原站来源不合法")
+    expected_url = f"{origin}/releases/{platform}/{row.get('build')}/download.html"
     safe = lambda value: isinstance(value, str) and re.fullmatch(r"[A-Za-z0-9_-][A-Za-z0-9._-]{0,180}", value) and ".." not in value
     if (type(row.get("build")) is not int or row["build"] < 1 or row.get("url") != expected_url
             or not isinstance(row.get("version"), str) or not re.fullmatch(r"[A-Za-z0-9._+-]{1,64}", row["version"])
@@ -73,7 +101,7 @@ def validate_package(platform, row, pkg):
     return pkg
 
 
-def download_package(platform, pkg, destination):
+def download_package(platform, pkg, destination, origin=ORIGIN):
     destination = Path(destination)
     temporary = destination.with_suffix(destination.suffix + ".partial")
     last = None
@@ -82,7 +110,7 @@ def download_package(platform, pkg, destination):
             digest, received, magic = hashlib.sha256(), 0, b""
             with temporary.open("wb") as output:
                 for part in pkg["parts"]:
-                    url = f"{ORIGIN}/releases/{platform}/{pkg['build']}/{part}"
+                    url = f"{origin}/releases/{platform}/{pkg['build']}/{part}"
                     with open_source(url) as response:
                         while chunk := response.read(1024 * 1024):
                             received += len(chunk)
@@ -148,9 +176,9 @@ class GitHub:
             if asset.get("size") != pkg["bytes"] or asset.get("state") != "uploaded" or asset.get("digest") not in (None, "sha256:" + pkg["sha256"]):
                 raise ValueError("GitHub 上的同名安装包与原站不符，保留旧版")
         else:
-            local = download_package(platform, pkg, Path(workdir) / pkg["name"])
+            local = download_package(platform, pkg, Path(workdir) / pkg["name"], row.get("_origin", ORIGIN))
             if not release:
-                release = self.request("POST", "/releases", {"tag_name": tag, "name": f"烟雨助手 {PLATFORMS[platform][0]} {pkg['version']} · Build {pkg['build']}", "draft": True, "make_latest": "false", "body": f"从 {ORIGIN}/ 自动同步，未修改安装包。\n\nSHA-256: {pkg['sha256']}\n\n" + str(row.get("notes", ""))[:20000]})
+                release = self.request("POST", "/releases", {"tag_name": tag, "name": f"烟雨助手 {PLATFORMS[platform][0]} {pkg['version']} · Build {pkg['build']}", "draft": True, "make_latest": "false", "body": f"从 {row.get('_origin', ORIGIN)}/ 自动同步，未修改安装包。\n\nSHA-256: {pkg['sha256']}\n\n" + str(row.get("notes", ""))[:20000]})
             upload_url = release["upload_url"].split("{")[0] + "?name=" + quote(pkg["name"], safe="")
             asset = self.request("POST", upload_url, file=local)
             if asset.get("size") != pkg["bytes"] or asset.get("digest") not in (None, "sha256:" + pkg["sha256"]):
@@ -186,7 +214,7 @@ def synchronize(previous, github, workdir):
     catalog.update({"schema": 1, "checkedAt": now(), "status": "ok", "error": None})
     catalog.setdefault("platforms", {})
     try:
-        latest = source_json(ORIGIN + "/releases/latest.json")
+        latest = latest_releases()
         if latest.get("schema") != 1 or latest.get("product") != "yyhelper-pro" or not isinstance(latest.get("platforms"), dict):
             raise ValueError("原站版本清单格式变化")
         for platform in PLATFORMS:
@@ -195,7 +223,7 @@ def synchronize(previous, github, workdir):
                 row = latest["platforms"].get(platform, {})
                 if type(row.get("build")) is not int or row["build"] < 1:
                     raise ValueError("原站平台版本信息不完整")
-                pkg = validate_package(platform, row, source_json(f"{ORIGIN}/releases/{platform}/{row['build']}/package.json"))
+                pkg = validate_package(platform, row, source_json(f"{row.get('_origin', ORIGIN)}/releases/{platform}/{row['build']}/package.json"))
                 current = old.get("current")
                 if current and current["build"] > pkg["build"]:
                     raise ValueError("原站版本回退，保留现有安装包")
@@ -250,11 +278,11 @@ def main():
     args = parser.parse_args()
     with tempfile.TemporaryDirectory(prefix="yyhelper-") as workdir:
         if args.verify_only:
-            latest = source_json(ORIGIN + "/releases/latest.json")
+            latest = latest_releases()
             for platform in PLATFORMS:
                 row = latest["platforms"][platform]
-                pkg = validate_package(platform, row, source_json(f"{ORIGIN}/releases/{platform}/{row['build']}/package.json"))
-                download_package(platform, pkg, Path(workdir) / pkg["name"])
+                pkg = validate_package(platform, row, source_json(f"{row['_origin']}/releases/{platform}/{row['build']}/package.json"))
+                download_package(platform, pkg, Path(workdir) / pkg["name"], row["_origin"])
                 print(f"VERIFIED {platform} {pkg['version']} {pkg['bytes']} bytes SHA256={pkg['sha256']}")
             return 0
         token = os.environ.get("GITHUB_TOKEN")
