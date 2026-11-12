@@ -1,23 +1,36 @@
 {
   "schema": 1,
   "status": "ok",
-  "checkedAt": "2026-11-12T01:54:23+00:00",
+  "checkedAt": "2026-11-12T09:51:43+00:00",
   "platforms": {
     "android": {
       "current": {
-        "version": "0.3.27",
-        "build": 42,
-        "name": "yyhelper-0.3.27-42-android.apk",
-        "bytes": 12777145,
-        "sha256": "140588e1307255bdbdc244fb173c7875c58b60180a612d1f91175e60c7f3dc60",
-        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-android-b42-140588e1307255bd/yyhelper-0.3.27-42-android.apk",
-        "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-android-b42-140588e1307255bd",
-        "sourceUrl": "https://download.yanyuhelper.com/releases/android/42/download.html",
-        "date": "2026/11/11",
-        "notes": "日志完善\n",
-        "mirroredAt": "2026-11-11T19:37:23+00:00"
+        "version": "0.3.28",
+        "build": 43,
+        "name": "yyhelper-0.3.28-43-android.apk",
+        "bytes": 12782117,
+        "sha256": "96c8ba96518c302b8bada1fcaba028748c7f11241e99c9b9a314b40ab2241a00",
+        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-android-b43-96c8ba96518c302b/yyhelper-0.3.28-43-android.apk",
+        "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-android-b43-96c8ba96518c302b",
+        "sourceUrl": "https://download.yanyuhelper.com/releases/android/43/download.html",
+        "date": "2026/11/12",
+        "notes": "局域网兼容性优化\n",
+        "mirroredAt": "2026-11-12T09:51:48+00:00"
       },
       "history": [
+        {
+          "version": "0.3.27",
+          "build": 42,
+          "name": "yyhelper-0.3.27-42-android.apk",
+          "bytes": 12777145,
+          "sha256": "140588e1307255bdbdc244fb173c7875c58b60180a612d1f91175e60c7f3dc60",
+          "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-android-b42-140588e1307255bd/yyhelper-0.3.27-42-android.apk",
+          "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-android-b42-140588e1307255bd",
+          "sourceUrl": "https://download.yanyuhelper.com/releases/android/42/download.html",
+          "date": "2026/11/11",
+          "notes": "日志完善\n",
+          "mirroredAt": "2026-11-11T19:37:23+00:00"
+        },
         {
           "version": "0.3.25",
           "build": 40,
@@ -63,19 +76,32 @@
     },
     "windows": {
       "current": {
-        "version": "0.3.27",
-        "build": 42,
-        "name": "yyhelper-0.3.27-42-windows.exe",
-        "bytes": 15875479,
-        "sha256": "fd2c120f6d049e623824378fdb54f700b4db5b7a6b4983b7aadba7710e6bce75",
-        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-windows-b42-fd2c120f6d049e62/yyhelper-0.3.27-42-windows.exe",
-        "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-windows-b42-fd2c120f6d049e62",
-        "sourceUrl": "https://download.yanyuhelper.com/releases/windows/42/download.html",
-        "date": "2026/11/11",
-        "notes": "日志完善\n",
-        "mirroredAt": "2026-11-11T19:37:27+00:00"
+        "version": "0.3.28",
+        "build": 43,
+        "name": "yyhelper-0.3.28-43-windows.exe",
+        "bytes": 15888476,
+        "sha256": "ecd3ba9d0c484d454136b73222ef9a1c8a36890697ef5e7d45095d7ffe2296bb",
+        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-windows-b43-ecd3ba9d0c484d45/yyhelper-0.3.28-43-windows.exe",
+        "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-windows-b43-ecd3ba9d0c484d45",
+        "sourceUrl": "https://download.yanyuhelper.com/releases/windows/43/download.html",
+        "date": "2026/11/12",
+        "notes": "局域网兼容性优化\n",
+        "mirroredAt": "2026-11-12T09:51:53+00:00"
       },
       "history": [
+        {
+          "version": "0.3.27",
+          "build": 42,
+          "name": "yyhelper-0.3.27-42-windows.exe",
+          "bytes": 15875479,
+          "sha256": "fd2c120f6d049e623824378fdb54f700b4db5b7a6b4983b7aadba7710e6bce75",
+          "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-windows-b42-fd2c120f6d049e62/yyhelper-0.3.27-42-windows.exe",
+          "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-windows-b42-fd2c120f6d049e62",
+          "sourceUrl": "https://download.yanyuhelper.com/releases/windows/42/download.html",
+          "date": "2026/11/11",
+          "notes": "日志完善\n",
+          "mirroredAt": "2026-11-11T19:37:27+00:00"
+        },
         {
           "version": "0.3.25",
           "build": 40,
@@ -122,6 +148,15 @@
   },
   "error": null,
   "releases": [
+    {
+      "version": "0.3.28",
+      "build": 43,
+      "date": "2026/11/12",
+      "notesByPlatform": {
+        "android": "局域网兼容性优化",
+        "windows": "局域网兼容性优化"
+      }
+    },
     {
       "version": "0.3.27",
       "build": 42,
