@@ -366,7 +366,7 @@ html[data-theme="care"] .notice-board-latest,html[data-theme="care"] .notice-his
 @media(prefers-reduced-motion:reduce){.notice-board-chevron,.notice-history-chevron,.notice-board-header{transition:none}}
 
 
-/* 0.3.30 版本更新弹窗：日期、重点文案与省略号关闭入口 */
+/* 0.3.30 版本更新弹窗：小号省略号与统一朱红确认按钮 */
 .daily-announcement-modal .modal-top{padding:27px 32px 0}
 .daily-announcement-meta{display:flex;align-items:center;gap:11px}
 .daily-announcement-date{font-size:11px!important;font-weight:650;letter-spacing:.12em;color:var(--gold)!important}
@@ -378,18 +378,28 @@ html[data-theme="care"] .notice-board-latest,html[data-theme="care"] .notice-his
 .daily-announcement-modal .announcement-feature{margin:0;padding:0;font-size:15px;line-height:1.95;color:var(--muted)}
 .daily-announcement-modal .announcement-feature+.announcement-feature{margin-top:13px}
 .daily-announcement-modal .announcement-feature strong{color:var(--pine-deep);font-weight:800;letter-spacing:.015em}
-.daily-announcement-dismiss-row{display:flex;justify-content:center;margin-top:23px}
-.daily-announcement-dismiss{display:inline-flex;align-items:center;justify-content:center;min-width:54px;height:32px;padding:0 13px;border:1px solid rgba(49,89,77,.2);border-radius:999px;background:rgba(49,89,77,.045);color:var(--pine-deep);font-family:inherit;font-size:20px;font-weight:700;letter-spacing:3px;line-height:1;cursor:pointer;transition:background .18s,border-color .18s,color .18s,transform .18s}
-.daily-announcement-dismiss:hover{border-color:rgba(165,61,47,.4);background:rgba(165,61,47,.07);color:var(--red);transform:translateY(-1px)}
-.daily-announcement-dismiss:focus-visible{outline:2px solid var(--pine);outline-offset:3px}
-.daily-announcement-modal .daily-announcement-hint{display:none}
+.daily-announcement-more-row{display:flex;justify-content:center;margin-top:8px}
+.daily-announcement-more{
+  appearance:none;display:inline-flex;align-items:center;justify-content:center;
+  min-width:32px;min-height:28px;margin:0;padding:5px 10px;border:0;border-radius:0;
+  background:transparent;box-shadow:none;color:var(--muted-light);font-family:inherit;
+  font-size:13px;font-weight:700;letter-spacing:4px;line-height:1;cursor:pointer;
+  transition:color .18s ease;
+}
+.daily-announcement-more:hover{color:var(--red)}
+.daily-announcement-more:focus-visible{outline:2px solid var(--pine);outline-offset:2px}
+.daily-announcement-modal .modal-actions{display:block;margin-top:13px}
+.daily-announcement-modal .modal-actions .main-button{
+  width:100%;min-height:49px;padding:11px 18px;font-size:15px;letter-spacing:.09em;border-radius:5px
+}
 @media(max-width:520px){
   .daily-announcement-modal .modal-top{padding:23px 22px 0}
   .daily-announcement-modal .modal-body{padding:5px 22px 23px}
   .daily-announcement-modal h2{font-size:24px;margin-bottom:19px}
   .daily-announcement-modal .daily-announcement-copy{padding-left:14px}
   .daily-announcement-modal .announcement-feature{font-size:14px}
-  .daily-announcement-dismiss-row{margin-top:19px}
+  .daily-announcement-more-row{margin-top:7px}
+  .daily-announcement-modal .modal-actions{margin-top:11px}
 }
 
 /* 新版本首页提示：关闭版本弹窗后，仅轻柔提醒一次 */
@@ -402,5 +412,5 @@ html[data-theme="care"] .notice-board-latest,html[data-theme="care"] .notice-his
 .notice-board.is-release-highlight .notice-board-accent{box-shadow:0 0 0 3px rgba(165,61,47,.09)}
 @media(prefers-reduced-motion:reduce){
   .notice-board.is-release-highlight{animation:none!important}
-  .daily-announcement-dismiss{transition:none}
+  .daily-announcement-more{transition:none}
 }
