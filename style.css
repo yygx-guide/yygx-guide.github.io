@@ -364,3 +364,43 @@ html[data-theme="care"] .notice-board-latest,html[data-theme="care"] .notice-his
   .notice-history-summary{min-height:39px}
 }
 @media(prefers-reduced-motion:reduce){.notice-board-chevron,.notice-history-chevron,.notice-board-header{transition:none}}
+
+
+/* 0.3.30 版本更新弹窗：日期、重点文案与省略号关闭入口 */
+.daily-announcement-modal .modal-top{padding:27px 32px 0}
+.daily-announcement-meta{display:flex;align-items:center;gap:11px}
+.daily-announcement-date{font-size:11px!important;font-weight:650;letter-spacing:.12em;color:var(--gold)!important}
+.daily-announcement-edition{font-size:10px;color:var(--muted-light);letter-spacing:.12em}
+.daily-announcement-edition::before{content:"";display:inline-block;width:3px;height:3px;margin:0 9px 3px 0;border-radius:50%;background:var(--red)}
+.daily-announcement-modal .modal-body{padding:7px 32px 27px}
+.daily-announcement-modal h2{margin:4px 0 23px;font-size:27px;letter-spacing:.045em}
+.daily-announcement-modal .daily-announcement-copy{padding:3px 0 3px 18px;border-left:2px solid var(--pine)}
+.daily-announcement-modal .announcement-feature{margin:0;padding:0;font-size:15px;line-height:1.95;color:var(--muted)}
+.daily-announcement-modal .announcement-feature+.announcement-feature{margin-top:13px}
+.daily-announcement-modal .announcement-feature strong{color:var(--pine-deep);font-weight:800;letter-spacing:.015em}
+.daily-announcement-dismiss-row{display:flex;justify-content:center;margin-top:23px}
+.daily-announcement-dismiss{display:inline-flex;align-items:center;justify-content:center;min-width:54px;height:32px;padding:0 13px;border:1px solid rgba(49,89,77,.2);border-radius:999px;background:rgba(49,89,77,.045);color:var(--pine-deep);font-family:inherit;font-size:20px;font-weight:700;letter-spacing:3px;line-height:1;cursor:pointer;transition:background .18s,border-color .18s,color .18s,transform .18s}
+.daily-announcement-dismiss:hover{border-color:rgba(165,61,47,.4);background:rgba(165,61,47,.07);color:var(--red);transform:translateY(-1px)}
+.daily-announcement-dismiss:focus-visible{outline:2px solid var(--pine);outline-offset:3px}
+.daily-announcement-modal .daily-announcement-hint{display:none}
+@media(max-width:520px){
+  .daily-announcement-modal .modal-top{padding:23px 22px 0}
+  .daily-announcement-modal .modal-body{padding:5px 22px 23px}
+  .daily-announcement-modal h2{font-size:24px;margin-bottom:19px}
+  .daily-announcement-modal .daily-announcement-copy{padding-left:14px}
+  .daily-announcement-modal .announcement-feature{font-size:14px}
+  .daily-announcement-dismiss-row{margin-top:19px}
+}
+
+/* 新版本首页提示：关闭版本弹窗后，仅轻柔提醒一次 */
+@keyframes notice-release-nudge{
+  0%,100%{border-color:rgba(49,89,77,.23);box-shadow:0 5px 16px rgba(57,48,36,.045)}
+  28%{border-color:rgba(165,61,47,.62);box-shadow:0 0 0 4px rgba(165,61,47,.09),0 9px 25px rgba(57,48,36,.09)}
+  58%{border-color:rgba(165,61,47,.38);box-shadow:0 0 0 2px rgba(165,61,47,.045),0 7px 20px rgba(57,48,36,.065)}
+}
+.notice-board.is-release-highlight{animation:notice-release-nudge 1.65s ease-out 1}
+.notice-board.is-release-highlight .notice-board-accent{box-shadow:0 0 0 3px rgba(165,61,47,.09)}
+@media(prefers-reduced-motion:reduce){
+  .notice-board.is-release-highlight{animation:none!important}
+  .daily-announcement-dismiss{transition:none}
+}
