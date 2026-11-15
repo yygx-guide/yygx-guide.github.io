@@ -221,13 +221,79 @@
   }));
   refreshLang();
 
+  // 版本更新弹窗：日期、标题及两条重点内容统一从 config.js 读取。
+  // 强调文字使用 DOM 节点创建，不通过 innerHTML 注入配置内容。
+  const releaseNoticeConfig = editableTexts.announcement || {};
+  const releaseDate = byId('dailyAnnouncementDate');
+  if (releaseDate && typeof releaseNoticeConfig.date === 'string') {
+    releaseDate.textContent = releaseNoticeConfig.date;
+    if (/^\\d{4}[.\\/-]\\d{2}[.\\/-]\\d{2}$/.test(releaseNoticeConfig.date)) {
+      releaseDate.dateTime = releaseNoticeConfig.date.replace(/[.\\/]/g, '-');
+    }
+  }
+  putText('dailyAnnouncementTitle',
+    typeof releaseNoticeConfig.title === 'string' ? releaseNoticeConfig.title : '0.3.30 版本功能更新');
+  const releaseCopy = byId('dailyAnnouncementCopy');
+  if (releaseCopy && Array.isArray(releaseNoticeConfig.items)) {
+    const releaseParagraphs = releaseNoticeConfig.items.slice(0, 2)
+      .filter(item => item && typeof item === 'object')
+      .map((item, index) => {
+        const paragraph = document.createElement('p');
+        paragraph.className = index === 0 ? 'announcement-feature announcement-feature-primary' : 'announcement-feature';
+        if (typeof item.prefix === 'string') paragraph.appendChild(document.createTextNode(item.prefix));
+        if (typeof item.emphasis === 'string' && item.emphasis) {
+          const emphasis = document.createElement('strong');
+          emphasis.textContent = item.emphasis;
+          paragraph.appendChild(emphasis);
+        }
+        if (typeof item.suffix === 'string') paragraph.appendChild(document.createTextNode(item.suffix));
+        return paragraph;
+      });
+    releaseCopy.replaceChildren(...releaseParagraphs);
+  }
+
+  const releaseDismiss = byId('dailyAnnouncementDismiss');
+  if (releaseDismiss) {
+    releaseDismiss.textContent = typeof releaseNoticeConfig.moreLabel === 'string' ? releaseNoticeConfig.moreLabel : '···';
+    const dismissLabel = typeof releaseNoticeConfig.moreAriaLabel === 'string'
+      ? releaseNoticeConfig.moreAriaLabel : '关闭版本更新';
+    releaseDismiss.setAttribute('aria-label', dismissLabel);
+    releaseDismiss.title = dismissLabel;
+    releaseDismiss.addEventListener('click', () => byId('dailyAnnouncementModal')?.close());
+  }
+  refreshLang();
+
+  // 首页最新通知仅在一个新版本首次展示后轻柔提示一次；按版本记录，不会每次刷新都闪动。
+  const releaseVersion = typeof releaseNoticeConfig.version === 'string' ? releaseNoticeConfig.version : '';
+  const releaseBoard = byId('latestBulletin');
+  const releaseHighlightKey = releaseVersion ? `guanxing-home-highlighted-${releaseVersion}` : '';
+  let releaseAlreadyHighlighted = false;
+  if (releaseHighlightKey) {
+    try { releaseAlreadyHighlighted = localStorage.getItem(releaseHighlightKey) === '1'; }
+    catch (_) {
+      try { releaseAlreadyHighlighted = sessionStorage.getItem(releaseHighlightKey) === '1'; } catch (_) {}
+    }
+  }
+  const highlightReleaseBoard = () => {
+    if (!releaseBoard || !releaseHighlightKey || releaseAlreadyHighlighted) return;
+    releaseAlreadyHighlighted = true;
+    try { localStorage.setItem(releaseHighlightKey, '1'); }
+    catch (_) { try { sessionStorage.setItem(releaseHighlightKey, '1'); } catch (_) {} }
+    releaseBoard.classList.remove('is-release-highlight');
+    void releaseBoard.offsetWidth;
+    releaseBoard.classList.add('is-release-highlight');
+  };
+
   // 最新公告：每次打开或刷新网页时显示，不依赖登录或本地存储。
   const dailyAnnouncement = byId('dailyAnnouncementModal');
+  if (dailyAnnouncement) dailyAnnouncement.addEventListener('close', highlightReleaseBoard);
   if (cfg.dailyAnnouncementEnabled !== false &&
       dailyAnnouncement &&
       typeof dailyAnnouncement.showModal === 'function' &&
       !dailyAnnouncement.open) {
     dailyAnnouncement.showModal();
+  } else {
+    highlightReleaseBoard();
   }
 
   // 未配置链接时不执行空白跳转。
