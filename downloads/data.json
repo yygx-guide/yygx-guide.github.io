@@ -1,23 +1,36 @@
 {
   "schema": 1,
   "status": "ok",
-  "checkedAt": "2026-11-15T02:40:12+00:00",
+  "checkedAt": "2026-11-15T10:54:44+00:00",
   "platforms": {
     "android": {
       "current": {
-        "version": "0.3.28",
-        "build": 43,
-        "name": "yyhelper-0.3.28-43-android.apk",
-        "bytes": 12782117,
-        "sha256": "96c8ba96518c302b8bada1fcaba028748c7f11241e99c9b9a314b40ab2241a00",
-        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-android-b43-96c8ba96518c302b/yyhelper-0.3.28-43-android.apk",
-        "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-android-b43-96c8ba96518c302b",
-        "sourceUrl": "https://download.yanyuhelper.com/releases/android/43/download.html",
-        "date": "2026/11/12",
-        "notes": "局域网兼容性优化\n",
-        "mirroredAt": "2026-11-12T09:51:48+00:00"
+        "version": "0.3.29",
+        "build": 44,
+        "name": "yyhelper-0.3.29-44-android.apk",
+        "bytes": 13182310,
+        "sha256": "a2bd2616c65a4e7179b607c6151d3be90bd43f02993736db14d516df1f0cb772",
+        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-android-b44-a2bd2616c65a4e71/yyhelper-0.3.29-44-android.apk",
+        "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-android-b44-a2bd2616c65a4e71",
+        "sourceUrl": "https://download.yanyuhelper.com/releases/android/44/download.html",
+        "date": "2026/11/15",
+        "notes": "- 鸿蒙新增「文件解析」：可导入抓包文件（.har）导出存档，支持手机扫码上传\n- 副本掉落按实测存档校正，掉落与装备更准确\n- 自动洗脉：目标改为排序，可选非紫脉（蓝、绿、白），计算更快\n- 恒山弟子：推演可暂停、继续，算不完也先给出路线；每日经验按游戏分笔到账\n- 自动虎骨：按体力与材料排出合计虎骨最多的顺序\n- 精炼：角色内劲罡气计入精炼等级加成，修正预览次数\n- 无附加装备也能推演附加材料\n- 手机版不再提供 ADB 导出（仅 Windows）\n- 修正 Windows 局域网有时选不了 IP\n- 云端存档显示实际会员等级\n",
+        "mirroredAt": "2026-11-15T10:54:51+00:00"
       },
       "history": [
+        {
+          "version": "0.3.28",
+          "build": 43,
+          "name": "yyhelper-0.3.28-43-android.apk",
+          "bytes": 12782117,
+          "sha256": "96c8ba96518c302b8bada1fcaba028748c7f11241e99c9b9a314b40ab2241a00",
+          "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-android-b43-96c8ba96518c302b/yyhelper-0.3.28-43-android.apk",
+          "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-android-b43-96c8ba96518c302b",
+          "sourceUrl": "https://download.yanyuhelper.com/releases/android/43/download.html",
+          "date": "2026/11/12",
+          "notes": "局域网兼容性优化\n",
+          "mirroredAt": "2026-11-12T09:51:48+00:00"
+        },
         {
           "version": "0.3.27",
           "build": 42,
@@ -76,19 +89,32 @@
     },
     "windows": {
       "current": {
-        "version": "0.3.28",
-        "build": 43,
-        "name": "yyhelper-0.3.28-43-windows.exe",
-        "bytes": 15888476,
-        "sha256": "ecd3ba9d0c484d454136b73222ef9a1c8a36890697ef5e7d45095d7ffe2296bb",
-        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-windows-b43-ecd3ba9d0c484d45/yyhelper-0.3.28-43-windows.exe",
-        "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-windows-b43-ecd3ba9d0c484d45",
-        "sourceUrl": "https://download.yanyuhelper.com/releases/windows/43/download.html",
-        "date": "2026/11/12",
-        "notes": "局域网兼容性优化\n",
-        "mirroredAt": "2026-11-12T09:51:53+00:00"
+        "version": "0.3.29",
+        "build": 44,
+        "name": "yyhelper-0.3.29-44-windows.exe",
+        "bytes": 16192609,
+        "sha256": "3f65f0231da0ece2bce3461ec210850bc32adb160d7a5ee95117cabc84a93f20",
+        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-windows-b44-3f65f0231da0ece2/yyhelper-0.3.29-44-windows.exe",
+        "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-windows-b44-3f65f0231da0ece2",
+        "sourceUrl": "https://download.yanyuhelper.com/releases/windows/44/download.html",
+        "date": "2026/11/15",
+        "notes": "- 鸿蒙新增「文件解析」：可导入抓包文件（.har）导出存档，支持手机扫码上传\n- 副本掉落按实测存档校正，掉落与装备更准确\n- 自动洗脉：目标改为排序，可选非紫脉（蓝、绿、白），计算更快\n- 恒山弟子：推演可暂停、继续，算不完也先给出路线；每日经验按游戏分笔到账\n- 自动虎骨：按体力与材料排出合计虎骨最多的顺序\n- 精炼：角色内劲罡气计入精炼等级加成，修正预览次数\n- 无附加装备也能推演附加材料\n- 手机版不再提供 ADB 导出（仅 Windows）\n- 修正 Windows 局域网有时选不了 IP\n- 云端存档显示实际会员等级\n",
+        "mirroredAt": "2026-11-15T10:54:56+00:00"
       },
       "history": [
+        {
+          "version": "0.3.28",
+          "build": 43,
+          "name": "yyhelper-0.3.28-43-windows.exe",
+          "bytes": 15888476,
+          "sha256": "ecd3ba9d0c484d454136b73222ef9a1c8a36890697ef5e7d45095d7ffe2296bb",
+          "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-windows-b43-ecd3ba9d0c484d45/yyhelper-0.3.28-43-windows.exe",
+          "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-windows-b43-ecd3ba9d0c484d45",
+          "sourceUrl": "https://download.yanyuhelper.com/releases/windows/43/download.html",
+          "date": "2026/11/12",
+          "notes": "局域网兼容性优化\n",
+          "mirroredAt": "2026-11-12T09:51:53+00:00"
+        },
         {
           "version": "0.3.27",
           "build": 42,
@@ -148,6 +174,15 @@
   },
   "error": null,
   "releases": [
+    {
+      "version": "0.3.29",
+      "build": 44,
+      "date": "2026/11/15",
+      "notesByPlatform": {
+        "android": "- 鸿蒙新增「文件解析」：可导入抓包文件（.har）导出存档，支持手机扫码上传\n- 副本掉落按实测存档校正，掉落与装备更准确\n- 自动洗脉：目标改为排序，可选非紫脉（蓝、绿、白），计算更快\n- 恒山弟子：推演可暂停、继续，算不完也先给出路线；每日经验按游戏分笔到账\n- 自动虎骨：按体力与材料排出合计虎骨最多的顺序\n- 精炼：角色内劲罡气计入精炼等级加成，修正预览次数\n- 无附加装备也能推演附加材料\n- 手机版不再提供 ADB 导出（仅 Windows）\n- 修正 Windows 局域网有时选不了 IP\n- 云端存档显示实际会员等级",
+        "windows": "- 鸿蒙新增「文件解析」：可导入抓包文件（.har）导出存档，支持手机扫码上传\n- 副本掉落按实测存档校正，掉落与装备更准确\n- 自动洗脉：目标改为排序，可选非紫脉（蓝、绿、白），计算更快\n- 恒山弟子：推演可暂停、继续，算不完也先给出路线；每日经验按游戏分笔到账\n- 自动虎骨：按体力与材料排出合计虎骨最多的顺序\n- 精炼：角色内劲罡气计入精炼等级加成，修正预览次数\n- 无附加装备也能推演附加材料\n- 手机版不再提供 ADB 导出（仅 Windows）\n- 修正 Windows 局域网有时选不了 IP\n- 云端存档显示实际会员等级"
+      }
+    },
     {
       "version": "0.3.28",
       "build": 43,
