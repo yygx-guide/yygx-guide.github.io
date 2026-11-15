@@ -227,8 +227,8 @@
   const releaseDate = byId('dailyAnnouncementDate');
   if (releaseDate && typeof releaseNoticeConfig.date === 'string') {
     releaseDate.textContent = releaseNoticeConfig.date;
-    if (/^\\d{4}[.\\/-]\\d{2}[.\\/-]\\d{2}$/.test(releaseNoticeConfig.date)) {
-      releaseDate.dateTime = releaseNoticeConfig.date.replace(/[.\\/]/g, '-');
+    if (/^\d{4}[.-]\d{2}[.-]\d{2}$/.test(releaseNoticeConfig.date)) {
+      releaseDate.dateTime = releaseNoticeConfig.date.replace(/\./g, '-');
     }
   }
   putText('dailyAnnouncementTitle',
