@@ -8,7 +8,7 @@
 <meta content="烟雨助手使用指南：使用前须知、试用与授权码获取、安卓/iOS/鸿蒙存档导出教程、使用须知、使用问题与游戏交流。" name="description"/>
 <title>烟雨助手 · 使用指南</title>
 <link href="assets/app-icon.png" rel="icon" type="image/png"/>
-<link href="style.css?v=20261106-sales-reopen" rel="stylesheet"/>
+<link href="style.css?v=20261116-v030" rel="stylesheet"/>
 </head>
 <body>
 <div class="wrap">
@@ -260,23 +260,24 @@
 <p class="download-url-fallback" hidden="" id="downloadUrlFallback"></p>
 </div>
 </dialog>
-<!-- 教程更新说明：文字在 config.js 的 editableTexts.announcement 中统一维护 -->
+<!-- 版本更新弹窗：日期、两条重点内容及关闭文案统一在 config.js 中维护 -->
 <dialog aria-labelledby="dailyAnnouncementTitle" aria-describedby="dailyAnnouncementCopy" class="modal daily-announcement-modal" id="dailyAnnouncementModal">
   <div class="modal-top">
-    <span class="modal-kicker" data-config-text="announcement.kicker">烟雨助手 · 最新消息</span>
+    <div class="daily-announcement-meta">
+      <time class="modal-kicker daily-announcement-date" id="dailyAnnouncementDate" datetime="2026-11-16">2026.11.16</time>
+      <span class="daily-announcement-edition">版本更新</span>
+    </div>
   </div>
   <div class="modal-body">
-    <h2 id="dailyAnnouncementTitle" data-config-text="announcement.title" tabindex="-1" autofocus>教程更新说明</h2>
+    <h2 id="dailyAnnouncementTitle" tabindex="-1" autofocus>0.3.30 版本功能更新</h2>
     <div class="daily-announcement-copy" id="dailyAnnouncementCopy">
-      <p class="announcement-lead" data-config-text="announcement.line1">本站使用教程将持续更新</p>
-      <p class="announcement-secondary" data-config-text="announcement.line2">我们将根据软件版本变化，持续完善下载安装、存档导出和常见问题等操作说明。</p>
-      <p class="announcement-tertiary" data-config-text="announcement.line3">当前使用的软件为「烟雨助手」，请下载最新版本 APP 使用。</p>
+      <p class="announcement-feature announcement-feature-primary">新增<strong>鬼市推演</strong>功能，推演过程更直观，路线规划更方便。</p>
+      <p class="announcement-feature">自动洗脉优化：<strong>新增蓝、绿、白脉选择</strong>，并提升洗脉速度。</p>
     </div>
-    <div class="modal-actions">
-      <button class="main-button" data-close="" data-config-text="announcement.confirm" type="button">我知道了</button>
+    <div class="daily-announcement-dismiss-row">
+      <button class="daily-announcement-dismiss" id="dailyAnnouncementDismiss" type="button" aria-label="关闭版本更新" title="关闭版本更新">···</button>
     </div>
-    <p class="daily-announcement-hint" data-config-text="announcement.hint">每次打开网页时显示</p>
   </div>
 </dialog>
-<script src="config.js?v=20261106-sales-reopen"></script><script src="lang-map.js"></script><script src="script.js?v=20261106-sales-reopen"></script>
+<script src="config.js?v=20261116-v030"></script><script src="lang-map.js"></script><script src="script.js?v=20261116-v030"></script>
 </body></html>
