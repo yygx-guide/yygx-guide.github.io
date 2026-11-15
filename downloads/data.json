@@ -1,23 +1,36 @@
 {
   "schema": 1,
   "status": "ok",
-  "checkedAt": "2026-11-15T10:54:44+00:00",
+  "checkedAt": "2026-11-15T17:42:52+00:00",
   "platforms": {
     "android": {
       "current": {
-        "version": "0.3.29",
-        "build": 44,
-        "name": "yyhelper-0.3.29-44-android.apk",
-        "bytes": 13182310,
-        "sha256": "a2bd2616c65a4e7179b607c6151d3be90bd43f02993736db14d516df1f0cb772",
-        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-android-b44-a2bd2616c65a4e71/yyhelper-0.3.29-44-android.apk",
-        "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-android-b44-a2bd2616c65a4e71",
-        "sourceUrl": "https://download.yanyuhelper.com/releases/android/44/download.html",
+        "version": "0.3.30",
+        "build": 45,
+        "name": "yyhelper-0.3.30-45-android.apk",
+        "bytes": 13242738,
+        "sha256": "c3fc599a90c462bc8c1b8cc8b88f16f3c178bdd702bde8f15c995d401f1bb9c0",
+        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-android-b45-c3fc599a90c462bc/yyhelper-0.3.30-45-android.apk",
+        "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-android-b45-c3fc599a90c462bc",
+        "sourceUrl": "https://download.yanyuhelper.com/releases/android/45/download.html",
         "date": "2026/11/15",
-        "notes": "- 鸿蒙新增「文件解析」：可导入抓包文件（.har）导出存档，支持手机扫码上传\n- 副本掉落按实测存档校正，掉落与装备更准确\n- 自动洗脉：目标改为排序，可选非紫脉（蓝、绿、白），计算更快\n- 恒山弟子：推演可暂停、继续，算不完也先给出路线；每日经验按游戏分笔到账\n- 自动虎骨：按体力与材料排出合计虎骨最多的顺序\n- 精炼：角色内劲罡气计入精炼等级加成，修正预览次数\n- 无附加装备也能推演附加材料\n- 手机版不再提供 ADB 导出（仅 Windows）\n- 修正 Windows 局域网有时选不了 IP\n- 云端存档显示实际会员等级\n",
-        "mirroredAt": "2026-11-15T10:54:51+00:00"
+        "notes": "- 新增鬼市推演相关功能\n",
+        "mirroredAt": "2026-11-15T17:42:57+00:00"
       },
       "history": [
+        {
+          "version": "0.3.29",
+          "build": 44,
+          "name": "yyhelper-0.3.29-44-android.apk",
+          "bytes": 13182310,
+          "sha256": "a2bd2616c65a4e7179b607c6151d3be90bd43f02993736db14d516df1f0cb772",
+          "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-android-b44-a2bd2616c65a4e71/yyhelper-0.3.29-44-android.apk",
+          "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-android-b44-a2bd2616c65a4e71",
+          "sourceUrl": "https://download.yanyuhelper.com/releases/android/44/download.html",
+          "date": "2026/11/15",
+          "notes": "- 鸿蒙新增「文件解析」：可导入抓包文件（.har）导出存档，支持手机扫码上传\n- 副本掉落按实测存档校正，掉落与装备更准确\n- 自动洗脉：目标改为排序，可选非紫脉（蓝、绿、白），计算更快\n- 恒山弟子：推演可暂停、继续，算不完也先给出路线；每日经验按游戏分笔到账\n- 自动虎骨：按体力与材料排出合计虎骨最多的顺序\n- 精炼：角色内劲罡气计入精炼等级加成，修正预览次数\n- 无附加装备也能推演附加材料\n- 手机版不再提供 ADB 导出（仅 Windows）\n- 修正 Windows 局域网有时选不了 IP\n- 云端存档显示实际会员等级\n",
+          "mirroredAt": "2026-11-15T10:54:51+00:00"
+        },
         {
           "version": "0.3.28",
           "build": 43,
@@ -89,19 +102,32 @@
     },
     "windows": {
       "current": {
-        "version": "0.3.29",
-        "build": 44,
-        "name": "yyhelper-0.3.29-44-windows.exe",
-        "bytes": 16192609,
-        "sha256": "3f65f0231da0ece2bce3461ec210850bc32adb160d7a5ee95117cabc84a93f20",
-        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-windows-b44-3f65f0231da0ece2/yyhelper-0.3.29-44-windows.exe",
-        "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-windows-b44-3f65f0231da0ece2",
-        "sourceUrl": "https://download.yanyuhelper.com/releases/windows/44/download.html",
+        "version": "0.3.30",
+        "build": 45,
+        "name": "yyhelper-0.3.30-45-windows.exe",
+        "bytes": 16233946,
+        "sha256": "680c60fa878438bed7e4894984b71bf4a08ac5329bb7ae4d5937dc5b45ddfc01",
+        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-windows-b45-680c60fa878438be/yyhelper-0.3.30-45-windows.exe",
+        "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-windows-b45-680c60fa878438be",
+        "sourceUrl": "https://download.yanyuhelper.com/releases/windows/45/download.html",
         "date": "2026/11/15",
-        "notes": "- 鸿蒙新增「文件解析」：可导入抓包文件（.har）导出存档，支持手机扫码上传\n- 副本掉落按实测存档校正，掉落与装备更准确\n- 自动洗脉：目标改为排序，可选非紫脉（蓝、绿、白），计算更快\n- 恒山弟子：推演可暂停、继续，算不完也先给出路线；每日经验按游戏分笔到账\n- 自动虎骨：按体力与材料排出合计虎骨最多的顺序\n- 精炼：角色内劲罡气计入精炼等级加成，修正预览次数\n- 无附加装备也能推演附加材料\n- 手机版不再提供 ADB 导出（仅 Windows）\n- 修正 Windows 局域网有时选不了 IP\n- 云端存档显示实际会员等级\n",
-        "mirroredAt": "2026-11-15T10:54:56+00:00"
+        "notes": "- 新增鬼市推演相关功能\n",
+        "mirroredAt": "2026-11-15T17:43:02+00:00"
       },
       "history": [
+        {
+          "version": "0.3.29",
+          "build": 44,
+          "name": "yyhelper-0.3.29-44-windows.exe",
+          "bytes": 16192609,
+          "sha256": "3f65f0231da0ece2bce3461ec210850bc32adb160d7a5ee95117cabc84a93f20",
+          "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-windows-b44-3f65f0231da0ece2/yyhelper-0.3.29-44-windows.exe",
+          "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-windows-b44-3f65f0231da0ece2",
+          "sourceUrl": "https://download.yanyuhelper.com/releases/windows/44/download.html",
+          "date": "2026/11/15",
+          "notes": "- 鸿蒙新增「文件解析」：可导入抓包文件（.har）导出存档，支持手机扫码上传\n- 副本掉落按实测存档校正，掉落与装备更准确\n- 自动洗脉：目标改为排序，可选非紫脉（蓝、绿、白），计算更快\n- 恒山弟子：推演可暂停、继续，算不完也先给出路线；每日经验按游戏分笔到账\n- 自动虎骨：按体力与材料排出合计虎骨最多的顺序\n- 精炼：角色内劲罡气计入精炼等级加成，修正预览次数\n- 无附加装备也能推演附加材料\n- 手机版不再提供 ADB 导出（仅 Windows）\n- 修正 Windows 局域网有时选不了 IP\n- 云端存档显示实际会员等级\n",
+          "mirroredAt": "2026-11-15T10:54:56+00:00"
+        },
         {
           "version": "0.3.28",
           "build": 43,
@@ -174,6 +200,15 @@
   },
   "error": null,
   "releases": [
+    {
+      "version": "0.3.30",
+      "build": 45,
+      "date": "2026/11/15",
+      "notesByPlatform": {
+        "android": "- 新增鬼市推演相关功能",
+        "windows": "- 新增鬼市推演相关功能"
+      }
+    },
     {
       "version": "0.3.29",
       "build": 44,
