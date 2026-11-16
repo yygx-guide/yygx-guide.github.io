@@ -26,7 +26,7 @@ const SITE_CONFIG = {
   appDownloadUrl: 'https://download.yyhelper.app/', // 首页烟雨助手 APP 下载
   introUrl: 'https://scnxd815i94m.feishu.cn/wiki/RrA3wUG8ai2EZmkApTVce15mnjc', // 初次使用说明
   fullGuideUrl: 'https://scnxd815i94m.feishu.cn/wiki/YSwLwVUM5icmxykY2ancqos2nXa', // 完整教程（备用地址）
-  trialUrl: 'https://scnxd815i94m.feishu.cn/wiki/C2hhwrFpIipSTBk0zlEcY5Hknhf', // 2.1 试用说明
+  trialUrl: 'https://scnxd815i94m.feishu.cn/wiki/D5Z1wLOZcim5mRkrPsicbSY2nae', // 2.1 试用说明
   featureNoticeUrl: 'https://scnxd815i94m.feishu.cn/wiki/Ifgkw3qDtiOIbwkBD5ScJzoCnaf', // 04 使用须知
   licenseGuideUrl: 'https://scnxd815i94m.feishu.cn/wiki/W6oXwuNaHiaY0VkIEa1ctIaVnMd', // 授权规则
   manualUrl: 'https://scnxd815i94m.feishu.cn/wiki/DnCmwVpxFiHEz4kJSZ5cpDj4nHf', // 人工代导说明
