@@ -174,11 +174,14 @@
           <div class="guide-step-content">
             <h3>导出存档</h3>
             <p>有大侠权限的用户可以在主界面使用导出入口。<br/>进入导出功能，按照对应设备的教程操作。</p>
-            <div class="guide-media-placeholder guide-image-placeholder" role="img" aria-label="导出存档操作截图预留位置">
-              <span class="placeholder-mark" aria-hidden="true">▧</span>
-              <strong>操作截图预留位置</strong>
-              <small>后续接入三联操作示意图</small>
-            </div>
+            <img
+              class="guide-export-steps"
+              src="https://raw.githubusercontent.com/yygx-guide/yygx-guide-media/main/images/export-steps.png"
+              alt="烟雨助手导出存档操作示意图：打开工具菜单，点击导出，并查看账号权限"
+              loading="lazy"
+              decoding="async"
+              style="display:block;width:100%;height:auto;margin-top:13px;border-radius:6px;box-shadow:0 3px 12px rgba(35,42,35,.12);"
+            />
           </div>
         </li>
       </ol>
@@ -217,11 +220,17 @@
       </div>
       <p class="guide-video-intro">请初次使用的小伙伴先耐心看完这个视频~</p>
       <p class="guide-video-topics">（观星介绍 | 自己是否可用 | 如何使用 | 流程简单说明）</p>
-      <div class="guide-media-placeholder guide-video-placeholder" role="img" aria-label="视频播放器预留位置，尚未接入视频">
-        <span class="placeholder-play" aria-hidden="true">▶</span>
-        <strong>视频播放器预留位置</strong>
-        <small>助手初次使用说明.mp4 · 36.65MB · 后续接入</small>
-      </div>
+      <video
+        class="guide-video-placeholder"
+        controls
+        playsinline
+        preload="metadata"
+        aria-label="烟雨助手观星快速入门教学视频"
+        style="display:block;width:min(100%,760px);height:auto;aspect-ratio:16/9;padding:0;border:0;border-radius:6px;background:#171a18;object-fit:contain;"
+      >
+        <source src="https://raw.githubusercontent.com/yygx-guide/yygx-guide-media/main/videos/quick-start.mp4" type="video/mp4" />
+        当前浏览器暂不支持视频播放，可<a href="https://raw.githubusercontent.com/yygx-guide/yygx-guide-media/main/videos/quick-start.mp4">点击下载视频</a>。
+      </video>
     </section>
 
     <div class="guide-back-row">
