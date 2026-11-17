@@ -1,23 +1,36 @@
 {
   "schema": 1,
   "status": "ok",
-  "checkedAt": "2026-11-16T22:03:33+00:00",
+  "checkedAt": "2026-11-17T04:29:08+00:00",
   "platforms": {
     "android": {
       "current": {
-        "version": "0.3.30",
-        "build": 45,
-        "name": "yyhelper-0.3.30-45-android.apk",
-        "bytes": 13242738,
-        "sha256": "c3fc599a90c462bc8c1b8cc8b88f16f3c178bdd702bde8f15c995d401f1bb9c0",
-        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-android-b45-c3fc599a90c462bc/yyhelper-0.3.30-45-android.apk",
-        "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-android-b45-c3fc599a90c462bc",
-        "sourceUrl": "https://download.yanyuhelper.com/releases/android/45/download.html",
-        "date": "2026/11/15",
-        "notes": "- 新增鬼市推演相关功能\n",
-        "mirroredAt": "2026-11-15T17:42:57+00:00"
+        "version": "0.3.31",
+        "build": 46,
+        "name": "yyhelper-0.3.31-46-android.apk",
+        "bytes": 13375064,
+        "sha256": "c5baced4826068fc4a3ebab2bef99a49aa3329ce0b9e40e16e8e70f674536c91",
+        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-android-b46-c5baced4826068fc/yyhelper-0.3.31-46-android.apk",
+        "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-android-b46-c5baced4826068fc",
+        "sourceUrl": "https://download.yanyuhelper.com/releases/android/46/download.html",
+        "date": "2026/11/17",
+        "notes": "- 局域网捕获优化\n- 新增烟雨衣橱预览\n",
+        "mirroredAt": "2026-11-17T04:29:15+00:00"
       },
       "history": [
+        {
+          "version": "0.3.30",
+          "build": 45,
+          "name": "yyhelper-0.3.30-45-android.apk",
+          "bytes": 13242738,
+          "sha256": "c3fc599a90c462bc8c1b8cc8b88f16f3c178bdd702bde8f15c995d401f1bb9c0",
+          "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-android-b45-c3fc599a90c462bc/yyhelper-0.3.30-45-android.apk",
+          "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-android-b45-c3fc599a90c462bc",
+          "sourceUrl": "https://download.yanyuhelper.com/releases/android/45/download.html",
+          "date": "2026/11/15",
+          "notes": "- 新增鬼市推演相关功能\n",
+          "mirroredAt": "2026-11-15T17:42:57+00:00"
+        },
         {
           "version": "0.3.29",
           "build": 44,
@@ -102,19 +115,32 @@
     },
     "windows": {
       "current": {
-        "version": "0.3.30",
-        "build": 45,
-        "name": "yyhelper-0.3.30-45-windows.exe",
-        "bytes": 16233946,
-        "sha256": "680c60fa878438bed7e4894984b71bf4a08ac5329bb7ae4d5937dc5b45ddfc01",
-        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-windows-b45-680c60fa878438be/yyhelper-0.3.30-45-windows.exe",
-        "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-windows-b45-680c60fa878438be",
-        "sourceUrl": "https://download.yanyuhelper.com/releases/windows/45/download.html",
-        "date": "2026/11/15",
-        "notes": "- 新增鬼市推演相关功能\n",
-        "mirroredAt": "2026-11-15T17:43:02+00:00"
+        "version": "0.3.31",
+        "build": 46,
+        "name": "yyhelper-0.3.31-46-windows.exe",
+        "bytes": 16334062,
+        "sha256": "0af771438cae39010b06ce69a80e143f25c9f933793fe26a06f49946ee06c88c",
+        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-windows-b46-0af771438cae3901/yyhelper-0.3.31-46-windows.exe",
+        "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-windows-b46-0af771438cae3901",
+        "sourceUrl": "https://download.yanyuhelper.com/releases/windows/46/download.html",
+        "date": "2026/11/17",
+        "notes": "- 局域网捕获优化\n- 新增烟雨衣橱预览\n",
+        "mirroredAt": "2026-11-17T04:29:20+00:00"
       },
       "history": [
+        {
+          "version": "0.3.30",
+          "build": 45,
+          "name": "yyhelper-0.3.30-45-windows.exe",
+          "bytes": 16233946,
+          "sha256": "680c60fa878438bed7e4894984b71bf4a08ac5329bb7ae4d5937dc5b45ddfc01",
+          "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-windows-b45-680c60fa878438be/yyhelper-0.3.30-45-windows.exe",
+          "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-windows-b45-680c60fa878438be",
+          "sourceUrl": "https://download.yanyuhelper.com/releases/windows/45/download.html",
+          "date": "2026/11/15",
+          "notes": "- 新增鬼市推演相关功能\n",
+          "mirroredAt": "2026-11-15T17:43:02+00:00"
+        },
         {
           "version": "0.3.29",
           "build": 44,
@@ -200,6 +226,15 @@
   },
   "error": null,
   "releases": [
+    {
+      "version": "0.3.31",
+      "build": 46,
+      "date": "2026/11/17",
+      "notesByPlatform": {
+        "android": "- 局域网捕获优化\n- 新增烟雨衣橱预览",
+        "windows": "- 局域网捕获优化\n- 新增烟雨衣橱预览"
+      }
+    },
     {
       "version": "0.3.30",
       "build": 45,
