@@ -3,18 +3,180 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <base href="https://yygx-guide.github.io/"/>
   <meta name="theme-color" content="#ece5d6"/>
   <meta name="description" content="烟雨助手使用前须知：设备支持渠道、初次使用流程、常见问题与快速入门。"/>
   <title>使用前须知 · 烟雨助手</title>
   <link href="assets/app-icon.png" rel="icon" type="image/png"/>
   <link href="style.css?v=20261116-v031" rel="stylesheet"/>
   <link href="guide-page.css?v=20261117-intro" rel="stylesheet"/>
+<style>
+
+:root{
+  color-scheme:light;
+  --paper:#ece5d6;--paper-raised:#fbf8ef;--ink:#20251f;--muted:#596057;--muted-light:#74786d;
+  --line:rgba(40,50,43,.22);--pine:#31594d;--pine-deep:#23443b;--red:#a63f31;--red-deep:#843126;
+  --gold:#9a7838;--shadow:rgba(57,48,36,.12);
+  --serif:"Noto Serif CJK SC","Noto Serif SC","Source Han Serif SC","Songti SC",STSong,serif;
+  --sans:"Noto Sans CJK SC","Noto Sans SC","Microsoft YaHei","PingFang SC",sans-serif;
+}
+*{box-sizing:border-box}
+html{min-width:320px;scroll-behavior:smooth}
+body{min-width:320px;margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.7;isolation:isolate;position:relative}
+body::before{content:"";position:fixed;inset:0;z-index:-2;background:linear-gradient(180deg,rgba(236,229,214,.10),rgba(236,229,214,.20) 35%,var(--paper) 99%),url("https://yygx-guide.github.io/assets/ink-mountains.webp") center top/cover no-repeat;opacity:.9;pointer-events:none}
+body::after{content:"";position:fixed;z-index:-1;right:0;bottom:0;width:min(42vw,550px);aspect-ratio:1326/1187;background:url("https://yygx-guide.github.io/assets/ink-bamboo-slope.webp") right bottom/contain no-repeat;mix-blend-mode:multiply;opacity:.21;pointer-events:none}
+a{color:inherit}
+.wrap{width:min(1050px,calc(100% - 52px));margin-inline:auto}
+.topbar{position:relative;z-index:2;display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:92px;border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
+.brand-logo{width:49px;height:49px;border-radius:50%;object-fit:cover;box-shadow:0 2px 10px rgba(83,42,28,.18)}
+.brand-titles{display:flex;flex-direction:column;line-height:1.2;gap:5px}
+.brand-title{font:700 21px var(--serif);letter-spacing:.16em}
+.brand-sub{font-size:11px;color:var(--muted);letter-spacing:.14em}
+.toplinks{display:flex;align-items:center;gap:20px}
+.toplinks a{text-decoration:none;color:var(--pine-deep);font-size:13px;white-space:nowrap}
+.theme-btn{border:1px solid var(--line);border-radius:5px;background:rgba(251,248,239,.8);color:var(--pine-deep);padding:8px 13px;font:600 12px var(--sans)}
+.guide-main{padding:28px 12px 58px}
+.guide-breadcrumb{display:flex;align-items:center;gap:9px;margin:0 0 22px;color:var(--muted-light);font-size:12px}
+.guide-breadcrumb a{color:var(--pine-deep);text-decoration:none}
+.guide-page-heading{margin-bottom:22px}
+.guide-kicker{margin:0 0 5px;color:var(--gold);font-size:11px;font-weight:700;letter-spacing:.16em}
+.guide-kicker span{padding:0 5px;color:var(--muted-light)}
+.guide-page-heading h1{margin:0;color:var(--ink);font:700 clamp(30px,4vw,42px)/1.35 var(--serif);letter-spacing:.08em}
+.guide-section{margin-top:38px}
+.guide-section-heading{margin-bottom:17px}
+.guide-section-heading h2{display:flex;align-items:center;gap:11px;margin:0 0 9px;font:700 25px/1.45 var(--serif);letter-spacing:.06em;color:var(--ink)}
+.guide-section-heading h2::before{content:"";width:4px;height:21px;flex:none;background:var(--red)}
+.guide-section-version{margin:0 0 5px;color:var(--ink);font-size:13px;font-weight:600}
+.guide-section-version span{padding:0 5px;color:var(--muted-light)}
+.guide-section-intro{margin:0;color:var(--muted);font-size:13px}
+.support-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px;align-items:stretch}
+.support-card{
+  min-width:0;padding:20px 22px 19px;border:1px solid rgba(40,50,43,.22);border-radius:10px;
+  background:rgba(251,248,239,.84);background-image:none;box-shadow:0 7px 20px rgba(57,48,36,.055);
+}
+.support-card-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:13px}
+.support-card-heading h3{display:flex;align-items:center;gap:12px;min-width:0;margin:0;font:700 21px/1.35 var(--serif);letter-spacing:.035em;color:var(--ink)}
+.support-platform-icon{display:grid;place-items:center;flex:none;width:38px;height:38px;border:1px solid rgba(49,89,77,.22);border-radius:50%;background:rgba(49,89,77,.09);color:var(--pine-deep)}
+.support-platform-icon svg{width:22px;height:22px;display:block}
+.support-platform-icon .icon-fill{fill:currentColor}
+.support-platform-icon .icon-line{fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.support-status{display:inline-flex;align-items:center;justify-content:center;max-width:100%;padding:4px 10px;border:1px solid rgba(49,89,77,.25);border-radius:999px;background:rgba(49,89,77,.09);color:var(--pine-deep);font:600 11px/1.5 var(--sans);white-space:normal}
+.support-status::before{content:"✓";margin-right:5px;font-weight:800}
+.support-status-unavailable{border-color:rgba(166,63,49,.28);background:rgba(166,63,49,.08);color:var(--red-deep)}
+.support-status-unavailable::before{content:"×"}
+.support-status-list{display:flex;flex-wrap:wrap;gap:8px;margin:-1px 0 10px}
+.support-details{display:grid;gap:0;margin:0}
+.support-details>div{display:grid;grid-template-columns:82px minmax(0,1fr);align-items:start;gap:12px;padding:11px 0;border-top:1px solid rgba(49,89,77,.14)}
+.support-details>div:first-child{border-top:0}
+.support-details dt{padding-top:1px;color:var(--pine-deep);font:700 12px/1.7 var(--sans);letter-spacing:.04em}
+.support-details dd{margin:0;color:var(--muted);font:400 13px/1.85 var(--sans);overflow-wrap:anywhere}
+.support-note{margin-top:9px;padding:9px 12px 9px 13px;border-left:2px solid rgba(49,89,77,.42);border-radius:0 5px 5px 0;background:rgba(49,89,77,.045)}
+.support-note strong{display:block;color:var(--pine-deep);font:700 12px/1.6 var(--sans);letter-spacing:.04em}
+.support-note p{margin:3px 0 0;color:var(--muted);font:400 12px/1.8 var(--sans)}
+.support-subgroup+.support-subgroup{margin-top:12px;padding-top:12px;border-top:1px solid rgba(49,89,77,.17)}
+.support-subgroup h4{display:flex;align-items:center;gap:8px;margin:0 0 4px;padding:6px 10px;border-left:2px solid var(--pine);border-radius:3px;background:rgba(49,89,77,.075);color:var(--pine-deep);font:700 13px/1.5 var(--sans)}
+.support-subgroup .support-details>div{padding:7px 0}
+.footer{display:flex;flex-direction:column;gap:5px;margin-top:30px;padding:24px 0 34px;border-top:1px solid var(--line);color:var(--muted-light);font-size:12px;text-align:center}
+html[data-theme="care"]{
+  color-scheme:dark;--paper:#17191b;--paper-raised:#25272a;--paper-soft:#323334;--ink:#e8e4dc;--muted:#c3c1bb;--muted-light:#a4a7a5;
+  --line:rgba(202,207,202,.2);--pine:#9fc5b8;--pine-deep:#c0ddd1;--red:#ca7463;--red-deep:#e6a092;--gold:#c2ab83;--shadow:rgba(0,0,0,.28)
+}
+html[data-theme="care"] body{background:var(--paper)}
+html[data-theme="care"] body::before{background:linear-gradient(180deg,rgba(18,19,22,.18),rgba(18,19,22,.48) 45%,var(--paper) 100%),url("https://yygx-guide.github.io/assets/ink-mist-characters-care.webp") center top/cover no-repeat;opacity:1}
+html[data-theme="care"] body::after{display:none}
+html[data-theme="care"] .topbar{border-color:rgba(202,207,202,.18)}
+html[data-theme="care"] .brand-sub,html[data-theme="care"] .guide-breadcrumb{color:#b5b7b2}
+html[data-theme="care"] .toplinks a{color:#bdd8cd}
+html[data-theme="care"] .theme-btn{background:rgba(37,39,42,.84);color:var(--ink);border-color:rgba(159,197,184,.35)}
+html[data-theme="care"] .support-card{
+  border-color:rgba(159,197,184,.27);background:rgba(19,23,23,.88);background-image:none;
+  box-shadow:0 10px 26px rgba(0,0,0,.2)
+}
+html[data-theme="care"] .support-platform-icon{border-color:rgba(159,197,184,.25);background:rgba(91,139,117,.15);color:#c4e0b5}
+html[data-theme="care"] .support-status{border-color:rgba(159,197,184,.36);background:rgba(75,123,95,.16);color:#c4e0b5}
+html[data-theme="care"] .support-status-unavailable{border-color:rgba(202,116,99,.4);background:rgba(202,116,99,.12);color:#f0a092}
+html[data-theme="care"] .support-details>div{border-color:rgba(159,197,184,.18)}
+html[data-theme="care"] .support-details dt{color:#c4dfd2}
+html[data-theme="care"] .support-details dd{color:#d0cec7}
+html[data-theme="care"] .support-note{border-left-color:rgba(159,197,184,.5);background:rgba(255,255,255,.035)}
+html[data-theme="care"] .support-note strong{color:#c4dfd2}
+html[data-theme="care"] .support-note p{color:#c4c4bd}
+html[data-theme="care"] .support-subgroup+.support-subgroup{border-color:rgba(159,197,184,.2)}
+html[data-theme="care"] .support-subgroup h4{border-left-color:#83ad97;background:rgba(91,139,117,.14);color:#d0e3d8}
+@media(max-width:700px){
+  .wrap{width:min(100% - 28px,1050px)}
+  .topbar{min-height:76px}
+  .brand-logo{width:42px;height:42px}
+  .brand-title{font-size:19px}
+  .toplinks{gap:10px}
+  .toplinks a{display:none}
+  .guide-main{padding:22px 2px 42px}
+  .guide-page-heading h1{font-size:32px}
+  .guide-section{margin-top:31px}
+  .guide-section-heading h2{font-size:22px}
+  .support-grid{grid-template-columns:1fr;gap:11px}
+  .support-card{padding:16px}
+  .support-card-heading{align-items:flex-start}
+  .support-card-heading h3{font-size:19px}
+  .support-platform-icon{width:34px;height:34px}
+  .support-details>div{grid-template-columns:74px minmax(0,1fr);gap:9px}
+  .support-status{font-size:10px;padding:3px 8px}
+}
+
+
+/* 本轮微调：鸿蒙分组略收紧，前三个平台的状态标签略加强调。 */
+.support-subgroup+.support-subgroup{margin-top:8px;padding-top:8px}
+.support-subgroup h4{margin-bottom:5px}
+.support-subgroup .support-details>div{padding:5px 0}
+.support-card:nth-child(-n+3) .support-status{
+  min-height:29px;padding:5px 11px;font-size:12px;font-weight:700
+}
+html[data-theme="care"] .guide-announcement{
+  border-color:rgba(159,197,184,.25);background:rgba(37,39,42,.88);color:var(--ink)
+}
+html[data-theme="care"] .guide-announcement-mark{
+  background:rgba(202,116,99,.12);color:var(--red)
+}
+
+/* Announcement: calm product-update styling, not a warning banner */
+.guide-announcement{
+  border:1px solid rgba(91,119,103,.28)!important;
+  background:rgba(247,246,237,.84)!important;
+  color:#303d35!important;
+  box-shadow:0 4px 16px rgba(49,61,49,.035);
+}
+.guide-announcement-mark{
+  display:inline-flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  width:29px!important;
+  height:29px!important;
+  flex:0 0 29px!important;
+  border-radius:50%!important;
+  background:rgba(83,119,99,.13)!important;
+  color:#496b58!important;
+  font-weight:700!important;
+}
+.guide-announcement strong{color:#355b49!important}
+html[data-theme="care"] .guide-announcement{
+  border-color:rgba(151,181,163,.28)!important;
+  background:rgba(38,48,44,.88)!important;
+  color:#e2e7df!important;
+}
+html[data-theme="care"] .guide-announcement-mark{
+  background:rgba(151,181,163,.16)!important;
+  color:#b7d0bd!important;
+}
+html[data-theme="care"] .guide-announcement strong{color:#c6ddca!important}
+
+</style>
 </head>
 <body>
 <div class="wrap">
   <header class="topbar">
     <a aria-label="烟雨助手使用指南首页" class="brand" href="index.html#top">
-      <img alt="烟雨助手图标" class="brand-logo" src="assets/app-icon.png"/>
+      <img alt="烟雨助手图标" class="brand-logo" src="https://raw.githubusercontent.com/yygx-guide/yygx-guide.github.io/main/assets/app-icon.png"/>
       <span class="brand-titles"><span class="brand-title">烟雨助手</span><span class="brand-sub">使用指南 · 教程与交流</span></span>
     </a>
     <nav aria-label="页面导航" class="toplinks">
@@ -38,22 +200,29 @@
       <h1>使用前须知</h1>
     </header>
 
-    <aside class="guide-announcement" aria-label="最新公告">
-      <span class="guide-announcement-mark" aria-hidden="true">!</span>
-      <p><strong>最新公告：</strong>10月20日游戏更新，已完成适配，请使用pro版本</p>
-    </aside>
+    <aside class="guide-announcement" aria-label="软件更新">
+    <span class="guide-announcement-mark" aria-hidden="true">✓</span>
+    <p><strong>软件更新：</strong>已完成适配，请使用新 App「烟雨助手」</p>
+  </aside>
 
     <section class="guide-section" aria-labelledby="supportTitle">
       <div class="guide-section-heading">
         <h2 id="supportTitle">支持渠道</h2>
-        <p class="guide-section-version">10.20 版本更新 <span>|</span> 当前支持情况如下</p>
+        <p class="guide-section-version"><time id="supportCurrentDate" datetime="2026-11-17">2026.11.17</time> <span>|</span> 当前支持情况如下</p>
         <p class="guide-section-intro">不同渠道的支持状态可能随版本更新变化，请以本页最新内容为准。</p>
       </div>
 
       <div class="support-grid">
         <article class="support-card">
           <div class="support-card-heading">
-            <h3>安卓</h3>
+            <h3>
+              <span class="support-platform-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path class="icon-fill" d="M7.2 8.2 5.7 5.7l.9-.5 1.6 2.5a8 8 0 0 1 7.6 0l1.6-2.5.9.5-1.5 2.5A7.1 7.1 0 0 1 19.5 14v.8H4.5V14a7.1 7.1 0 0 1 2.7-5.8ZM8.2 11a.8.8 0 1 0 0-1.6.8.8 0 0 0 0 1.6Zm7.6 0a.8.8 0 1 0 0-1.6.8.8 0 0 0 0 1.6ZM5 15.8h14v2.1a1.7 1.7 0 0 1-1.7 1.7h-.8v1.2a1.2 1.2 0 0 1-2.4 0v-1.2H9.9v1.2a1.2 1.2 0 0 1-2.4 0v-1.2h-.8A1.7 1.7 0 0 1 5 17.9v-2.1Z"/>
+                </svg>
+              </span>
+              <span>安卓</span>
+            </h3>
             <span class="support-status">全渠道可用</span>
           </div>
           <dl class="support-details">
@@ -67,7 +236,13 @@
 
         <article class="support-card">
           <div class="support-card-heading">
-            <h3>苹果</h3>
+            <h3>
+               <span class="support-platform-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path class="icon-fill" d="M16.35 12.55c.02-2.05 1.67-3.03 1.75-3.08-.95-1.4-2.42-1.59-2.94-1.61-1.25-.13-2.45.74-3.09.74-.65 0-1.64-.72-2.7-.7-1.39.02-2.67.81-3.39 2.06-1.45 2.51-.37 6.23 1.04 8.27.69 1 1.51 2.12 2.59 2.08 1.04-.04 1.43-.67 2.69-.67s1.61.67 2.71.65c1.12-.02 1.82-1.01 2.51-2.02.8-1.16 1.13-2.29 1.15-2.35-.03-.01-2.3-.88-2.32-3.37ZM14.3 6.52c.56-.68.94-1.62.84-2.56-.81.03-1.79.54-2.37 1.22-.52.6-.98 1.56-.86 2.48.9.07 1.83-.46 2.39-1.14Z"/>
+              </span>
+              <span>苹果</span>
+            </h3>
             <span class="support-status">可用</span>
           </div>
           <dl class="support-details">
@@ -81,7 +256,13 @@
 
         <article class="support-card">
           <div class="support-card-heading">
-            <h3>鸿蒙</h3>
+            <h3>
+               <span class="support-platform-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <path class="icon-fill" d="M3.67 6.14S1.82 7.91 1.72 9.78v.35c.08 1.51 1.22 2.4 1.22 2.4 1.83 1.79 6.26 4.04 7.3 4.55 0 0 .06.03.1-.01l.02-.04v-.04C7.52 10.8 3.67 6.14 3.67 6.14M9.65 18.6c-.02-.08-.1-.08-.1-.08l-7.38.26c.8 1.43 2.15 2.53 3.56 2.2 .96-.25 3.16-1.78 3.88-2.3.06-.05.04-.09.04-.09m.08-.78C6.49 15.63.21 12.28.21 12.28c-.15.46-.2.9-.21 1.3v.07c0 1.07.4 1.82.4 1.82 .8 1.69 2.34 2.2 2.34 2.2.7.3 1.4.31 1.4.31.12 0 4.4 0 5.54 0 0 0 .08-.05.08-.05v-.06c0-.03-.03-.03-.03-.03M9.06 3.19a3.42 3.42 0 0 0-2.57 3.15v.41c.03.6.16 1.05.16 1.05.66 2.9 3.86 7.65 4.55 8.65 0 0 .1.03.1.03a.1.1 0 0 0 .06-.1c1.06-10.6-1.11-13.42-1.11-13.42-.32-.02-1.19.23-1.19.23M17.359 5.46s-.49-1.8-2.44-2.28c0 0-.57-.14-1.17-.22 0 0-2.18 2.81-1.12 13.43 0 0 .06.08.06.08.07.07.1-.03.1-.03.72-1.03 3.9-5.76 4.55-8.64 0 0 .36-1.4.02-2.34m-2.92 13.07s-.07 0-.09.05c0 0-.01.07.03.1.7.51 2.85 2 3.88 2.3 0 0 .16.05.43.06h.14c.69-.02 1.9-.37 3-2.26l-7.4-.25m7.83-8.41c.14-2.06-1.94-3.97-1.94-3.98 0 0-3.85 4.66-6.67 10.8 0 0-.03.08.02.13l.04.01h.06c1.06-.53 5.46-2.77 7.28-4.54 0 0 1.15-.93 1.21-2.42m1.52 2.14s-6.28 3.37-9.52 5.55c0 0-.05.04-.03.11 0 0 .03.06.07.06 1.16 0 5.56 0 5.67-.02 0 0 .57-.02 1.27-.29 0 0 1.56-.5 2.37-2.27 0 0 .73-1.45.17-3.14"/>
+              </span>
+              <span>鸿蒙</span>
+            </h3>
           </div>
           <div class="support-subgroup">
             <h4>非纯血鸿蒙</h4>
@@ -105,7 +286,16 @@
 
         <article class="support-card">
           <div class="support-card-heading">
-            <h3>先行服 / 国际服</h3>
+            <h3>
+              <span class="support-platform-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24">
+                  <circle class="icon-line" cx="12" cy="12" r="9.2"/>
+                  <path class="icon-line" d="M2.9 12h18.2M12 2.8c2.5 2.5 3.7 5.6 3.7 9.2s-1.2 6.7-3.7 9.2c-2.5-2.5-3.7-5.6-3.7-9.2S9.5 5.3 12 2.8Z"/>
+                  <path class="icon-line" d="M5.2 5.8c1.9 1 4.2 1.5 6.8 1.5s4.9-.5 6.8-1.5M5.2 18.2c1.9-1 4.2-1.5 6.8-1.5s4.9.5 6.8 1.5"/>
+                </svg>
+              </span>
+              <span>先行服 / 国际服</span>
+            </h3>
           </div>
           <div class="support-status-list">
             <span class="support-status support-status-unavailable">先行服：暂不可用</span>
@@ -246,5 +436,22 @@
 <script src="config.js?v=20261117-intro"></script>
 <script src="lang-map.js"></script>
 <script src="script.js?v=20261116-v031"></script>
+<script>
+(() => {
+  const dateNode = document.getElementById('supportCurrentDate');
+  if (!dateNode) return;
+  const refreshSupportDate = () => {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    dateNode.textContent = `${year}.${month}.${day}`;
+    dateNode.dateTime = `${year}-${month}-${day}`;
+  };
+  refreshSupportDate();
+  // 每分鐘檢查一次；跨過午夜後會自動更新日期。
+  window.setInterval(refreshSupportDate, 60 * 1000);
+})();
+</script>
 </body>
 </html>
