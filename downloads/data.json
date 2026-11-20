@@ -1,23 +1,36 @@
 {
   "schema": 1,
   "status": "ok",
-  "checkedAt": "2026-11-20T03:17:32+00:00",
+  "checkedAt": "2026-11-20T12:54:21+00:00",
   "platforms": {
     "android": {
       "current": {
-        "version": "0.3.32",
-        "build": 47,
-        "name": "yyhelper-0.3.32-47-android.apk",
-        "bytes": 13382584,
-        "sha256": "f10504317ef8baa00c81abe29646a50da95a273ab9a1fe6ab6233a5a3f34bc6d",
-        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-android-b47-f10504317ef8baa0/yyhelper-0.3.32-47-android.apk",
-        "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-android-b47-f10504317ef8baa0",
-        "sourceUrl": "https://download.yanyuhelper.com/releases/android/47/download.html",
-        "date": "2026/11/17",
-        "notes": "- 新增雪喉刀等新版装备与武学\n- 修正剑王阁再铸材料数量",
-        "mirroredAt": "2026-11-17T14:26:19+00:00"
+        "version": "0.3.33",
+        "build": 48,
+        "name": "yyhelper-0.3.33-48-android.apk",
+        "bytes": 13386784,
+        "sha256": "18b61e00ea3afb913450d3fb6f2fcae7216a761a6e34f75e28b8f674e1b643ab",
+        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-android-b48-18b61e00ea3afb91/yyhelper-0.3.33-48-android.apk",
+        "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-android-b48-18b61e00ea3afb91",
+        "sourceUrl": "https://download.yanyuhelper.com/releases/android/48/download.html",
+        "date": "2026/11/20",
+        "notes": "- 修复芒晶洗练问题",
+        "mirroredAt": "2026-11-20T12:54:27+00:00"
       },
       "history": [
+        {
+          "version": "0.3.32",
+          "build": 47,
+          "name": "yyhelper-0.3.32-47-android.apk",
+          "bytes": 13382584,
+          "sha256": "f10504317ef8baa00c81abe29646a50da95a273ab9a1fe6ab6233a5a3f34bc6d",
+          "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-android-b47-f10504317ef8baa0/yyhelper-0.3.32-47-android.apk",
+          "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-android-b47-f10504317ef8baa0",
+          "sourceUrl": "https://download.yanyuhelper.com/releases/android/47/download.html",
+          "date": "2026/11/17",
+          "notes": "- 新增雪喉刀等新版装备与武学\n- 修正剑王阁再铸材料数量",
+          "mirroredAt": "2026-11-17T14:26:19+00:00"
+        },
         {
           "version": "0.3.31",
           "build": 46,
@@ -128,19 +141,32 @@
     },
     "windows": {
       "current": {
-        "version": "0.3.32",
-        "build": 47,
-        "name": "yyhelper-0.3.32-47-windows.exe",
-        "bytes": 16337716,
-        "sha256": "ae1499dfb8c6152d51e99089a604f15923b835ffafbf2a30e3288e6002283043",
-        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-windows-b47-ae1499dfb8c6152d/yyhelper-0.3.32-47-windows.exe",
-        "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-windows-b47-ae1499dfb8c6152d",
-        "sourceUrl": "https://download.yanyuhelper.com/releases/windows/47/download.html",
-        "date": "2026/11/17",
-        "notes": "- 新增雪喉刀等新版装备与武学\n- 修正剑王阁再铸材料数量",
-        "mirroredAt": "2026-11-17T14:26:24+00:00"
+        "version": "0.3.33",
+        "build": 48,
+        "name": "yyhelper-0.3.33-48-windows.exe",
+        "bytes": 16342485,
+        "sha256": "042f55476d670797336c22bbb3a5f18e2f32ac7ba5d961a5d826e63337b382c7",
+        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-windows-b48-042f55476d670797/yyhelper-0.3.33-48-windows.exe",
+        "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-windows-b48-042f55476d670797",
+        "sourceUrl": "https://download.yanyuhelper.com/releases/windows/48/download.html",
+        "date": "2026/11/20",
+        "notes": "- 修复芒晶洗练问题",
+        "mirroredAt": "2026-11-20T12:54:32+00:00"
       },
       "history": [
+        {
+          "version": "0.3.32",
+          "build": 47,
+          "name": "yyhelper-0.3.32-47-windows.exe",
+          "bytes": 16337716,
+          "sha256": "ae1499dfb8c6152d51e99089a604f15923b835ffafbf2a30e3288e6002283043",
+          "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-windows-b47-ae1499dfb8c6152d/yyhelper-0.3.32-47-windows.exe",
+          "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-windows-b47-ae1499dfb8c6152d",
+          "sourceUrl": "https://download.yanyuhelper.com/releases/windows/47/download.html",
+          "date": "2026/11/17",
+          "notes": "- 新增雪喉刀等新版装备与武学\n- 修正剑王阁再铸材料数量",
+          "mirroredAt": "2026-11-17T14:26:24+00:00"
+        },
         {
           "version": "0.3.31",
           "build": 46,
@@ -252,6 +278,15 @@
   },
   "error": null,
   "releases": [
+    {
+      "version": "0.3.33",
+      "build": 48,
+      "date": "2026/11/20",
+      "notesByPlatform": {
+        "android": "- 修复芒晶洗练问题",
+        "windows": "- 修复芒晶洗练问题"
+      }
+    },
     {
       "version": "0.3.32",
       "build": 47,
