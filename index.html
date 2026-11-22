@@ -8,8 +8,8 @@
 <meta content="烟雨助手使用指南：使用前须知、试用与授权码获取、安卓/iOS/鸿蒙存档导出教程、使用须知、使用问题与游戏交流。" name="description"/>
 <title>烟雨助手 · 使用指南</title>
 <link href="assets/app-icon.png" rel="icon" type="image/png"/>
-<link href="style.css?v=20261116-v031" rel="stylesheet"/>
-<link href="guide-page.css?v=20261117-intro" rel="stylesheet"/>
+<link href="style.css?v=20261122-nav-direct" rel="stylesheet"/>
+<link href="guide-page.css?v=20261122-nav-direct" rel="stylesheet"/>
 </head>
 <body>
 <div class="wrap">
@@ -17,6 +17,7 @@
 <a aria-label="烟雨助手使用指南首页" class="brand" href="#top"><img alt="烟雨助手图标" class="brand-logo" src="assets/app-icon.png"/><span class="brand-titles"><span class="brand-title">烟雨助手</span><span class="brand-sub">使用指南 · 教程与交流</span></span></a>
 <nav aria-label="页面导航" class="toplinks"><a href="#start">使用流程</a><a href="#community">游戏交流</a><div aria-label="语言切换" class="lang-switch" role="group"><button aria-pressed="true" class="lang-option" data-lang="simplified" type="button">简体</button><button aria-pressed="false" class="lang-option" data-lang="traditional" type="button">繁體</button></div><button aria-pressed="false" class="theme-btn" id="themeButton" type="button">☾ 护眼</button></nav>
 </header>
+<div id="homeView">
 <main id="top">
 <section aria-labelledby="heroTitle" class="hero">
 <div>
@@ -56,18 +57,36 @@
 <section aria-labelledby="flowTitle" class="flow-section" id="start">
 <div class="section-head"><h2 id="flowTitle">从这里开始</h2><p>按使用顺序整理 · 点击查看详情</p></div>
 <div class="card-grid">
-<a class="nav-card nav-card-link" href="intro.html"><span class="card-head"><span class="num">01 <i>/ 使用前</i></span><span class="card-arrow">↗</span></span><span class="card-title">使用前须知</span><span class="card-desc">
-  <strong style="color:var(--pine-deep);font-weight:700;">安卓 / 苹果 / 鸿蒙能用吗？</strong> · 使用说明与注意事项
-</span><span class="card-foot">查看须知 →</span></a>
-<button class="nav-card" data-modal="licenseModal" type="button"><span class="card-head"><span class="num">02 <i>/ 试用与授权</i></span><span class="card-arrow">↗</span></span><span class="card-title">试用与授权码获取</span><span class="card-desc">试用方式、授权规则及获取途径</span><span class="card-foot">查看试用与授权说明 →</span></button>
-<button class="nav-card" data-modal="exportModal" id="exportCard" type="button"><span class="card-head"><span class="num">03 <i>/ 存档导出</i></span><span class="card-arrow">↗</span></span><span class="card-title">导出存档教程</span><span class="card-desc">选择设备系统，查看对应的导出教程 · 安卓 / iOS / 鸿蒙</span><span class="card-foot">选择设备系统 →</span></button>
-<button class="nav-card feature-card" data-modal="featureModal" type="button"><span class="card-head"><span class="num">04 <i>/ 使用须知</i></span><span class="card-arrow">↗</span></span><span class="card-title">使用须知</span><span class="card-desc">了解烟雨助手使用过程中的注意事项</span><span class="card-foot">查看使用须知 →</span></button>
-<button class="nav-card wide-card faq-entry" data-modal="faqModal" id="faqCard" type="button">
+<a class="nav-card nav-card-link" href="https://yygx-guide.github.io/intro.html" data-config-href="introUrl" data-page-external>
+  <span class="card-head"><span class="num">01 <i>/ 使用前</i></span><span class="card-arrow">↗</span></span>
+  <span class="card-title">使用前须知</span>
+  <span class="card-desc"><strong style="color:var(--pine-deep);font-weight:700;">安卓 / 苹果 / 鸿蒙能用吗？</strong> · 使用说明与注意事项</span>
+  <span class="card-foot">查看须知 →</span>
+</a>
+<a class="nav-card" href="#trial-license" data-route="trial-license">
+  <span class="card-head"><span class="num">02 <i>/ 试用与授权</i></span><span class="card-arrow">↗</span></span>
+  <span class="card-title">试用与授权码获取</span>
+  <span class="card-desc">试用方式、授权规则及获取途径</span>
+  <span class="card-foot">查看试用与授权说明 →</span>
+</a>
+<a class="nav-card" href="#export" data-route="export">
+  <span class="card-head"><span class="num">03 <i>/ 存档导出</i></span><span class="card-arrow">↗</span></span>
+  <span class="card-title">导出存档教程</span>
+  <span class="card-desc">选择设备系统，查看对应的导出教程 · 安卓 / iOS / 鸿蒙</span>
+  <span class="card-foot">选择设备系统 →</span>
+</a>
+<a class="nav-card feature-card" href="https://scnxd815i94m.feishu.cn/wiki/Ifgkw3qDtiOIbwkBD5ScJzoCnaf" data-config-href="featureNoticeUrl" data-page-external>
+  <span class="card-head"><span class="num">04 <i>/ 使用须知</i></span><span class="card-arrow">↗</span></span>
+  <span class="card-title">使用须知</span>
+  <span class="card-desc">了解烟雨助手使用过程中的注意事项</span>
+  <span class="card-foot">查看使用须知 →</span>
+</a>
+<a class="nav-card wide-card faq-entry" href="https://scnxd815i94m.feishu.cn/wiki/W01qwXumRinvU4kfqppcOSHwnxe" data-config-href="faqUrl" data-page-external>
   <span class="card-head"><span class="num">05 <i>/ 使用问题</i></span><span class="card-arrow">↗</span></span>
   <span class="card-title">使用问题</span>
   <span class="card-desc">下载安装更新、授权验证、存档导出及软件使用疑问</span>
   <span class="card-foot">查看问题目录 →</span>
-</button>
+</a>
 </div>
 </section>
 <section aria-labelledby="communityTitle" class="community" id="community"><div class="section-head"><h2 id="communityTitle">游戏交流</h2><p>讨论玩法 · 获取更新 · 问题反馈</p></div>
@@ -105,119 +124,88 @@
 </section>
 <p class="bottom-tip">— 渠道适配、功能与试用规则可能调整，请以最新说明为准 —</p>
 </main>
+</div>
+
+<main id="trialLicenseView" class="route-view" hidden>
+  <div class="guide-main">
+    <nav class="guide-breadcrumb" aria-label="当前位置">
+      <a href="#top">首页</a><span aria-hidden="true">/</span><span>02 试用与授权</span>
+    </nav>
+    <header class="guide-page-heading">
+      <p class="guide-kicker">02 <span>/</span> 使用指南</p>
+      <h1>试用与授权码获取</h1>
+    </header>
+    <section class="guide-section">
+      <div class="guide-section-heading">
+        <h2>选择需要了解的内容</h2>
+        <p class="guide-section-intro">试用方式、授权规则及获取途径，点击对应内容直接查看。</p>
+      </div>
+      <div class="license-choices" aria-label="试用与授权入口">
+        <a class="license-choice license-choice-guide" href="https://scnxd815i94m.feishu.cn/wiki/D5Z1wLOZcim5mRkrPsicbSY2nae" data-config-href="trialUrl" data-page-external>
+          <span class="license-choice-index">2.1 / 试用</span>
+          <strong>试用说明</strong>
+          <small>了解试用方式与体验规则</small>
+          <span aria-hidden="true" class="license-choice-arrow">↗</span>
+        </a>
+        <a class="license-choice license-choice-guide" href="https://scnxd815i94m.feishu.cn/wiki/W6oXwuNaHiaY0VkIEa1ctIaVnMd" data-config-href="licenseGuideUrl" data-page-external>
+          <span class="license-choice-index">2.2 / 授权</span>
+          <strong>授权码获取</strong>
+          <small>期限、次数、绑定规则及获取方式</small>
+          <span aria-hidden="true" class="license-choice-arrow">↗</span>
+        </a>
+      </div>
+      <div class="store-entry-row" aria-label="店铺入口">
+        <span class="store-entry-caption" data-config-text="sales.entryPrefix">店铺入口</span>
+        <a class="store-entry-link" href="https://m.tb.cn/h.j7iFwsn?tk=JPls6capO7m" data-config-href="storeUrl">
+          <span data-config-text="sales.entryName">闲鱼店铺</span>
+          <span class="store-entry-status" data-config-text="sales.badge">开放购买</span>
+          <span class="store-entry-arrow" aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <p class="license-state-note" data-config-text="sales.notice">授权码已恢复购买，可点击闲鱼店铺查看详情。</p>
+    </section>
+    <div class="route-back-row"><a class="main-button" href="#top">返回导航首页 <span aria-hidden="true">→</span></a></div>
+  </div>
+</main>
+
+<main id="exportView" class="route-view" hidden>
+  <div class="guide-main">
+    <nav class="guide-breadcrumb" aria-label="当前位置">
+      <a href="#top">首页</a><span aria-hidden="true">/</span><span>03 存档导出</span>
+    </nav>
+    <header class="guide-page-heading">
+      <p class="guide-kicker">03 <span>/</span> 使用指南</p>
+      <h1>导出存档教程</h1>
+    </header>
+    <section class="guide-section">
+      <div class="guide-section-heading">
+        <h2>请选择设备系统</h2>
+        <p class="guide-section-intro">选择自己的设备系统，查看对应教程。</p>
+      </div>
+      <div class="export-options">
+        <a class="export-option" href="https://scnxd815i94m.feishu.cn/wiki/A1tWw73zBiktGskxMp0csesun02" data-config-href="tutorialUrls.android" data-page-external>
+          <span class="export-symbol">安</span><span class="export-option-text"><strong>安卓</strong><small>Android · 查看导出教程</small></span><span aria-hidden="true" class="export-arrow">↗</span>
+        </a>
+        <a class="export-option" href="https://scnxd815i94m.feishu.cn/wiki/BtYLwNKjhiKExZkoaX8c0VOInjM" data-config-href="tutorialUrls.ios" data-page-external>
+          <span class="export-symbol">苹</span><span class="export-option-text"><strong>苹果</strong><small>iOS · 查看导出教程</small></span><span aria-hidden="true" class="export-arrow">↗</span>
+        </a>
+        <a class="export-option" href="https://scnxd815i94m.feishu.cn/wiki/AfctwWagMi4xdmkbqVRcm7t5nwe" data-config-href="tutorialUrls.harmony" data-page-external>
+          <span class="export-symbol">鸿</span><span class="export-option-text"><strong>鸿蒙</strong><small>HarmonyOS · 查看相关说明</small></span><span aria-hidden="true" class="export-arrow">↗</span>
+        </a>
+      </div>
+      <div class="export-assistance">
+        <span class="export-assistance-caption">不方便自己操作？</span>
+        <a class="export-option export-option-manual" href="https://scnxd815i94m.feishu.cn/wiki/DnCmwVpxFiHEz4kJSZ5cpDj4nHf" data-config-href="manualUrl" data-page-external>
+          <span class="export-symbol">代</span><span class="export-option-text"><strong>人工代导</strong><small>人工代导专用入口 · 您只需等待结果</small></span><span aria-hidden="true" class="export-arrow">↗</span>
+        </a>
+      </div>
+      <p class="route-note">使用前请确认渠道支持情况，教程存在不代表当前已适配。</p>
+    </section>
+    <div class="route-back-row"><a class="main-button" href="#top">返回导航首页 <span aria-hidden="true">→</span></a></div>
+  </div>
+</main>
 <footer class="footer"><span>烟雨助手 · 使用指南</span><span>独立整理的使用资料 · 非游戏官方页面</span></footer>
 </div>
-<dialog aria-labelledby="noticeTitle" class="modal" id="noticeModal"><div class="modal-top"><span class="modal-kicker">01 / 使用前须知</span><button aria-label="关闭" class="close" data-close="" type="button">×</button></div><div class="modal-body"><h2 id="noticeTitle">使用前须知</h2><p>第一次使用前，请先了解以下内容：</p>
-<div style="margin: 22px 0 28px;">
-<div style="margin-bottom: 22px;">
-<div style="font-size: 19px; font-weight: bold; color: #294b40; margin-bottom: 8px;">
-      ① 使用支持情况
-    </div>
-<div style="font-size: 15px; line-height: 1.9; color: #62665f;">
-      不同系统及游戏渠道的适配情况可能发生变化，请查看下方「最新说明」中的《关于适配渠道」。
-      一般所有系统的所有渠道后续都可以使用。
-    </div>
-</div>
-<div>
-<div style="font-size: 19px; font-weight: bold; color: #294b40; margin-bottom: 8px;">
-      ② 授权码使用
-    </div>
-<div style="font-size: 15px; line-height: 1.9; color: #62665f;">
-      关于授权码的使用规则、绑定方式及注意事项，请观看下方「最新说明」中的快速入门视频。
-    </div>
-</div>
-</div>
-<div class="modal-actions"><a class="main-button" href="#" id="noticeIntroLink" rel="noopener noreferrer" target="_blank">查看初次使用说明 ↗</a><button class="ghost-btn" data-close="" type="button">返回导航</button></div></div></dialog>
-<dialog aria-labelledby="featureTitle" class="modal" id="featureModal">
-  <div class="modal-top"><span class="modal-kicker">04 / 使用须知</span><button aria-label="关闭" class="close" data-close="" type="button">×</button></div>
-  <div class="modal-body feature-modal-body">
-    <h2 id="featureTitle">使用须知</h2>
-    <p class="feature-summary">查看烟雨助手使用过程中的相关说明和注意事项，使用前建议先了解。</p>
-    <div class="modal-actions">
-      <a class="main-button" href="#" id="trialLink" rel="noopener noreferrer" target="_blank">查看使用须知 ↗</a>
-      <button class="ghost-btn" data-close="" type="button">返回导航</button>
-    </div>
-  </div>
-</dialog>
-<dialog aria-labelledby="licenseTitle" class="modal" id="licenseModal">
-  <div class="modal-top"><span class="modal-kicker">02 / 试用与授权</span><button aria-label="关闭" class="close" data-close="" type="button">×</button></div>
-  <div class="modal-body">
-    <h2 id="licenseTitle">试用与授权码获取</h2>
-    <p class="license-intro">选择需要了解的内容，查看对应规则和获取方式。</p>
-    <div aria-label="试用与授权码入口" class="license-choices">
-      <a class="license-choice license-choice-guide" href="#" id="trialGuideLink" rel="noopener noreferrer" target="_blank">
-        <span class="license-choice-index">2.1 / 试用</span>
-        <strong>试用说明</strong>
-        <small>了解试用方式与体验规则</small>
-        <span aria-hidden="true" class="license-choice-arrow">↗</span>
-      </a>
-      <a class="license-choice license-choice-guide" href="#" id="licenseGuideLink" rel="noopener noreferrer" target="_blank">
-        <span class="license-choice-index">2.2 / 授权</span>
-        <strong>授权码获取</strong>
-        <small>期限、次数、绑定规则及获取方式</small>
-        <span aria-hidden="true" class="license-choice-arrow">↗</span>
-      </a>
-    </div>
-    <!-- 店铺恢复购买：仅在 02 弹窗保留购买入口，网址由 config.js 中 storeUrl 管理 -->
-    <div class="store-entry-row" aria-label="店铺入口">
-      <span class="store-entry-caption" data-config-text="sales.entryPrefix">店铺入口</span>
-      <a class="store-entry-link" id="storeLink" href="#" target="_blank" rel="noopener noreferrer" aria-label="前往闲鱼店铺购买授权码">
-        <span data-config-text="sales.entryName">闲鱼店铺</span>
-        <span class="store-entry-status" data-config-text="sales.badge">开放购买</span>
-        <span class="store-entry-arrow" aria-hidden="true">↗</span>
-      </a>
-    </div>
-    <p class="license-state-note" id="licenseStateNotice" data-config-text="sales.notice" role="status">授权码已恢复购买，可点击闲鱼店铺查看详情。</p>
-    <div class="modal-actions"><button class="ghost-btn" data-close="" type="button">返回导航</button></div>
-  </div>
-</dialog>
-<dialog aria-labelledby="exportModalTitle" class="modal export-modal" id="exportModal">
-<div class="modal-top"><span class="modal-kicker">03 / 存档导出教程</span><button aria-label="关闭" class="close" data-close="" type="button">×</button></div>
-<div class="modal-body">
-<h2 id="exportModalTitle">请选择设备系统</h2>
-<p class="export-intro">选择自己的设备系统，查看对应教程。</p>
-<div class="export-options">
-<a class="export-option" href="#" id="androidTutorialLink" rel="noopener noreferrer" target="_blank"><span class="export-symbol">安</span><span class="export-option-text"><strong>安卓</strong><small>Android · 查看导出教程</small></span><span aria-hidden="true" class="export-arrow">↗</span></a>
-<a class="export-option" href="#" id="iosTutorialLink" rel="noopener noreferrer" target="_blank"><span class="export-symbol">苹</span><span class="export-option-text"><strong>苹果</strong><small>iOS · 查看导出教程</small></span><span aria-hidden="true" class="export-arrow">↗</span></a>
-<a class="export-option" href="#" id="harmonyTutorialLink" rel="noopener noreferrer" target="_blank"><span class="export-symbol">鸿</span><span class="export-option-text"><strong>鸿蒙</strong><small>HarmonyOS · 查看相关说明</small></span><span aria-hidden="true" class="export-arrow">↗</span></a>
-</div><div class="export-assistance">
-<span class="export-assistance-caption">不方便自己操作？</span>
-<a class="export-option export-option-manual" href="#" id="manualTutorialLink" rel="noopener noreferrer" target="_blank">
-<span class="export-symbol">代</span><span class="export-option-text"><strong>人工代导</strong><small>人工代导专用入口 · 您只需等待结果</small></span><span aria-hidden="true" class="export-arrow">↗</span>
-</a>
-</div>
-<p class="export-note">使用前请确认渠道支持情况，教程存在不代表当前已适配。</p>
-<div class="modal-actions"><button class="ghost-btn" data-close="" type="button">返回导航</button></div>
-</div>
-</dialog>
-
-<dialog aria-labelledby="faqModalTitle" class="modal faq-modal" id="faqModal">
-  <div class="modal-top"><span class="modal-kicker">05 / 使用问题</span><button aria-label="关闭" class="close" data-close="" type="button">×</button></div>
-  <div class="modal-body">
-    <h2 id="faqModalTitle">使用问题目录</h2>
-    <p class="faq-modal-intro">选择遇到的问题类型，查看对应说明。</p>
-    <nav class="faq-directory" aria-label="使用问题分类">
-      <a class="faq-directory-link" href="#" id="faqDownloadLink" target="_blank" rel="noopener noreferrer">
-        <span class="faq-directory-num">01</span><span class="faq-directory-copy"><strong>下载 / 安装 / 更新问题</strong><small>下载失败、安装异常、无法更新等</small></span><span class="faq-directory-arrow" aria-hidden="true">↗</span>
-      </a>
-      <a class="faq-directory-link" href="#" id="faqLicenseVerifyLink" target="_blank" rel="noopener noreferrer">
-        <span class="faq-directory-num">02</span><span class="faq-directory-copy"><strong>授权码验证失败问题</strong><small>验证卡住、验证报错、无法进入软件等</small></span><span class="faq-directory-arrow" aria-hidden="true">↗</span>
-      </a>
-      <a class="faq-directory-link" href="#" id="faqExportFailureLink" target="_blank" rel="noopener noreferrer">
-        <span class="faq-directory-num">03</span><span class="faq-directory-copy"><strong>导出存档失败问题</strong><small>捕获异常、导出报错、无法获取存档等</small></span><span class="faq-directory-arrow" aria-hidden="true">↗</span>
-      </a>
-      <a class="faq-directory-link" href="#" id="faqUsageLink" target="_blank" rel="noopener noreferrer">
-        <span class="faq-directory-num">04</span><span class="faq-directory-copy"><strong>软件使用问题</strong><small>功能不会用、操作疑问、结果看不懂等</small></span><span class="faq-directory-arrow" aria-hidden="true">↗</span>
-      </a>
-    </nav>
-    <p class="faq-modal-note">打开说明文档后，可通过文档目录查看对应章节。</p>
-    <div class="modal-actions">
-      <a class="main-button" href="#" id="faqMore" target="_blank" rel="noopener noreferrer">查看完整问题说明 ↗</a>
-      <button class="ghost-btn" data-close="" type="button">返回导航</button>
-    </div>
-  </div>
-</dialog>
-
 <dialog class="modal community-info-modal" id="qqCommunityModal" aria-labelledby="qqCommunityTitle">
   <div class="modal-top"><span class="modal-kicker">游戏交流 / QQ</span><button type="button" class="close" data-close aria-label="关闭">×</button></div>
   <div class="modal-body"><h2 id="qqCommunityTitle">QQ 交流群</h2>
@@ -283,5 +271,132 @@
     </div>
   </div>
 </dialog>
-<script src="config.js?v=20261117-intro"></script><script src="lang-map.js"></script><script src="script.js?v=20261116-v031"></script>
+<script src="config.js?v=20261122-nav-direct"></script><script src="lang-map.js?v=20261122-nav-direct"></script><script src="script.js?v=20261122-nav-direct"></script>
+<style>
+/* 导航卡片按压反馈与整页切换 */
+.nav-card{cursor:pointer;text-decoration:none;-webkit-tap-highlight-color:transparent}
+.nav-card:focus-visible{outline:2px solid var(--pine);outline-offset:3px}
+@media (prefers-reduced-motion:no-preference){
+  .nav-card{transition:transform 100ms ease,background-color 100ms ease,border-color 100ms ease,box-shadow 100ms ease}
+  .nav-card:active{transform:translateY(1px) scale(.992);border-color:rgba(49,89,77,.62);background:rgba(239,235,222,.98);box-shadow:inset 0 2px 7px rgba(38,53,43,.09),0 3px 10px rgba(57,48,36,.05)}
+  html[data-theme="care"] .nav-card:active{background:rgba(53,57,58,.98);border-color:rgba(159,197,184,.62);box-shadow:inset 0 2px 7px rgba(0,0,0,.18),0 3px 10px rgba(0,0,0,.12)}
+  #homeView,#trialLicenseView,#exportView{transition:opacity 190ms ease,transform 190ms ease}
+  .view-leaving{opacity:0!important;transform:translateY(5px)!important;pointer-events:none}
+  .view-entering{animation:nav-page-enter 210ms cubic-bezier(.2,.72,.25,1) both}
+  @keyframes nav-page-enter{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+}
+.route-view[hidden]{display:none!important}
+.route-view{min-height:55vh}
+.route-view .guide-main{max-width:850px;margin:0 auto}
+.route-view .guide-section{margin-top:30px}
+.route-back-row{margin-top:32px}
+.route-note{margin:14px 0 0;font-size:12px;line-height:1.7;color:var(--muted-light)}
+@media(max-width:620px){.route-view .guide-main{padding:22px 2px 42px}.route-view .guide-page-heading h1{font-size:31px}}
+@media(prefers-reduced-motion:reduce){
+  #homeView,#trialLicenseView,#exportView{transition:none!important}
+  .view-entering{animation:none!important}
+  .nav-card:active{transform:none!important}
+}
+</style>
+<script>
+(() => {
+  const home=document.getElementById('homeView');
+  const trial=document.getElementById('trialLicenseView');
+  const exportPage=document.getElementById('exportView');
+  if(!home||!trial||!exportPage)return;
+
+  // 外部网址仍以 config.js 为唯一编辑入口。
+  const siteConfig=typeof SITE_CONFIG!=='undefined'?SITE_CONFIG:{};
+  document.querySelectorAll('[data-config-href]').forEach(link=>{
+    let value=siteConfig;
+    (link.dataset.configHref||'').split('.').forEach(key=>{value=value&&value[key];});
+    if(typeof value==='string'&&value.trim())link.href=value;
+  });
+
+  const views={home, 'trial-license':trial, export:exportPage};
+  const titles={home:'烟雨助手 · 使用指南','trial-license':'试用与授权码获取 · 烟雨助手',export:'导出存档教程 · 烟雨助手'};
+  const reduced=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const routeFromHash=()=>{
+    const key=location.hash.replace(/^#/,'');
+    return key==='trial-license'||key==='export'?key:'home';
+  };
+  let currentRoute=routeFromHash();
+  let targetRoute=currentRoute;
+  let timer=null;
+
+  const showImmediately=route=>{
+    Object.entries(views).forEach(([key,view])=>{
+      view.hidden=key!==route;
+      view.classList.remove('view-leaving','view-entering');
+    });
+    currentRoute=targetRoute=route;
+    document.title=titles[route];
+  };
+
+  const showRoute=route=>{
+    if(!views[route]||route===targetRoute)return;
+    targetRoute=route;
+    if(timer)window.clearTimeout(timer);
+    if(reduced){showImmediately(route);return;}
+
+    const from=views[currentRoute];
+    const to=views[route];
+    from.classList.remove('view-entering');
+    from.classList.add('view-leaving');
+    timer=window.setTimeout(()=>{
+      from.hidden=true;
+      from.classList.remove('view-leaving');
+      to.hidden=false;
+      to.classList.remove('view-entering');
+      void to.offsetWidth;
+      to.classList.add('view-entering');
+      currentRoute=targetRoute=route;
+      document.title=titles[route];
+      timer=null;
+      if(route==='home'&&['#start','#community'].includes(location.hash)){
+        document.querySelector(location.hash)?.scrollIntoView({behavior:'smooth',block:'start'});
+      }else if(route==='home'){
+        window.scrollTo({top:0,behavior:'smooth'});
+      }else{
+        window.scrollTo({top:0,behavior:'auto'});
+      }
+    },190);
+  };
+
+  showImmediately(currentRoute);
+
+  document.addEventListener('click',event=>{
+    const routeLink=event.target.closest('a[data-route]');
+    if(routeLink&&event.button===0&&!event.metaKey&&!event.ctrlKey&&!event.shiftKey&&!event.altKey){
+      event.preventDefault();
+      const route=routeLink.dataset.route;
+      if(!views[route])return;
+      history.pushState({navRoute:route},'','#'+route);
+      showRoute(route);
+      return;
+    }
+
+    const homeAnchor=event.target.closest('a[href^="#"]');
+    if(homeAnchor&&currentRoute!=='home'&&['#top','#start','#community'].includes(homeAnchor.getAttribute('href'))){
+      event.preventDefault();
+      const hash=homeAnchor.getAttribute('href');
+      history.pushState({navRoute:'home'},'',hash);
+      showRoute('home');
+      return;
+    }
+
+    const external=event.target.closest('a[data-page-external]');
+    if(!external||event.button!==0||event.metaKey||event.ctrlKey||event.shiftKey||event.altKey||external.target==='_blank'||external.hasAttribute('download'))return;
+    event.preventDefault();
+    const activeView=views[currentRoute];
+    if(reduced){location.href=external.href;return;}
+    activeView.classList.add('view-leaving');
+    window.setTimeout(()=>{location.href=external.href;},190);
+  });
+
+  const restoreFromHistory=()=>showRoute(routeFromHash());
+  window.addEventListener('popstate',restoreFromHistory);
+  window.addEventListener('hashchange',restoreFromHistory);
+})();
+</script>
 </body></html>
