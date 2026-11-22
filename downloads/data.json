@@ -1,23 +1,36 @@
 {
   "schema": 1,
   "status": "ok",
-  "checkedAt": "2026-11-22T15:18:38+00:00",
+  "checkedAt": "2026-11-22T21:45:59+00:00",
   "platforms": {
     "android": {
       "current": {
-        "version": "0.3.33",
-        "build": 48,
-        "name": "yyhelper-0.3.33-48-android.apk",
-        "bytes": 13386784,
-        "sha256": "18b61e00ea3afb913450d3fb6f2fcae7216a761a6e34f75e28b8f674e1b643ab",
-        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-android-b48-18b61e00ea3afb91/yyhelper-0.3.33-48-android.apk",
-        "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-android-b48-18b61e00ea3afb91",
-        "sourceUrl": "https://download.yanyuhelper.com/releases/android/48/download.html",
-        "date": "2026/11/20",
-        "notes": "- 修复芒晶洗练问题",
-        "mirroredAt": "2026-11-20T12:54:27+00:00"
+        "version": "0.3.34",
+        "build": 49,
+        "name": "yyhelper-0.3.34-49-android.apk",
+        "bytes": 13821211,
+        "sha256": "7364f1a935f95ec9d36763ebebf7e92949b7b2e966c42a70a129a04872b217c0",
+        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-android-b49-7364f1a935f95ec9/yyhelper-0.3.34-49-android.apk",
+        "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-android-b49-7364f1a935f95ec9",
+        "sourceUrl": "https://download.yanyuhelper.com/releases/android/49/download.html",
+        "date": "2026/11/22",
+        "notes": "- 首页「恒山弟子」改为「恒山事务」，新增任务推演：按行动力和物资排出今明两天的做法\n- 局域网导出：手机时间手动调整过也能解析\n- 激活方式说明的轮次规则修正",
+        "mirroredAt": "2026-11-22T21:46:06+00:00"
       },
       "history": [
+        {
+          "version": "0.3.33",
+          "build": 48,
+          "name": "yyhelper-0.3.33-48-android.apk",
+          "bytes": 13386784,
+          "sha256": "18b61e00ea3afb913450d3fb6f2fcae7216a761a6e34f75e28b8f674e1b643ab",
+          "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-android-b48-18b61e00ea3afb91/yyhelper-0.3.33-48-android.apk",
+          "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-android-b48-18b61e00ea3afb91",
+          "sourceUrl": "https://download.yanyuhelper.com/releases/android/48/download.html",
+          "date": "2026/11/20",
+          "notes": "- 修复芒晶洗练问题",
+          "mirroredAt": "2026-11-20T12:54:27+00:00"
+        },
         {
           "version": "0.3.32",
           "build": 47,
@@ -141,19 +154,32 @@
     },
     "windows": {
       "current": {
-        "version": "0.3.33",
-        "build": 48,
-        "name": "yyhelper-0.3.33-48-windows.exe",
-        "bytes": 16342485,
-        "sha256": "042f55476d670797336c22bbb3a5f18e2f32ac7ba5d961a5d826e63337b382c7",
-        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-windows-b48-042f55476d670797/yyhelper-0.3.33-48-windows.exe",
-        "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-windows-b48-042f55476d670797",
-        "sourceUrl": "https://download.yanyuhelper.com/releases/windows/48/download.html",
-        "date": "2026/11/20",
-        "notes": "- 修复芒晶洗练问题",
-        "mirroredAt": "2026-11-20T12:54:32+00:00"
+        "version": "0.3.34",
+        "build": 49,
+        "name": "yyhelper-0.3.34-49-windows.exe",
+        "bytes": 16672730,
+        "sha256": "634d7f4524b3fba50d913ee6c834e1d4a8c633ed17f52eef0255d42090df9e50",
+        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-windows-b49-634d7f4524b3fba5/yyhelper-0.3.34-49-windows.exe",
+        "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-windows-b49-634d7f4524b3fba5",
+        "sourceUrl": "https://download.yanyuhelper.com/releases/windows/49/download.html",
+        "date": "2026/11/22",
+        "notes": "- 首页「恒山弟子」改为「恒山事务」，新增任务推演：按行动力和物资排出今明两天的做法\n- 局域网导出：手机时间手动调整过也能解析\n- 激活方式说明的轮次规则修正",
+        "mirroredAt": "2026-11-22T21:46:10+00:00"
       },
       "history": [
+        {
+          "version": "0.3.33",
+          "build": 48,
+          "name": "yyhelper-0.3.33-48-windows.exe",
+          "bytes": 16342485,
+          "sha256": "042f55476d670797336c22bbb3a5f18e2f32ac7ba5d961a5d826e63337b382c7",
+          "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-windows-b48-042f55476d670797/yyhelper-0.3.33-48-windows.exe",
+          "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-windows-b48-042f55476d670797",
+          "sourceUrl": "https://download.yanyuhelper.com/releases/windows/48/download.html",
+          "date": "2026/11/20",
+          "notes": "- 修复芒晶洗练问题",
+          "mirroredAt": "2026-11-20T12:54:32+00:00"
+        },
         {
           "version": "0.3.32",
           "build": 47,
@@ -278,6 +304,15 @@
   },
   "error": null,
   "releases": [
+    {
+      "version": "0.3.34",
+      "build": 49,
+      "date": "2026/11/22",
+      "notesByPlatform": {
+        "android": "- 首页「恒山弟子」改为「恒山事务」，新增任务推演：按行动力和物资排出今明两天的做法\n- 局域网导出：手机时间手动调整过也能解析\n- 激活方式说明的轮次规则修正",
+        "windows": "- 首页「恒山弟子」改为「恒山事务」，新增任务推演：按行动力和物资排出今明两天的做法\n- 局域网导出：手机时间手动调整过也能解析\n- 激活方式说明的轮次规则修正"
+      }
+    },
     {
       "version": "0.3.33",
       "build": 48,
