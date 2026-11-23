@@ -60,6 +60,11 @@ const SITE_CONFIG = {
       title: '最新通知',
       items: [
         {
+          date: '2026.11.23',
+          title: '新增恒山任务推演',
+          body: `新增恒山任务推演`
+        },
+        {
           date: '2026.11.16',
           title: '0.3.30 版本功能更新',
           body: `新增鬼市推演
