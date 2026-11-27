@@ -170,6 +170,21 @@ html[data-theme="care"] .guide-announcement-mark{
 }
 html[data-theme="care"] .guide-announcement strong{color:#c6ddca!important}
 
+
+/* 游戏版本更新后的统一待适配状态：使用低饱和古铜色，避免红色警告感。 */
+.support-status-pending{
+  border-color:rgba(154,120,56,.34);
+  background:rgba(154,120,56,.10);
+  color:var(--gold);
+}
+.support-status-pending::before{content:"—";margin-right:5px;font-weight:700}
+html[data-theme="care"] .support-status-pending{
+  border-color:rgba(194,171,131,.38);
+  background:rgba(194,171,131,.12);
+  color:#d8c49f;
+}
+html[data-theme="care"] .support-status-pending::before{content:"—"}
+
 </style>
 </head>
 <body>
@@ -200,9 +215,9 @@ html[data-theme="care"] .guide-announcement strong{color:#c6ddca!important}
       <h1>使用前须知</h1>
     </header>
 
-    <aside class="guide-announcement" aria-label="软件更新">
-    <span class="guide-announcement-mark" aria-hidden="true">✓</span>
-    <p><strong>软件更新：</strong>已完成适配，请使用新 App「烟雨助手」</p>
+    <aside class="guide-announcement" aria-label="游戏更新">
+    <span class="guide-announcement-mark" aria-hidden="true">更</span>
+    <p><strong>2026.11.27 10:00 游戏更新：</strong>未完成适配</p>
   </aside>
 
     <section class="guide-section" aria-labelledby="supportTitle">
@@ -223,7 +238,7 @@ html[data-theme="care"] .guide-announcement strong{color:#c6ddca!important}
               </span>
               <span>安卓</span>
             </h3>
-            <span class="support-status">全渠道可用</span>
+            <span class="support-status support-status-pending">暂未适配</span>
           </div>
           <dl class="support-details">
             <div><dt>设备要求</dt><dd>安卓手机 或 Windows 电脑</dd></div>
@@ -243,7 +258,7 @@ html[data-theme="care"] .guide-announcement strong{color:#c6ddca!important}
               </span>
               <span>苹果</span>
             </h3>
-            <span class="support-status">可用</span>
+            <span class="support-status support-status-pending">暂未适配</span>
           </div>
           <dl class="support-details">
             <div><dt>设备要求</dt><dd>iOS设备 + 安卓手机<br/>或 iOS设备 + Windows电脑</dd></div>
@@ -267,14 +282,14 @@ html[data-theme="care"] .guide-announcement strong{color:#c6ddca!important}
           <div class="support-subgroup">
             <h4>非纯血鸿蒙</h4>
             <dl class="support-details">
-              <div><dt>支持情况</dt><dd><span class="support-status">可用</span></dd></div>
+              <div><dt>支持情况</dt><dd><span class="support-status support-status-pending">暂未适配</span></dd></div>
               <div><dt>设备要求</dt><dd>参考安卓要求</dd></div>
             </dl>
           </div>
           <div class="support-subgroup">
             <h4>纯血鸿蒙</h4>
             <dl class="support-details">
-              <div><dt>支持情况</dt><dd><span class="support-status">可用</span></dd></div>
+              <div><dt>支持情况</dt><dd><span class="support-status support-status-pending">暂未适配</span></dd></div>
               <div><dt>设备要求</dt><dd>鸿蒙手机</dd></div>
             </dl>
           </div>
@@ -298,8 +313,8 @@ html[data-theme="care"] .guide-announcement strong{color:#c6ddca!important}
             </h3>
           </div>
           <div class="support-status-list">
-            <span class="support-status support-status-unavailable">先行服：暂不可用</span>
-            <span class="support-status">国际服：可用</span>
+            <span class="support-status support-status-pending">先行服：暂未适配</span>
+            <span class="support-status support-status-pending">国际服：暂未适配</span>
           </div>
           <dl class="support-details">
             <div>
