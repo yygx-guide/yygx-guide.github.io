@@ -1,0 +1,38 @@
+name: Sync guide to Beacon
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '*.html'
+      - '!bili-hd-test.html'
+      - '*.css'
+      - '*.js'
+      - '*.json'
+      - 'assets/**'
+      - 'scripts/sync_beacon_site.py'
+      - '.github/workflows/sync-beacon.yml'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sync-guide-to-beacon
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout the latest main revision
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          ref: main
+          persist-credentials: false
+      - name: Publish the guide
+        env:
+          BEACON_API_KEY: ${{ secrets.BEACON_API_KEY }}
+        run: python3 scripts/sync_beacon_site.py
