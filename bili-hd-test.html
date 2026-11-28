@@ -4,251 +4,217 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>B站 NANO 播放器对照测试｜烟雨助手</title>
+<title>B站 NANO 高清播放器对照测试｜烟雨助手</title>
 <style>
 :root{color-scheme:light;--paper:#f3eddf;--ink:#292b27;--muted:#77786f;--line:rgba(65,70,60,.18);--red:#a94432}
 *{box-sizing:border-box}
-body{margin:0;padding:28px 16px 48px;background:var(--paper);color:var(--ink);font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
-main{max-width:920px;margin:0 auto}
+body{margin:0;padding:26px 16px 44px;background:var(--paper);color:var(--ink);font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
+main{max-width:1240px;margin:0 auto}
 h1{font-family:"Noto Serif SC","Songti SC",serif;font-size:26px;margin:0 0 8px}
-h2{font-size:17px;margin:0 0 12px}
-p{line-height:1.7}
-.muted{color:var(--muted);font-size:14px}
-.test-card{margin:22px 0;padding:16px;border:1px solid var(--line);border-radius:9px;background:rgba(255,255,255,.34)}
-.player-shell{width:100%;aspect-ratio:16/9;background:#151715;border:1px solid #343831;border-radius:8px;overflow:hidden;position:relative}
+p{line-height:1.65}
+.lead,.muted{color:var(--muted);font-size:14px}
+.tests{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:20px}
+.test-card{min-width:0;padding:14px;border:1px solid var(--line);border-radius:9px;background:rgba(255,255,255,.38)}
+h2{font-size:16px;margin:0 0 10px}
+.player-shell{width:100%;aspect-ratio:16/9;background:#151715;border:1px solid #343831;border-radius:7px;overflow:hidden;position:relative}
 .nano-host,.fallback-frame{width:100%;height:100%;display:block;border:0}
 .fallback-frame{display:none}
-.status{margin:12px 0 0;padding:10px 12px;border:1px solid var(--line);border-radius:6px;font-size:14px;line-height:1.6}
+.status{margin:10px 0 0;padding:10px 11px;border:1px solid var(--line);border-radius:6px;font-size:13px;line-height:1.55;min-height:58px}
 .status.error{border-color:#d6a29a;color:#873d31;background:rgba(169,68,50,.06)}
 .status.ok{border-color:#9bb58d;color:#405a38;background:rgba(95,140,75,.07)}
-.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:12px}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
 a{color:#8e4637}
-a.button{display:inline-block;background:#a94432;color:#fff;text-decoration:none;padding:10px 16px;border-radius:5px;font-weight:600}
-a.secondary{padding:10px 0}
-.note{margin-top:20px;padding:15px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.25);font-size:14px;line-height:1.7}
-code{overflow-wrap:anywhere}
+a.button{display:inline-block;background:#a94432;color:#fff;text-decoration:none;padding:9px 13px;border-radius:5px;font-size:14px;font-weight:600}
+.note{margin-top:18px;padding:14px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.25);font-size:13px;line-height:1.7}
+@media(max-width:760px){.tests{grid-template-columns:1fr}body{padding:18px 12px 32px}}
 </style>
+
+<!-- 与 BWiki Widget:Biliplayer 相同：必须先设置播放器全局配置，再加载 B 站核心脚本 -->
+<script>
+window.activity = { id: 11610, spmId: '888.211' };
+window.reportMsgObj = {};
+window.reportConfig = {
+  sample: 1,
+  extMsgs: { appBuvid: (navigator.userAgent.match(/Buvid\\/([a-zA-Z0-9]+)/) || [])[1] || '' },
+  scrollTracker: true,
+  msgObjects: 'reportMsgObj',
+  pvMsg: {},
+  errorTracker: true
+};
+window.SEARCH_PARAM = { autoplay: false, poster: true, muted: false };
+try { document.domain = 'bilibili.com'; } catch (e) {}
+</script>
 <script src="https://s1.hdslb.com/bfs/seed/jinkela/short/player/player-util.js"></script>
 <script src="https://s1.hdslb.com/bfs/static/player/main/core.9ba60fbf.js"></script>
 </head>
 <body>
 <main>
-  <h1>B站 NANO 播放器对照测试</h1>
-  <p class="muted">本页按 BWiki「Widget:Biliplayer」的 PC 端初始化流程制作，并加入 BWiki 官方 NANO 示例视频作对照。不会修改正式教程页面。</p>
+  <h1>B站 NANO 高清播放器对照测试</h1>
+  <p class="lead">本版按 BWiki 官方 Widget:Biliplayer 的脚本加载顺序重新整理：先配置播放器环境，再加载 B 站核心。两个视频并排显示，方便直接对照。</p>
 
-  <section class="test-card">
-    <h2>测试 A：你的教程视频（BV1Vn1NzPEP4）</h2>
-    <div class="player-shell">
-      <div id="player-user" class="nano-host"></div>
-      <iframe id="fallback-user" class="fallback-frame" title="B站标准备用播放器" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-    </div>
-    <div id="status-user" class="status">等待初始化……</div>
-    <div class="actions">
-      <a class="button" href="https://www.bilibili.com/video/BV1Vn1NzPEP4/" target="_blank" rel="noopener noreferrer">在 B 站打开原视频</a>
-    </div>
-  </section>
+  <div class="tests">
+    <section class="test-card">
+      <h2>你的教程视频 · BV1Vn1NzPEP4</h2>
+      <div class="player-shell">
+        <div id="player-user" class="nano-host"></div>
+        <iframe id="fallback-user" class="fallback-frame" title="B站标准播放器备用入口" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+      <div id="status-user" class="status">等待播放器初始化……</div>
+      <div class="actions">
+        <a class="button" href="https://www.bilibili.com/video/BV1Vn1NzPEP4/" target="_blank" rel="noopener noreferrer">B站原视频</a>
+      </div>
+    </section>
 
-  <section class="test-card">
-    <h2>测试 B：BWiki NANO 文档示例（BV1H7NEzHEs8）</h2>
-    <p class="muted">这是 BWiki「Widget:NanoPlayer」文档采用的示例 BV，用来判断是当前视频本身的问题，还是 GitHub Pages 上的 NANO 播放环境问题。</p>
-    <div class="player-shell">
-      <div id="player-sample" class="nano-host"></div>
-      <iframe id="fallback-sample" class="fallback-frame" title="B站标准备用播放器" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
-    </div>
-    <div id="status-sample" class="status">等待初始化……</div>
-    <div class="actions">
-      <a class="secondary" href="https://www.bilibili.com/video/BV1H7NEzHEs8/" target="_blank" rel="noopener noreferrer">在 B 站打开示例视频</a>
-    </div>
-  </section>
+    <section class="test-card">
+      <h2>BWiki 文档示例 · BV1H7NEzHEs8</h2>
+      <div class="player-shell">
+        <div id="player-sample" class="nano-host"></div>
+        <iframe id="fallback-sample" class="fallback-frame" title="B站标准播放器备用入口" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+      <div id="status-sample" class="status">等待播放器初始化……</div>
+      <div class="actions">
+        <a class="button" href="https://www.bilibili.com/video/BV1H7NEzHEs8/" target="_blank" rel="noopener noreferrer">B站示例原视频</a>
+      </div>
+    </section>
+  </div>
 
   <section class="note">
-    <strong>结果判断</strong><br>
-    如果两条视频都出现 3107，说明 NANO 在当前 GitHub Pages 环境下无法正常取流；如果示例视频能播放、你的视频报 3107，则问题更可能与稿件审核、可见性或视频权限有关。播放器 SDK 初始化成功不等于视频已成功解码，本页会单独监测 3107 错误。
-    <br><br>
-    NANO 的高清能力并非对所有用户保证开放；最终清晰度仍由 B 站账号权限及其播放器策略决定。
+    <strong>本版调整</strong><br>
+    1. 将 activity、reportConfig、SEARCH_PARAM 等全局配置移到 B 站播放器脚本之前，修正此前脚本加载顺序与 BWiki 不一致的问题。<br>
+    2. 两个播放器分别创建实例，并各自只调用一次 connect，避免上一版重复连接。<br>
+    3. 分别检查视频信息接口、NANO SDK 初始化和 3107 错误；SDK 初始化不会再被描述为视频播放成功。<br>
+    4. PC 端使用 NANO；手机端沿用 BWiki 的移动端 iframe 方案。
   </section>
-  <div class="actions"><a class="secondary" href="https://yygx-guide.github.io/intro.html">返回正式使用指南</a></div>
+  <p class="muted"><a href="https://yygx-guide.github.io/intro.html">返回正式使用指南</a> · 本页为独立实验，不修改正式教程播放器。</p>
 </main>
 
 <script>
 (function () {
   'use strict';
-
-  // BWiki Widget:Biliplayer 的播放器环境配置
-  if (!window._BiliInitDone) {
-    window._BiliInitDone = true;
-    window.activity = { id: 11610, spmId: '888.211' };
-    window.reportMsgObj = {};
-    window.reportConfig = {
-      sample: 1,
-      extMsgs: { appBuvid: (navigator.userAgent.match(/Buvid\/([a-zA-Z0-9]+)/) || [])[1] || '' },
-      scrollTracker: true,
-      msgObjects: 'reportMsgObj',
-      pvMsg: {},
-      errorTracker: true
-    };
-    window.SEARCH_PARAM = { autoplay: false, poster: true, muted: false };
-    try {
-      if (location.hostname === 'bilibili.com' || location.hostname.indexOf('.bilibili.com') !== -1) {
-        document.domain = 'bilibili.com';
-      }
-    } catch (e) {}
-  }
-
   var ua = navigator.userAgent.toLowerCase();
-  var device = 'other';
-  if (/android|adr/.test(ua)) device = 'android';
-  else if (/\(i[^;]+;( U;)? CPU.+Mac OS X/.test(ua) || /ipad/.test(ua)) device = 'ios';
-  else if (/windows nt/.test(ua)) device = 'pc';
-  else if (/macintosh|linux/.test(ua)) device = 'pc';
+  var device = 'pc';
+  if (/android|adr/gi.test(ua)) device = 'android';
+  else if (/\\(i[^;]+;( U;)? CPU.+Mac OS X/gi.test(ua) || /ipad/gi.test(ua)) device = 'ios';
 
-  var _fetch = function (url) {
-    return fetch(url).then(function (r) {
-      if (!r.ok) throw new Error('HTTP ' + r.status);
-      return r.json();
+  var fetchJson = function (url) {
+    return fetch(url).then(function (response) {
+      if (!response.ok) throw new Error('B站接口 HTTP ' + response.status);
+      return response.json();
     });
   };
 
-  function _getUpInfo(mid) {
-    return _fetch('https://api.bilibili.com/x/web-interface/card?mid=' + encodeURIComponent(mid) + '&photo=true')
+  function getUpInfo(mid) {
+    return fetchJson('https://api.bilibili.com/x/web-interface/card?mid=' + encodeURIComponent(mid) + '&photo=true')
       .then(function (res) {
         if (res.code !== 0 || !res.data || !res.data.card) return null;
         var card = res.data.card;
-        return { mid: card.mid, name: card.uname, face: card.face, fans: card.fans };
+        return { mid: card.mid, name: card.uname, face: card.face };
       }).catch(function () { return null; });
   }
 
-  function _watchEndingCard(container, vd, upInfo) {
-    if (!container || !vd) return;
-    var faceUrl = (upInfo && upInfo.face) || (vd.owner && vd.owner.face) || '';
-    var spaceUrl = upInfo ? '//space.bilibili.com/' + upInfo.mid + '/' :
-      '//space.bilibili.com/' + ((vd.owner && vd.owner.mid) || 0) + '/';
-    var upName = (upInfo && upInfo.name) || (vd.owner && vd.owner.name) || '';
-    var upMid = (upInfo && upInfo.mid) || (vd.owner && vd.owner.mid) || 0;
-
-    var inject = function () {
+  function watchEndingCard(container, video, upInfo) {
+    if (!container || !video) return;
+    var owner = video.owner || {};
+    var face = (upInfo && upInfo.face) || owner.face || '';
+    var name = (upInfo && upInfo.name) || owner.name || '';
+    var mid = (upInfo && upInfo.mid) || owner.mid || '';
+    function inject() {
       var wrap = container.querySelector('.bpx-player-ending-functions-avatar[data-action="upinfo"]');
       if (!wrap) return;
       var img = wrap.querySelector('img');
-      if (img && faceUrl) { img.src = faceUrl; img.alt = upName; }
       var link = wrap.querySelector('a');
-      if (link) { link.href = spaceUrl; link.setAttribute('data-mid', String(upMid)); }
-    };
+      if (img && face) { img.src = face; img.alt = name; }
+      if (link && mid) link.href = 'https://space.bilibili.com/' + mid + '/';
+    }
     inject();
     new MutationObserver(inject).observe(container, { childList: true, subtree: true });
   }
 
-  // 依照 BWiki Widget:Biliplayer 的基本构造方式：PC 使用 NANO，移动端使用官方移动播放器。
-  function BiliPlayer(container, bvid, page, opts, statusEl, fallbackEl) {
-    this._playerInst = null;
-    this._container = container;
-    this.ready = null;
-    var width = opts.width || '100%';
-    var height = opts.height || '100%';
-    var autoplay = !!opts.autoplay;
-    var muted = !!opts.muted;
-    var self = this;
+  function showMobilePlayer(host, fallback, bvid, status) {
+    host.style.display = 'none';
+    fallback.style.display = 'block';
+    fallback.src = 'https://www.bilibili.com/blackboard/html5mobileplayer.html?bvid=' +
+      encodeURIComponent(bvid) + '&p=1';
+    status.textContent = '移动设备使用 BWiki 文档中的官方移动播放器方案；NANO 高清核心仅用于 PC 端测试。';
+  }
 
-    this._container.style.cssText = 'width:' + width + ';height:' + height + ';max-width:100%;';
+  function initPlayer(bvid, hostId, statusId, fallbackId) {
+    var host = document.getElementById(hostId);
+    var status = document.getElementById(statusId);
+    var fallback = document.getElementById(fallbackId);
 
     if (device === 'android' || device === 'ios') {
-      fallbackEl.style.display = 'block';
-      this._container.style.display = 'none';
-      fallbackEl.src = 'https://www.bilibili.com/blackboard/html5mobileplayer.html?bvid=' +
-        encodeURIComponent(bvid) + '&p=' + encodeURIComponent(page) + (autoplay ? '&autoplay' : '');
-      statusEl.textContent = '移动设备使用 B 站官方移动播放器；此模式不使用 PC 端 NANO 高清核心。';
+      showMobilePlayer(host, fallback, bvid, status);
+      return;
+    }
+    if (!window.nano || typeof window.nano.createPlayer !== 'function') {
+      status.className = 'status error';
+      status.textContent = 'B站 NANO SDK 没有成功加载。请检查 s1.hdslb.com 播放器脚本是否被网络拦截。';
       return;
     }
 
-    if (!window.nano || typeof window.nano.createPlayer !== 'function') {
-      throw new Error('未检测到 NANO SDK；请检查 B 站播放器脚本是否加载成功。');
+    var player;
+    try {
+      host.style.cssText = 'width:100%;height:100%;max-width:100%;';
+      player = window.nano.createPlayer({
+        element: host,
+        bvid: bvid,
+        p: 1,
+        autoplay: false,
+        muted: false,
+        poster: true,
+        stats: { bSource: 'widget_demo' }
+      });
+    } catch (error) {
+      status.className = 'status error';
+      status.textContent = 'NANO 实例创建失败：' + (error && error.message ? error.message : String(error));
+      return;
     }
 
-    this._playerInst = window.nano.createPlayer({
-      element: this._container,
-      bvid: bvid,
-      p: parseInt(page, 10),
-      autoplay: autoplay,
-      muted: muted,
-      poster: true,
-      stats: { bSource: 'widget_demo' }
-    });
+    status.textContent = 'NANO 实例已创建，正在读取稿件信息……';
 
-    statusEl.textContent = 'NANO 已初始化，正在读取稿件与 UP 主信息……';
-
-    _fetch('https://api.bilibili.com/x/web-interface/view?bvid=' + encodeURIComponent(bvid))
+    fetchJson('https://api.bilibili.com/x/web-interface/view?bvid=' + encodeURIComponent(bvid))
       .then(function (res) {
-        if (res.code !== 0 || !res.data) throw new Error('稿件接口返回 code=' + res.code + '：' + (res.message || '无视频数据'));
-        var video = res.data;
-        return _getUpInfo(video.owner.mid).then(function (upInfo) {
-          return { video: video, upInfo: upInfo };
+        if (res.code !== 0 || !res.data) {
+          throw new Error('稿件接口返回 code=' + res.code + '：' + (res.message || '未取得稿件信息'));
+        }
+        return getUpInfo(res.data.owner.mid).then(function (upInfo) {
+          return { video: res.data, upInfo: upInfo };
         });
       })
-      .then(function (data) {
-        // 与 BWiki 一致：拿到稿件/UP 主信息后，再次 connect 并处理结束页。
-        self._playerInst.connect().then(function () {
-          _watchEndingCard(self._container, data.video, data.upInfo);
-        }).catch(function (err) {
-          statusEl.className = 'status error';
-          statusEl.textContent = 'NANO 连接失败：' + (err && err.message ? err.message : String(err));
+      .then(function (meta) {
+        status.textContent = '稿件信息已读取，正在连接 NANO 视频流……';
+        return player.connect().then(function () {
+          status.className = 'status ok';
+          status.textContent = 'NANO 已连接，等待视频首帧。请以实际画面和清晰度菜单为准。';
+          watchEndingCard(host, meta.video, meta.upInfo);
         });
       })
-      .catch(function (err) {
-        statusEl.className = 'status error';
-        statusEl.textContent = 'B站稿件信息获取失败：' + (err && err.message ? err.message : String(err)) +
-          '。可能是接口跨域限制或当前网络无法访问 B 站 API。';
+      .catch(function (error) {
+        console.error('[BWiki NANO]', bvid, error);
+        status.className = 'status error';
+        status.textContent = '连接失败：' + (error && error.message ? error.message : String(error));
       });
 
-    // BWiki 源码会单独设置 ready 连接；这里也保留同样行为。
-    this.ready = this._playerInst.connect().then(function () {
-      statusEl.className = 'status';
-      statusEl.textContent = 'NANO SDK 连接已完成，正在等待视频流。注意：这不代表视频已经成功播放。';
-      return self;
-    }).catch(function (err) {
-      statusEl.className = 'status error';
-      statusEl.textContent = 'NANO SDK 连接失败：' + (err && err.message ? err.message : String(err));
-      throw err;
-    });
-
-    // 监测播放器内部的真实错误，避免把 SDK 初始化误报为播放成功。
     var observer = new MutationObserver(function () {
-      var text = self._container.innerText || self._container.textContent || '';
-      if (/错误码\s*[:：]?\s*3107|视频链接失效/.test(text)) {
-        statusEl.className = 'status error';
-        statusEl.textContent = '播放器已启动，但 B 站拒绝了该视频流（错误码 3107）。这不是清晰度设置问题。';
+      var text = host.innerText || host.textContent || '';
+      if (/错误码\\s*[:：]?\\s*3107/.test(text)) {
+        status.className = 'status error';
+        status.textContent = 'B站播放器返回 3107：NANO 已显示，但该视频流没有成功建立。';
+      } else if (/视频链接失效|视频内容不和谐|UP主自主删除|侵犯他人著作权/.test(text)) {
+        status.className = 'status error';
+        status.textContent = 'B站播放器显示视频不可用提示；请以 B站原视频页面的可见状态为准。';
       }
     });
-    observer.observe(this._container, { childList: true, subtree: true, characterData: true });
+    observer.observe(host, { childList: true, subtree: true, characterData: true });
   }
 
-  function initOne(bvid, containerId, statusId, fallbackId) {
-    var status = document.getElementById(statusId);
-    try {
-      new BiliPlayer(
-        document.getElementById(containerId),
-        bvid,
-        1,
-        { width: '100%', height: '100%', autoplay: false, muted: false },
-        status,
-        document.getElementById(fallbackId)
-      );
-    } catch (err) {
-      status.className = 'status error';
-      status.textContent = '播放器初始化失败：' + (err && err.message ? err.message : String(err));
-    }
-  }
-
-  // 静态 script 标签按顺序加载；等页面加载完成再初始化播放器。
   function start() {
-    initOne('BV1Vn1NzPEP4', 'player-user', 'status-user', 'fallback-user');
-    initOne('BV1H7NEzHEs8', 'player-sample', 'status-sample', 'fallback-sample');
+    initPlayer('BV1Vn1NzPEP4', 'player-user', 'status-user', 'fallback-user');
+    initPlayer('BV1H7NEzHEs8', 'player-sample', 'status-sample', 'fallback-sample');
   }
-
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', start);
-  } else {
-    start();
-  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start);
+  else start();
 })();
 </script>
 </body>
