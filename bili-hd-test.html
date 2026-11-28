@@ -49,27 +49,30 @@ code{overflow-wrap:anywhere}
 </main>
 <script>
 (function(){
-  var bvid = "BV1Vn1NzPEP4";
-  var status = document.getElementById("status");
-  var host = document.getElementById("nano-player");
-  var fallback = document.getElementById("fallback-frame");
-  var ua = navigator.userAgent.toLowerCase();
-  var isMobile = /android|adr|iphone|ipad|ipod/.test(ua);
+  const bvid = "BV1Vn1NzPEP4";
+  const status = document.getElementById("status");
+  const host = document.getElementById("nano-player");
+  const fallback = document.getElementById("fallback-frame");
+  const ua = navigator.userAgent.toLowerCase();
+  const isMobile = /android|adr|iphone|ipad|ipod/.test(ua);
 
-  function showFallback(message){
+  function showFallback(message) {
     host.style.display = "none";
     fallback.style.display = "block";
-    fallback.src = "https://www.bilibili.com/blackboard/html5mobileplayer.html?bvid=" +
-      encodeURIComponent(bvid) + "&p=1";
-    status.className = "status";
-    status.textContent = message + " 已切换到兼容播放器；如需高清，请使用上方 B 站原画质入口。";
+    fallback.src = "https://player.bilibili.com/player.html?bvid=" +
+      encodeURIComponent(bvid) + "&page=1&autoplay=0&danmaku=0";
+    status.className = "status error";
+    status.textContent = message +
+      " 已切换到 B 站标准播放器（画质可能受 480P 限制）。高清请使用上方 B 站原视频入口。";
   }
 
-  if(isMobile){
-    showFallback("检测到手机或平板设备。根据 BWiki 公开实现，移动端采用兼容播放器，NANO 高清核心主要用于电脑端。");
+  if (isMobile) {
+    showFallback("检测到手机或平板：BWiki 文档说明 NANO 核心在移动端可能触发验证，当前改用兼容播放器。");
     return;
   }
 
+  // 按 BWiki Widget:Biliplayer 的公开初始化方式配置播放器环境。
+  try { document.domain = "bilibili.com"; } catch (e) {}
   window.activity = { id: 11610, spmId: "888.211" };
   window.reportMsgObj = {};
   window.reportConfig = {
@@ -82,44 +85,61 @@ code{overflow-wrap:anywhere}
   };
   window.SEARCH_PARAM = { autoplay: false, poster: true, muted: false };
 
-  function loadScript(src){
-    return new Promise(function(resolve,reject){
-      var script=document.createElement("script");
-      script.src=src;
-      script.async=true;
-      script.onload=resolve;
-      script.onerror=function(){reject(new Error("脚本加载失败："+src));};
-      document.head.appendChild(script);
+  function loadScript(src) {
+    return new Promise(function(resolve, reject) {
+      const s = document.createElement("script");
+      s.src = src;
+      s.async = true;
+      s.onload = resolve;
+      s.onerror = function() { reject(new Error("B站播放器脚本加载失败")); };
+      document.head.appendChild(s);
     });
   }
 
   Promise.resolve()
-    .then(function(){return loadScript("https://s1.hdslb.com/bfs/seed/jinkela/short/player/player-util.js");})
-    .then(function(){return loadScript("https://s1.hdslb.com/bfs/static/player/main/core.9ba60fbf.js");})
-    .then(function(){
-      if(!window.nano || typeof window.nano.createPlayer!=="function"){
-        throw new Error("NANO SDK 未初始化，可能是 B 站更新了播放器脚本。");
-      }
-      var player=window.nano.createPlayer({
-        element:host,
-        bvid:bvid,
-        p:1,
-        autoplay:false,
-        muted:false,
-        poster:true,
-        stats:{bSource:"widget_demo"}
-      });
-      status.textContent="NANO 播放器已创建，正在连接视频……";
-      if(player && typeof player.connect==="function"){
-        return player.connect().then(function(){
-          status.textContent="NANO 播放器连接成功。请点击播放，并检查清晰度菜单是否出现 720P / 1080P。";
-        });
-      }
-      status.textContent="播放器已创建。请点击播放，并检查清晰度菜单。";
+    .then(function() {
+      return loadScript("https://s1.hdslb.com/bfs/seed/jinkela/short/player/player-util.js");
     })
-    .catch(function(error){
-      console.error(error);
-      showFallback("NANO 高清核心未能启动（"+(error && error.message ? error.message : "未知错误")+"）。");
+    .then(function() {
+      return loadScript("https://s1.hdslb.com/bfs/static/player/main/core.9ba60fbf.js");
+    })
+    .then(function() {
+      if (!window.nano || typeof window.nano.createPlayer !== "function") {
+        throw new Error("未检测到 NANO 播放器 SDK");
+      }
+
+      const player = window.nano.createPlayer({
+        element: host,
+        bvid: bvid,
+        p: 1,
+        autoplay: false,
+        muted: false,
+        poster: true,
+        stats: { bSource: "widget_demo" }
+      });
+
+      status.className = "status";
+      status.textContent = "NANO 核心已初始化，正在连接视频并验证稿件信息……";
+
+      // 按 BWiki Widget 逻辑先请求稿件信息，再连接播放器。
+      return fetch("https://api.bilibili.com/x/web-interface/view?bvid=" + encodeURIComponent(bvid), {
+        credentials: "include"
+      }).then(function(res) {
+        if (!res.ok) throw new Error("获取稿件信息失败（HTTP " + res.status + "）");
+        return res.json();
+      }).then(function(data) {
+        if (!data || data.code !== 0 || !data.data) {
+          throw new Error("B站稿件接口返回异常：" + (data && data.message ? data.message : "未知原因"));
+        }
+        return player.connect();
+      }).then(function() {
+        status.className = "status";
+        status.textContent = "NANO 已连接。请点击播放，并查看清晰度菜单；是否能获得高清仍由 B 站账号和接口权限决定。";
+      });
+    })
+    .catch(function(error) {
+      console.error("[BWiki NANO test]", error);
+      showFallback("NANO 高清核心连接失败：" + (error && error.message ? error.message : "未知错误") + "。");
     });
 })();
 </script>
