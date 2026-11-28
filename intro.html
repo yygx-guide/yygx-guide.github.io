@@ -3,13 +3,12 @@
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
-  <base href="https://yygx-guide.github.io/"/>
   <meta name="theme-color" content="#ece5d6"/>
   <meta name="description" content="烟雨助手使用前须知：设备支持渠道、初次使用流程、常见问题与快速入门。"/>
   <title>使用前须知 · 烟雨助手</title>
   <link href="assets/app-icon.png" rel="icon" type="image/png"/>
   <link href="style.css?v=20261116-v031" rel="stylesheet"/>
-  <link href="guide-page.css?v=20261117-intro" rel="stylesheet"/>
+  <link href="guide-page.css?v=20261128-player" rel="stylesheet"/>
 <style>
 
 :root{
@@ -707,21 +706,28 @@ RU5ErkJggg==
       </div>
       <p class="guide-video-intro">请初次使用的小伙伴先耐心看完这个视频~</p>
       <p class="guide-video-topics">（观星介绍 | 自己是否可用 | 如何使用 | 流程简单说明）</p>
-      <div
-        class="guide-video-placeholder"
-        style="width:min(100%,760px);aspect-ratio:16/9;overflow:hidden;border-radius:6px;background:#171a18;"
-      >
-        <iframe
-          src="https://player.bilibili.com/player.html?bvid=BV1Vn1NzPEP4&page=1&autoplay=0&danmaku=0&high_quality=1&as_wide=1"
-          title="烟雨助手首次使用说明"
-          loading="lazy"
-          allowfullscreen
-          referrerpolicy="strict-origin-when-cross-origin"
-          style="display:block;width:100%;height:100%;border:0;"
-        ></iframe>
+      <video
+        id="guideQuickStartVideo"
+        class="guide-video"
+        src="assets/video/assistant-quick-start-720p.mp4"
+        controls
+        playsinline
+        preload="metadata"
+        aria-label="烟雨助手首次使用说明"
+      ></video>
+      <div class="guide-video-quality" id="guideVideoQuality" hidden>
+        <label for="guideVideoSource">画质</label>
+        <select id="guideVideoSource">
+          <option value="auto" data-automatic>自动</option>
+          <option value="assets/video/assistant-quick-start-lite.mp4" data-low-bandwidth>流畅 540P</option>
+          <option value="assets/video/assistant-quick-start-720p.mp4" selected>清晰 720P</option>
+          <option value="assets/video/assistant-quick-start-efficient-1080p.mp4" data-efficient>轻量 1080P</option>
+          <option value="assets/video/assistant-quick-start-1080p.mp4">高清 1080P</option>
+        </select>
+        <span id="guideVideoStatus" role="status"></span>
       </div>
-      <p class="guide-video-topics" style="margin-top:10px;">
-        如果播放器无法加载，也可以<a href="https://www.bilibili.com/video/BV1Vn1NzPEP4/" target="_blank" rel="noopener noreferrer">前往哔哩哔哩观看</a>。
+      <p class="guide-video-fallback">
+        如果播放遇到问题，也可以<a class="guide-video-external" href="https://www.bilibili.com/video/BV1Vn1NzPEP4/" target="_blank" rel="noopener noreferrer" aria-label="前往哔哩哔哩观看原片（在新标签页打开）">前往哔哩哔哩观看原片 <span aria-hidden="true">↗</span></a>。
       </p>
     </section>
 
@@ -735,9 +741,10 @@ RU5ErkJggg==
     <span>独立整理的使用资料 · 非游戏官方页面</span>
   </footer>
 </div>
-<script src="config.js?v=20261117-intro"></script>
+<script src="config.js?v=20261128-player"></script>
 <script src="lang-map.js"></script>
-<script src="script.js?v=20261116-v031"></script>
+<script src="script.js?v=20261128-player"></script>
+<script src="guide-video.js?v=20261128-player"></script>
 <script>
 (() => {
   const dateNode = document.getElementById('supportCurrentDate');

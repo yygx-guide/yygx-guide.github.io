@@ -5,7 +5,8 @@
   let refreshLang = () => {}; // 简繁切换初始化后由此刷新动态内容
   const valid = value => typeof value === 'string' && /^https?:\/\//i.test(value.trim()) ? value.trim() : '';
   const fullGuide = valid(cfg.fullGuideUrl);
-  const intro = valid(cfg.introUrl) || fullGuide;
+  const configuredIntro = typeof cfg.introUrl === 'string' ? cfg.introUrl.trim() : '';
+  const intro = configuredIntro.startsWith('./') ? configuredIntro : valid(configuredIntro) || fullGuide;
   const setHref = (id,url) => { const el=byId(id);if(el){el.href=url||'#';el.dataset.empty=url?'false':'true';} };
   const appDownloadUrl = valid(cfg.appDownloadUrl);
   setHref('appDownloadLink',appDownloadUrl);

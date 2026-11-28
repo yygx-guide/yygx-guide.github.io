@@ -59,6 +59,15 @@
 .guide-question p:last-child{margin-bottom:0}
 .guide-video-intro,.guide-video-topics{margin:0 0 5px;color:var(--muted);font-size:13px;line-height:1.8}
 .guide-video-topics{margin-bottom:14px;color:var(--muted-light)}
+.guide-video{display:block;width:min(100%,760px);height:auto;aspect-ratio:16/9;border-radius:6px;background:#171a18}
+.guide-video-quality:not([hidden]){display:flex;align-items:center;gap:8px;margin-top:10px;color:var(--muted);font-size:13px}
+.guide-video-quality select{padding:6px 10px;border:1px solid var(--line);border-radius:6px;background:var(--paper);color:var(--ink);font:inherit}
+.guide-video-quality select:focus-visible{outline:2px solid var(--pine);outline-offset:2px}
+.guide-video-fallback{margin:12px 0 0;color:var(--muted);font-size:13px;line-height:1.8}
+.guide-video-external{display:inline-flex;align-items:baseline;gap:.34em;margin-inline:3px;color:var(--pine);font-weight:700;text-decoration:underline;text-underline-offset:.24em}
+.guide-video-external:hover{color:var(--ink)}
+.guide-video-external:focus-visible{outline:2px solid var(--pine);outline-offset:3px;border-radius:2px}
+.guide-video-external span{font-size:.88em}
 .guide-video-placeholder{width:min(100%,760px);aspect-ratio:16/9;gap:8px;padding:20px}
 .placeholder-play{display:grid;place-items:center;width:54px;height:54px;padding-left:4px;border:1px solid rgba(49,89,77,.3);border-radius:50%;color:var(--pine);font-size:18px}
 .guide-video-placeholder strong{font-size:14px}

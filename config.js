@@ -5,7 +5,7 @@
   修改规则：
   1. 所有网址、公告、交流群说明、销售状态文案、旧安装包名称，都在这里改。
   2. 文字和网址只能改英文单引号 '...' 中的内容；英文冒号、逗号、括号别删。
-  3. 链接需要以 https:// 开头；某些可选链接留空 '' 会回退到完整教程。
+  3. 站内介绍页可用 ./ 开头的相对地址；外部链接使用 https://。某些可选链接留空 '' 会回退到完整教程。
   4. 修改后在 GitHub 点击 Commit changes。若显示旧内容，可 Ctrl+Shift+R。
   5. 页面布局和样式不在这里修改：index.html = 结构，style.css = 外观。
   6. 如要重做图标、插图，修改 assets/ 文件夹；不要随意更改 script.js。
@@ -24,7 +24,7 @@ const SITE_CONFIG = {
   // ======================== B. 所有外部跳转网址 ========================
   // 只在这里改网址，HTML 里不再直接保存第三方外链地址。
   appDownloadUrl: 'https://download.yyhelper.app/', // 首页烟雨助手 APP 下载
-  introUrl: 'https://yygx-guide.github.io/intro.html', // 站内「使用前须知」页面
+  introUrl: './intro.html', // 站内「使用前须知」页面
   fullGuideUrl: 'https://scnxd815i94m.feishu.cn/wiki/YSwLwVUM5icmxykY2ancqos2nXa', // 完整教程（备用地址）
   trialUrl: 'https://scnxd815i94m.feishu.cn/wiki/D5Z1wLOZcim5mRkrPsicbSY2nae', // 2.1 试用说明
   featureNoticeUrl: 'https://scnxd815i94m.feishu.cn/wiki/Ifgkw3qDtiOIbwkBD5ScJzoCnaf', // 04 使用须知
