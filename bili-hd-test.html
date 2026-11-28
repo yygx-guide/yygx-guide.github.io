@@ -35,7 +35,7 @@ window.activity = { id: 11610, spmId: '888.211' };
 window.reportMsgObj = {};
 window.reportConfig = {
   sample: 1,
-  extMsgs: { appBuvid: (navigator.userAgent.match(/Buvid\\/([a-zA-Z0-9]+)/) || [])[1] || '' },
+  extMsgs: { appBuvid: (navigator.userAgent.match(/Buvid\/([a-zA-Z0-9]+)/) || [])[1] || '' },
   scrollTracker: true,
   msgObjects: 'reportMsgObj',
   pvMsg: {},
@@ -94,7 +94,7 @@ try { document.domain = 'bilibili.com'; } catch (e) {}
   var ua = navigator.userAgent.toLowerCase();
   var device = 'pc';
   if (/android|adr/gi.test(ua)) device = 'android';
-  else if (/\\(i[^;]+;( U;)? CPU.+Mac OS X/gi.test(ua) || /ipad/gi.test(ua)) device = 'ios';
+  else if (/\(i[^;]+;( U;)? CPU.+Mac OS X/gi.test(ua) || /ipad/gi.test(ua)) device = 'ios';
 
   var fetchJson = function (url) {
     return fetch(url).then(function (response) {
@@ -198,7 +198,7 @@ try { document.domain = 'bilibili.com'; } catch (e) {}
 
     var observer = new MutationObserver(function () {
       var text = host.innerText || host.textContent || '';
-      if (/错误码\\s*[:：]?\\s*3107/.test(text)) {
+      if (/错误码\s*[:：]?\s*3107/.test(text)) {
         status.className = 'status error';
         status.textContent = 'B站播放器返回 3107：NANO 已显示，但该视频流没有成功建立。';
       } else if (/视频链接失效|视频内容不和谐|UP主自主删除|侵犯他人著作权/.test(text)) {
