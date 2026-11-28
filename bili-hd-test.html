@@ -49,12 +49,12 @@ code{overflow-wrap:anywhere}
 </main>
 <script>
 (function(){
-  const bvid = "BV1Vn1NzPEP4";
-  const status = document.getElementById("status");
-  const host = document.getElementById("nano-player");
-  const fallback = document.getElementById("fallback-frame");
-  const ua = navigator.userAgent.toLowerCase();
-  const isMobile = /android|adr|iphone|ipad|ipod/.test(ua);
+  var bvid = "BV1Vn1NzPEP4";
+  var status = document.getElementById("status");
+  var host = document.getElementById("nano-player");
+  var fallback = document.getElementById("fallback-frame");
+  var ua = navigator.userAgent.toLowerCase();
+  var isMobile = /android|adr|iphone|ipad|ipod/.test(ua);
 
   function showFallback(message) {
     host.style.display = "none";
@@ -63,16 +63,14 @@ code{overflow-wrap:anywhere}
       encodeURIComponent(bvid) + "&page=1&autoplay=0&danmaku=0";
     status.className = "status error";
     status.textContent = message +
-      " 已切换到 B 站标准播放器（画质可能受 480P 限制）。高清请使用上方 B 站原视频入口。";
+      " 已切换到标准播放器。";
   }
 
   if (isMobile) {
-    showFallback("检测到手机或平板：BWiki 文档说明 NANO 核心在移动端可能触发验证，当前改用兼容播放器。");
+    showFallback("移动设备采用 B 站兼容播放器；NANO 桌面核心不适用于此设备。");
     return;
   }
 
-  // 按 BWiki Widget:Biliplayer 的公开初始化方式配置播放器环境。
-  try { document.domain = "bilibili.com"; } catch (e) {}
   window.activity = { id: 11610, spmId: "888.211" };
   window.reportMsgObj = {};
   window.reportConfig = {
@@ -87,12 +85,20 @@ code{overflow-wrap:anywhere}
 
   function loadScript(src) {
     return new Promise(function(resolve, reject) {
-      const s = document.createElement("script");
+      var s = document.createElement("script");
       s.src = src;
       s.async = true;
       s.onload = resolve;
-      s.onerror = function() { reject(new Error("B站播放器脚本加载失败")); };
+      s.onerror = function() { reject(new Error("无法加载 B 站播放器核心脚本")); };
       document.head.appendChild(s);
+    });
+  }
+
+  function fetchJson(url) {
+    // 与 BWiki Widget:Biliplayer 保持一致：普通跨域 fetch，不强制携带第三方 Cookie。
+    return fetch(url).then(function(response) {
+      if (!response.ok) throw new Error("B站接口 HTTP " + response.status);
+      return response.json();
     });
   }
 
@@ -105,10 +111,11 @@ code{overflow-wrap:anywhere}
     })
     .then(function() {
       if (!window.nano || typeof window.nano.createPlayer !== "function") {
-        throw new Error("未检测到 NANO 播放器 SDK");
+        throw new Error("未检测到 NANO SDK");
       }
 
-      const player = window.nano.createPlayer({
+      host.style.cssText = "width:100%;height:100%;max-width:100%;";
+      var nanoPlayer = window.nano.createPlayer({
         element: host,
         bvid: bvid,
         p: 1,
@@ -118,28 +125,49 @@ code{overflow-wrap:anywhere}
         stats: { bSource: "widget_demo" }
       });
 
-      status.className = "status";
-      status.textContent = "NANO 核心已初始化，正在连接视频并验证稿件信息……";
+      status.textContent = "NANO 核心已初始化，正在读取 B 站稿件信息……";
 
-      // 按 BWiki Widget 逻辑先请求稿件信息，再连接播放器。
-      return fetch("https://api.bilibili.com/x/web-interface/view?bvid=" + encodeURIComponent(bvid), {
-        credentials: "include"
-      }).then(function(res) {
-        if (!res.ok) throw new Error("获取稿件信息失败（HTTP " + res.status + "）");
-        return res.json();
-      }).then(function(data) {
-        if (!data || data.code !== 0 || !data.data) {
-          throw new Error("B站稿件接口返回异常：" + (data && data.message ? data.message : "未知原因"));
-        }
-        return player.connect();
-      }).then(function() {
-        status.className = "status";
-        status.textContent = "NANO 已连接。请点击播放，并查看清晰度菜单；是否能获得高清仍由 B 站账号和接口权限决定。";
-      });
+      // 复现 BWiki Widget:Biliplayer 的顺序：先获取稿件及 UP 主资料，再 connect。
+      return fetchJson("https://api.bilibili.com/x/web-interface/view?bvid=" + encodeURIComponent(bvid))
+        .then(function(videoResponse) {
+          if (!videoResponse || videoResponse.code !== 0 || !videoResponse.data) {
+            throw new Error("B站稿件接口返回：" +
+              (videoResponse && videoResponse.message ? videoResponse.message : "无法读取稿件信息"));
+          }
+          var video = videoResponse.data;
+          return fetchJson("https://api.bilibili.com/x/web-interface/card?mid=" +
+            encodeURIComponent(video.owner.mid) + "&photo=true")
+            .catch(function() { return null; })
+            .then(function(ownerResponse) {
+              return { video: video, owner: ownerResponse };
+            });
+        })
+        .then(function(metadata) {
+          status.textContent = "稿件信息已读取，正在连接 NANO 播放核心……";
+          return nanoPlayer.connect().then(function() {
+            status.className = "status";
+            status.textContent = "NANO 已连接。请点击播放并检查清晰度；B站账号权限仍可能限制最高画质。";
+            var vd = metadata.video;
+            var up = metadata.owner && metadata.owner.data && metadata.owner.data.card;
+            var face = (up && up.face) || (vd.owner && vd.owner.face);
+            var name = (up && up.uname) || (vd.owner && vd.owner.name);
+            var link = (up && up.mid) || (vd.owner && vd.owner.mid);
+            if (face) {
+              var observer = new MutationObserver(function() {
+                var avatar = host.querySelector('.bpx-player-ending-functions-avatar[data-action="upinfo"] img');
+                if (avatar) { avatar.src = face; avatar.alt = name || ""; }
+                var anchor = host.querySelector('.bpx-player-ending-functions-avatar[data-action="upinfo"] a');
+                if (anchor && link) anchor.href = "https://space.bilibili.com/" + link + "/";
+              });
+              observer.observe(host, { childList: true, subtree: true });
+            }
+          });
+        });
     })
     .catch(function(error) {
-      console.error("[BWiki NANO test]", error);
-      showFallback("NANO 高清核心连接失败：" + (error && error.message ? error.message : "未知错误") + "。");
+      console.error("[BWiki Biliplayer-compatible test]", error);
+      showFallback("NANO 播放失败：" + (error && error.message ? error.message : "未知错误") +
+        "。这说明当前浏览器或 B 站接口未能完成高清核心加载。");
     });
 })();
 </script>
