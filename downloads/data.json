@@ -1,23 +1,36 @@
 {
   "schema": 1,
   "status": "ok",
-  "checkedAt": "2026-11-28T02:41:27+00:00",
+  "checkedAt": "2026-11-28T11:15:00+00:00",
   "platforms": {
     "android": {
       "current": {
-        "version": "0.3.35",
-        "build": 50,
-        "name": "yyhelper-0.3.35-50-android.apk",
-        "bytes": 13830263,
-        "sha256": "7a5ff73231d361b57a9ad28f6ae2bcf48a3f29462f2c0b6196c0c7e4359be410",
-        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-android-b50-7a5ff73231d361b5/yyhelper-0.3.35-50-android.apk",
-        "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-android-b50-7a5ff73231d361b5",
-        "sourceUrl": "https://download.yanyuhelper.com/releases/android/50/download.html",
-        "date": "2026/11/27",
-        "notes": "- VPN 导出适配国服安卓最新版本\n- VPN 导出步骤调整：先点开始，再完全关闭游戏并重新打开，然后上传存档\n- 游戏数据更新至最新版本",
-        "mirroredAt": "2026-11-27T19:57:39+00:00"
+        "version": "0.3.37",
+        "build": 52,
+        "name": "yyhelper-0.3.37-52-android.apk",
+        "bytes": 13840695,
+        "sha256": "66f7c671d9b173d738bcd1e3d80c655e618867b279982d914ac0789330aa264a",
+        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-android-b52-66f7c671d9b173d7/yyhelper-0.3.37-52-android.apk",
+        "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-android-b52-66f7c671d9b173d7",
+        "sourceUrl": "https://download.yanyuhelper.com/releases/android/52/download.html",
+        "date": "2026/11/28",
+        "notes": "- 修正部分导出存档时发生的问题\n",
+        "mirroredAt": "2026-11-28T11:15:06+00:00"
       },
       "history": [
+        {
+          "version": "0.3.35",
+          "build": 50,
+          "name": "yyhelper-0.3.35-50-android.apk",
+          "bytes": 13830263,
+          "sha256": "7a5ff73231d361b57a9ad28f6ae2bcf48a3f29462f2c0b6196c0c7e4359be410",
+          "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-android-b50-7a5ff73231d361b5/yyhelper-0.3.35-50-android.apk",
+          "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-android-b50-7a5ff73231d361b5",
+          "sourceUrl": "https://download.yanyuhelper.com/releases/android/50/download.html",
+          "date": "2026/11/27",
+          "notes": "- VPN 导出适配国服安卓最新版本\n- VPN 导出步骤调整：先点开始，再完全关闭游戏并重新打开，然后上传存档\n- 游戏数据更新至最新版本",
+          "mirroredAt": "2026-11-27T19:57:39+00:00"
+        },
         {
           "version": "0.3.34",
           "build": 49,
@@ -167,19 +180,32 @@
     },
     "windows": {
       "current": {
-        "version": "0.3.35",
-        "build": 50,
-        "name": "yyhelper-0.3.35-50-windows.exe",
-        "bytes": 16681746,
-        "sha256": "35813f615135a69ac71f88d457eb0640b55546b0be85bc4b306ff05c01840c93",
-        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-windows-b50-35813f615135a69a/yyhelper-0.3.35-50-windows.exe",
-        "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-windows-b50-35813f615135a69a",
-        "sourceUrl": "https://download.yanyuhelper.com/releases/windows/50/download.html",
-        "date": "2026/11/27",
-        "notes": "- VPN 导出适配国服安卓最新版本\n- VPN 导出步骤调整：先点开始，再完全关闭游戏并重新打开，然后上传存档\n- 游戏数据更新至最新版本",
-        "mirroredAt": "2026-11-27T19:57:44+00:00"
+        "version": "0.3.37",
+        "build": 52,
+        "name": "yyhelper-0.3.37-52-windows.exe",
+        "bytes": 16677427,
+        "sha256": "891a595b00988878999e9eb89ce2087bb35c041aad43fd3eac72c2f2cff98d88",
+        "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-windows-b52-891a595b00988878/yyhelper-0.3.37-52-windows.exe",
+        "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-windows-b52-891a595b00988878",
+        "sourceUrl": "https://download.yanyuhelper.com/releases/windows/52/download.html",
+        "date": "2026/11/28",
+        "notes": "- 修正部分导出存档时发生的问题\n",
+        "mirroredAt": "2026-11-28T11:15:11+00:00"
       },
       "history": [
+        {
+          "version": "0.3.35",
+          "build": 50,
+          "name": "yyhelper-0.3.35-50-windows.exe",
+          "bytes": 16681746,
+          "sha256": "35813f615135a69ac71f88d457eb0640b55546b0be85bc4b306ff05c01840c93",
+          "downloadUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/download/yyhelper-windows-b50-35813f615135a69a/yyhelper-0.3.35-50-windows.exe",
+          "releaseUrl": "https://github.com/yygx-guide/yygx-guide.github.io/releases/tag/yyhelper-windows-b50-35813f615135a69a",
+          "sourceUrl": "https://download.yanyuhelper.com/releases/windows/50/download.html",
+          "date": "2026/11/27",
+          "notes": "- VPN 导出适配国服安卓最新版本\n- VPN 导出步骤调整：先点开始，再完全关闭游戏并重新打开，然后上传存档\n- 游戏数据更新至最新版本",
+          "mirroredAt": "2026-11-27T19:57:44+00:00"
+        },
         {
           "version": "0.3.34",
           "build": 49,
@@ -330,6 +356,15 @@
   },
   "error": null,
   "releases": [
+    {
+      "version": "0.3.37",
+      "build": 52,
+      "date": "2026/11/28",
+      "notesByPlatform": {
+        "android": "- 修正部分导出存档时发生的问题",
+        "windows": "- 修正部分导出存档时发生的问题"
+      }
+    },
     {
       "version": "0.3.35",
       "build": 50,
