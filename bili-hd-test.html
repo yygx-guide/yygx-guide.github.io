@@ -4,28 +4,30 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>B站高清嵌入方案对照测试｜烟雨助手</title>
+<title>B站高清播放器嵌入测试｜烟雨助手</title>
 <style>
 :root{color-scheme:light;--paper:#f3eddf;--ink:#292b27;--muted:#77786f;--line:rgba(65,70,60,.18);--red:#a94432}
 *{box-sizing:border-box}
 body{margin:0;padding:26px 16px 44px;background:var(--paper);color:var(--ink);font-family:system-ui,-apple-system,"PingFang SC","Microsoft YaHei",sans-serif}
-main{max-width:1100px;margin:0 auto}
+main{max-width:1420px;margin:0 auto}
 h1{font-family:"Noto Serif SC","Songti SC",serif;font-size:26px;margin:0 0 8px}
 p{line-height:1.65}
 .lead,.muted{color:var(--muted);font-size:14px}
-.tests{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:20px}
+.tests{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:20px}
 .test-card{min-width:0;padding:14px;border:1px solid var(--line);border-radius:9px;background:rgba(255,255,255,.38)}
 h2{font-size:16px;margin:0 0 10px}
 .player-shell{width:100%;aspect-ratio:16/9;background:#151715;border:1px solid #343831;border-radius:7px;overflow:hidden;position:relative}
 .nano-host,.player-frame{width:100%;height:100%;display:block;border:0}
-.status{margin:10px 0 0;padding:10px 11px;border:1px solid var(--line);border-radius:6px;font-size:13px;line-height:1.55;min-height:58px}
+.status{margin:10px 0 0;padding:10px 11px;border:1px solid var(--line);border-radius:6px;font-size:13px;line-height:1.55;min-height:72px}
 .status.error{border-color:#d6a29a;color:#873d31;background:rgba(169,68,50,.06)}
-.status.ok{border-color:#9bb58d;color:#405a38;background:rgba(95,140,75,.07)}
+.status.info{border-color:var(--line);color:#565950;background:rgba(255,255,255,.25)}
 .actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
 a{color:#8e4637}
 a.button{display:inline-block;background:#a94432;color:#fff;text-decoration:none;padding:9px 13px;border-radius:5px;font-size:14px;font-weight:600}
 .note{margin-top:18px;padding:14px;border:1px solid var(--line);border-radius:8px;background:rgba(255,255,255,.25);font-size:13px;line-height:1.7}
-@media(max-width:760px){.tests{grid-template-columns:1fr}body{padding:18px 12px 32px}}
+code{overflow-wrap:anywhere}
+@media(max-width:1050px){.tests{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:680px){.tests{grid-template-columns:1fr}body{padding:18px 12px 32px}h1{font-size:23px}}
 </style>
 <script>
 window.activity = { id: 11610, spmId: '888.211' };
@@ -46,36 +48,53 @@ try { document.domain = 'bilibili.com'; } catch (e) {}
 </head>
 <body>
 <main>
-  <h1>B站高清嵌入方案对照测试</h1>
-  <p class="lead">第七版：保留 NANO 作为对照，新增 BWiki 编辑指南中的 B 站原生 newplayer 高清嵌入方式（hq=1）。两种方案使用同一条视频，便于直接判断差异。</p>
+  <h1>B站高清播放器嵌入测试</h1>
+  <p class="lead">第八版：移除会打开独立播放器页、但在 GitHub 页面内显示黑屏的 BWiki newplayer 方案，改测两种面向外部网页嵌入的 B 站播放器。三个方案均使用同一条视频，且只在卡片内播放，不会自动跳转或自动全屏。</p>
 
   <div class="tests">
     <section class="test-card">
-      <h2>方案 A · NANO 播放器</h2>
+      <h2>方案 A · NANO（原方案对照）</h2>
       <div class="player-shell"><div id="player-nano" class="nano-host"></div></div>
-      <div id="status-nano" class="status">等待 NANO 初始化……</div>
+      <div id="status-nano" class="status error">原方案此前返回 3107，保留作对照。</div>
       <div class="actions"><a class="button" href="https://www.bilibili.com/video/BV1Vn1NzPEP4/" target="_blank" rel="noopener noreferrer">B站原视频</a></div>
     </section>
 
     <section class="test-card">
-      <h2>方案 B · BWiki 原生高清播放器（hq=1）</h2>
+      <h2>方案 B · B站官方外站播放器</h2>
       <div class="player-shell">
-        <iframe id="player-new" class="player-frame"
-          title="BWiki 原生高清播放器"
-          src="https://www.bilibili.com/blackboard/newplayer.html?bvid=BV1Vn1NzPEP4&page=1&crossDomain=1&autoplay=&allowfullscreen=0&hq=1&from=wiki"
-          scrolling="no" frameborder="0" allowfullscreen
-          allow="autoplay; fullscreen; picture-in-picture"
+        <iframe id="player-official" class="player-frame"
+          title="B站官方外站嵌入播放器"
+          src="https://player.bilibili.com/player.html?isOutside=true&bvid=BV1Vn1NzPEP4&page=1&high_quality=1&danmaku=0&autoplay=0"
+          scrolling="no" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
           referrerpolicy="strict-origin-when-cross-origin"></iframe>
       </div>
-      <div class="status">直接使用 BWiki 文档记载的 newplayer.html 地址和 hq=1 参数。请打开播放器设置，检查是否出现 720P / 1080P。</div>
-      <div class="actions"><a class="button" href="https://www.bilibili.com/blackboard/newplayer.html?bvid=BV1Vn1NzPEP4&page=1&crossDomain=1&autoplay=&allowfullscreen=0&hq=1&from=wiki" target="_blank" rel="noopener noreferrer">单独打开方案 B</a></div>
+      <div class="status info">使用 B 站官方外站嵌入域名 <code>player.bilibili.com/player.html</code>。点击播放器播放后，检查清晰度菜单是否提供 720P / 1080P。</div>
+      <div class="actions"><a class="button" href="https://www.bilibili.com/video/BV1Vn1NzPEP4/" target="_blank" rel="noopener noreferrer">B站原视频</a></div>
+    </section>
+
+    <section class="test-card">
+      <h2>方案 C · B站 HTML5 移动播放器</h2>
+      <div class="player-shell">
+        <iframe id="player-mobile" class="player-frame"
+          title="B站 HTML5 移动播放器嵌入"
+          src="https://www.bilibili.com/blackboard/html5mobileplayer.html?bvid=BV1Vn1NzPEP4&p=1&as_wide=1&high_quality=1&danmaku=0&autoplay=0"
+          scrolling="no" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen
+          referrerpolicy="strict-origin-when-cross-origin"></iframe>
+      </div>
+      <div class="status info">使用 B 站 HTML5 移动播放器作为第二种嵌入备选。检查是否能在当前网页内播放，以及清晰度菜单是否出现 720P / 1080P。</div>
+      <div class="actions"><a class="button" href="https://www.bilibili.com/video/BV1Vn1NzPEP4/" target="_blank" rel="noopener noreferrer">B站原视频</a></div>
     </section>
   </div>
 
   <section class="note">
-    <strong>为什么这版不再用第二条示例 BV？</strong><br>
-    之前的 BV1H7NEzHEs8 来自 BWiki 的 NanoPlayer 示例页，而该页面自己注明代码由 AI 生成，并不是经过验证的可靠对照视频。现在两个方案统一使用你自己的 BV1Vn1NzPEP4，排除示例视频本身不可用的干扰。<br><br>
-    方案 B 依据 BWiki 编辑指南：使用 <code>blackboard/newplayer.html</code>，并传入 <code>crossDomain=1</code>、<code>hq=1</code>、<code>from=wiki</code>。播放器运行在 B 站自己的域名下，避免由 GitHub 页面直接调用 NANO 跨域取流。清晰度仍由 B 站对该视频和当前观看账号的权限决定。
+    <strong>第八版调整</strong><br>
+    1. 删除了上一版的“单独打开方案 B”按钮：它打开的是 B 站独立播放器页面，所以看起来会占满整个浏览器窗口，并不是嵌入到教程网页里的效果。<br>
+    2. 方案 B 改为 B 站官方外站播放器；方案 C 改为 B 站 HTML5 移动播放器。两者都放在固定 16:9 的 iframe 容器中，不会主动跳出当前网页。<br>
+    3. 方案 A 保留 NANO 作为已知问题对照。清晰度是否能达到 720P / 1080P，仍以 B 站对该视频及当前登录账号实际开放的选项为准。
   </section>
   <p class="muted"><a href="https://yygx-guide.github.io/intro.html">返回正式使用指南</a> · 独立实验页，不修改正式教程。</p>
 </main>
@@ -85,8 +104,7 @@ try { document.domain = 'bilibili.com'; } catch (e) {}
   var status = document.getElementById('status-nano');
   var host = document.getElementById('player-nano');
   if (!window.nano || typeof window.nano.createPlayer !== 'function') {
-    status.className = 'status error';
-    status.textContent = 'NANO SDK 未加载。方案 B 不依赖 NANO，可单独测试。';
+    status.textContent = 'NANO SDK 未加载；此项只作旧方案对照，优先测试右侧两个 B 站原生嵌入方案。';
     return;
   }
   try {
@@ -99,24 +117,19 @@ try { document.domain = 'bilibili.com'; } catch (e) {}
       poster: true,
       stats: { bSource: 'widget_demo' }
     });
-    status.textContent = 'NANO 实例已创建，正在连接……';
     Promise.resolve(player.connect()).then(function () {
-      status.className = 'status ok';
       status.textContent = 'NANO connect 已完成；仍需以实际画面为准。';
     }).catch(function (error) {
-      status.className = 'status error';
       status.textContent = 'NANO 连接失败：' + (error && error.message ? error.message : String(error));
     });
     var observer = new MutationObserver(function () {
       var text = host.innerText || host.textContent || '';
       if (text.indexOf('3107') !== -1) {
-        status.className = 'status error';
-        status.textContent = 'NANO 返回 3107。请直接比较右侧 BWiki 原生播放器。';
+        status.textContent = 'NANO 返回 3107。请优先比较右侧两个 B 站原生嵌入方案。';
       }
     });
     observer.observe(host, { childList: true, subtree: true, characterData: true });
   } catch (error) {
-    status.className = 'status error';
     status.textContent = 'NANO 初始化失败：' + (error && error.message ? error.message : String(error));
   }
 })();
