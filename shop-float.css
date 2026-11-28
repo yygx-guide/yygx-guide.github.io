@@ -1,0 +1,129 @@
+/* 烟雨助手全站闲鱼购买悬浮入口：沿用主站宣纸、松绿与古铜配色。 */
+.shop-float{
+  --shop-float-bubble-bg:rgba(251,248,239,.97);
+  --shop-float-bubble-ink:var(--ink,#20251f);
+  --shop-float-bubble-line:rgba(49,89,77,.28);
+  position:fixed;
+  z-index:120;
+  right:18px;
+  right:max(12px,env(safe-area-inset-right,0px));
+  bottom:18px;
+  bottom:max(14px,env(safe-area-inset-bottom,0px));
+  display:flex;
+  flex-direction:column;
+  align-items:flex-end;
+  gap:9px;
+  max-width:calc(100vw - 24px);
+  pointer-events:none;
+  font-family:inherit;
+}
+.shop-float__bubble,
+.shop-float__avatar-link{pointer-events:auto;-webkit-tap-highlight-color:transparent}
+.shop-float__bubble{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:38px;
+  max-width:calc(100vw - 34px);
+  padding:8px 13px;
+  border:1px solid var(--shop-float-bubble-line);
+  border-radius:14px 14px 4px 14px;
+  background:var(--shop-float-bubble-bg);
+  color:var(--shop-float-bubble-ink);
+  box-shadow:0 5px 18px rgba(48,43,33,.13),inset 0 1px 0 rgba(255,255,255,.72);
+  font-size:13px;
+  font-weight:650;
+  line-height:1.45;
+  letter-spacing:.015em;
+  text-decoration:none;
+  white-space:nowrap;
+  transition:transform .2s ease,border-color .2s ease,box-shadow .2s ease;
+  animation:shop-float-bubble-in .65s cubic-bezier(.2,.75,.25,1) both;
+}
+.shop-float__bubble::after{
+  content:"";
+  position:absolute;
+  right:19px;
+  bottom:-5px;
+  width:9px;
+  height:9px;
+  background:var(--shop-float-bubble-bg);
+  border-right:1px solid var(--shop-float-bubble-line);
+  border-bottom:1px solid var(--shop-float-bubble-line);
+  transform:rotate(45deg);
+}
+.shop-float__avatar-link{
+  display:grid;
+  place-items:center;
+  width:88px;
+  height:88px;
+  padding:3px;
+  overflow:hidden;
+  border:1.5px solid rgba(154,120,56,.68);
+  border-radius:50%;
+  background:linear-gradient(145deg,#fffdf6 0%,#e8dfca 100%);
+  box-shadow:0 8px 24px rgba(40,48,40,.22),0 2px 5px rgba(40,48,40,.12),inset 0 1px 1px rgba(255,255,255,.9);
+  text-decoration:none;
+  transform:translateZ(0);
+  animation:shop-float-orb 4.8s ease-in-out infinite;
+  transition:transform .22s ease,box-shadow .22s ease;
+}
+.shop-float__avatar{
+  display:block;
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  object-fit:cover;
+  object-position:center;
+}
+.shop-float__bubble:hover{
+  transform:translateY(-2px);
+  border-color:rgba(49,89,77,.58);
+  box-shadow:0 8px 22px rgba(48,43,33,.17);
+}
+.shop-float__avatar-link:hover{
+  transform:translateY(-3px) scale(1.035);
+  box-shadow:0 12px 28px rgba(40,48,40,.25),0 2px 6px rgba(40,48,40,.13),inset 0 1px 1px rgba(255,255,255,.9);
+  animation-play-state:paused;
+}
+.shop-float__bubble:focus-visible,
+.shop-float__avatar-link:focus-visible{
+  outline:3px solid rgba(49,89,77,.72);
+  outline-offset:4px;
+}
+html[data-theme="care"] .shop-float{
+  --shop-float-bubble-bg:rgba(37,43,42,.96);
+  --shop-float-bubble-ink:#e1e7df;
+  --shop-float-bubble-line:rgba(159,197,184,.38);
+}
+html[data-theme="care"] .shop-float__bubble{
+  box-shadow:0 6px 20px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.06);
+}
+html[data-theme="care"] .shop-float__avatar-link{
+  border-color:rgba(177,194,166,.76);
+  background:linear-gradient(145deg,#e7e6d8 0%,#aebcaf 100%);
+  box-shadow:0 8px 24px rgba(0,0,0,.34),0 2px 5px rgba(0,0,0,.2);
+}
+@keyframes shop-float-orb{
+  0%,100%{transform:translateY(0)}
+  50%{transform:translateY(-4px)}
+}
+@keyframes shop-float-bubble-in{
+  from{opacity:0;transform:translateY(7px) scale(.97)}
+  to{opacity:1;transform:translateY(0) scale(1)}
+}
+@media(max-width:700px){
+  .shop-float{right:12px;right:max(10px,env(safe-area-inset-right,0px));bottom:14px;bottom:max(12px,env(safe-area-inset-bottom,0px));gap:7px}
+  .shop-float__avatar-link{width:72px;height:72px;padding:2.5px}
+  .shop-float__bubble{min-height:34px;padding:7px 10px;font-size:12px;border-radius:12px 12px 4px 12px}
+  .shop-float__bubble::after{right:16px}
+}
+@media(max-width:360px){
+  .shop-float__avatar-link{width:66px;height:66px}
+  .shop-float__bubble{font-size:11px;padding:6px 9px}
+}
+@media(prefers-reduced-motion:reduce){
+  .shop-float__avatar-link,.shop-float__bubble{animation:none!important;transition:none!important}
+}
+@media print{.shop-float{display:none!important}}
